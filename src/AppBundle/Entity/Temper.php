@@ -8,10 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
  * Class Breed
  * @package AppBundle\Entity
  *
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CharacterRepository")
- * @ORM\Table(name="character")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TemperRepository")
+ * @ORM\Table(name="temper")
  */
-class Character
+class Temper
 {
 	/**
 	 * @ORM\Id
@@ -36,7 +36,7 @@ class Character
 	/**
 	 * @param mixed $id
 	 *
-	 * @return Character
+	 * @return Temper
 	 */
 	public function setId($id)
 	{
@@ -56,7 +56,7 @@ class Character
 	/**
 	 * @param mixed $label
 	 *
-	 * @return Character
+	 * @return Temper
 	 */
 	public function setLabel($label)
 	{

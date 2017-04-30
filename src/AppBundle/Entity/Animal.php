@@ -64,13 +64,13 @@ class Animal
 	private $size;
 
 	/**
-	 * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Character")
-	 * @ORM\JoinTable(name="animal_character",
+	 * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Temper")
+	 * @ORM\JoinTable(name="animal_temper",
 	 *	 joinColumns={@ORM\JoinColumn(name="animal_id", referencedColumnName="id")},
-	 *	 inverseJoinColumns={@ORM\JoinColumn(name="character_id", referencedColumnName="id")}
+	 *	 inverseJoinColumns={@ORM\JoinColumn(name="temper_id", referencedColumnName="id")}
 	 * )
 	 */
-	private $character;
+	private $temper;
 
 	/**
 	 * @ORM\Column(name="comment", type="text")
@@ -130,7 +130,7 @@ class Animal
 	 *
 	 * @return Animal
 	 */
-	public function setBreed($breed)
+	public function setBreed(Breed $breed)
 	{
 		$this->breed = $breed;
 
@@ -170,7 +170,7 @@ class Animal
 	 *
 	 * @return Animal
 	 */
-	public function setAgeType($ageType)
+	public function setAgeType(AgeType $ageType)
 	{
 		$this->ageType = $ageType;
 
@@ -190,7 +190,7 @@ class Animal
 	 *
 	 * @return Animal
 	 */
-	public function setGender($gender)
+	public function setGender(AnimalGender $gender)
 	{
 		$this->gender = $gender;
 
@@ -198,9 +198,9 @@ class Animal
 	}
 
 	/**
-	 * @return mixed
+	 * @return bool
 	 */
-	public function getCastrated()
+	public function isCastrated()
 	{
 		return $this->castrated;
 	}
@@ -258,21 +258,21 @@ class Animal
 	}
 
 	/**
-	 * @return mixed
+	 * @return Temper
 	 */
-	public function getCharacter()
+	public function getTemper()
 	{
-		return $this->character;
+		return $this->temper;
 	}
 
 	/**
-	 * @param mixed $character
+	 * @param mixed $temper
 	 *
 	 * @return Animal
 	 */
-	public function setCharacter($character)
+	public function setTemper(Temper $temper)
 	{
-		$this->character = $character;
+		$this->temper = $temper;
 
 		return $this;
 	}
