@@ -1,17 +1,17 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace AppBundle\Entity\Animal;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Breed
- * @package AppBundle\Entity
+ * Class AgeType
+ * @package AppBundle\Entity\Animal
  *
- * @ORM\Entity(repositoryClass="AppBundle\Repository\TemperRepository")
- * @ORM\Table(name="temper")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Animal\AgeTypeRepository")
+ * @ORM\Table(name="age_type")
  */
-class Temper
+class AgeType
 {
 	/**
 	 * @ORM\Id
@@ -21,7 +21,7 @@ class Temper
 	private $id;
 
 	/**
-	 * @ORM\Column(name="name", type="string", length=255)
+	 * @ORM\Column(name="label", type="string", length=5)
 	 */
 	private $label;
 
@@ -36,7 +36,7 @@ class Temper
 	/**
 	 * @param mixed $id
 	 *
-	 * @return Temper
+	 * @return AgeType
 	 */
 	public function setId($id)
 	{
@@ -56,7 +56,7 @@ class Temper
 	/**
 	 * @param mixed $label
 	 *
-	 * @return Temper
+	 * @return AgeType
 	 */
 	public function setLabel($label)
 	{

@@ -1,14 +1,14 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace AppBundle\Entity\Animal;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class Breed
- * @package AppBundle\Entity
+ * @package AppBundle\Entity\Animal
  *
- * @ORM\Entity(repositoryClass="AppBundle\Repository\BreedRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Animal\BreedRepository")
  * @ORM\Table(name="breed")
  */
 class Breed
@@ -21,7 +21,7 @@ class Breed
 	private $id;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Specie")
+	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Animal\Specie")
 	 * @ORM\JoinColumn(name="specie_id", referencedColumnName="id")
 	 */
 	private $specie;

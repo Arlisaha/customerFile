@@ -1,14 +1,14 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace AppBundle\Entity\Animal;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class Animal
- * @package AppBundle\Entity
+ * @package AppBundle\Entity\Animal
  *
- * @ORM\Entity(repositoryClass="AppBundle\Repository\AnimalRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Animal\AnimalRepository")
  * @ORM\Table(name="animal")
  */
 class Animal
@@ -26,7 +26,7 @@ class Animal
 	private $name;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Breed")
+	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Animal\Breed")
 	 * @ORM\JoinColumn(name="breed_id", referencedColumnName="id")
 	 */
 	private $breed;
@@ -37,13 +37,13 @@ class Animal
 	private $ageValue;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\AgeType")
+	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Animal\AgeType")
 	 * @ORM\JoinColumn(name="age_type_id", referencedColumnName="id")
 	 */
 	private $ageType;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\AnimalGender")
+	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Animal\Gender")
 	 * @ORM\JoinColumn(name="gender_id", referencedColumnName="id")
 	 */
 	private $gender;
@@ -64,8 +64,8 @@ class Animal
 	private $size;
 
 	/**
-	 * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Temper")
-	 * @ORM\JoinTable(name="animal_temper",
+	 * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Animal\Temper")
+	 * @ORM\JoinTable(name="l__animal_temper",
 	 *	 joinColumns={@ORM\JoinColumn(name="animal_id", referencedColumnName="id")},
 	 *	 inverseJoinColumns={@ORM\JoinColumn(name="temper_id", referencedColumnName="id")}
 	 * )
@@ -190,7 +190,7 @@ class Animal
 	 *
 	 * @return Animal
 	 */
-	public function setGender(AnimalGender $gender)
+	public function setGender(Gender $gender)
 	{
 		$this->gender = $gender;
 

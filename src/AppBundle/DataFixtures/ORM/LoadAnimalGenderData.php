@@ -2,7 +2,7 @@
 
 namespace AppBundle\DataFixtures\ORM;
 
-use AppBundle\Entity\AnimalGender;
+use AppBundle\Entity\Animal\Gender;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -17,7 +17,7 @@ class LoadAnimalGenderData extends AbstractFixture implements OrderedFixtureInte
 	public function load(ObjectManager $manager)
 	{
 		foreach (self::$animalGenderNameList as $animalGenderName) {
-			$animalGender = new AnimalGender();
+			$animalGender = new Gender();
 			$animalGender->setLabel($animalGenderName);
 
 			$manager->persist($animalGender);
