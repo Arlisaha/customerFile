@@ -52,7 +52,7 @@ class Breed
 	}
 
 	/**
-	 * @return mixed
+	 * @return Specie
 	 */
 	public function getSpecie()
 	{
@@ -60,9 +60,9 @@ class Breed
 	}
 
 	/**
-	 * @param mixed $specie
+	 * @param Specie $specie
 	 *
-	 * @return Specie
+	 * @return Breed
 	 */
 	public function setSpecie(Specie $specie)
 	{
