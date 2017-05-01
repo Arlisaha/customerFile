@@ -3,10 +3,11 @@
 namespace AppBundle\DataFixtures\ORM;
 
 use AppBundle\Entity\AnimalGender;
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class LoadAnimalGenderData implements FixtureInterface
+class LoadAnimalGenderData extends AbstractFixture implements OrderedFixtureInterface
 {
 	private static $animalGenderNameList = [
 		'mâle',
@@ -23,5 +24,10 @@ class LoadAnimalGenderData implements FixtureInterface
 		}
 
 		$manager->flush();
+	}
+
+	public function getOrder()
+	{
+		return 4;
 	}
 }

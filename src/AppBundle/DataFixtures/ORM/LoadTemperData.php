@@ -3,10 +3,11 @@
 namespace AppBundle\DataFixtures\ORM;
 
 use AppBundle\Entity\Temper;
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class LoadTemperData implements FixtureInterface
+class LoadTemperData extends AbstractFixture implements OrderedFixtureInterface
 {
 	private static $temperTypeList = [
 		'Curieux',
@@ -27,5 +28,10 @@ class LoadTemperData implements FixtureInterface
 		}
 
 		$manager->flush();
+	}
+
+	public function getOrder()
+	{
+		return 3;
 	}
 }

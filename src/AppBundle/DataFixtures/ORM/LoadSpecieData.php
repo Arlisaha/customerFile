@@ -3,25 +3,34 @@
 namespace AppBundle\DataFixtures\ORM;
 
 use AppBundle\Entity\Breed;
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use AppBundle\Entity\Specie;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class LoadSpecieData implements FixtureInterface
+class LoadSpecieData extends AbstractFixture implements OrderedFixtureInterface
 {
 	private static $specieNameList = [
-		'Chien',
-		'Chat',
+		'chien',
+		'chat',
 	];
 
 	public function load(ObjectManager $manager)
 	{
 		foreach (self::$specieNameList as $specieName) {
-			$specie = new Breed();
+			$specie = new Specie();
 			$specie->setLabel($specieName);
 
 			$manager->persist($specie);
+
+			$this->addReference($specieName, $specie);
 		}
 
 		$manager->flush();
+	}
+
+	public function getOrder()
+	{
+		return 1;
 	}
 }

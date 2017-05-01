@@ -3,32 +3,43 @@
 namespace AppBundle\DataFixtures\ORM;
 
 use AppBundle\Entity\Breed;
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class LoadBreedData implements FixtureInterface
+class LoadBreedData extends AbstractFixture implements OrderedFixtureInterface
 {
 	private static $breedNameList = [
-		'Berger Allemand',
-		'Shih-tzu',
-		'Bouledogue Français',
-		'Bouledogue Anglais',
-		'Bauceron',
-		'Dalmatien',
-		'Chihuahua',
-		'Yorkshire',
-		'Bouvier Bernois',
+		'berger allemand'     => 'chien',
+		'shih-tzu'            => 'chien',
+		'bouledogue français' => 'chien',
+		'bouledogue anglais'  => 'chien',
+		'bauceron'            => 'chien',
+		'dalmatien'           => 'chien',
+		'chihuahua'           => 'chien',
+		'yorkshire'           => 'chien',
+		'bouvier bernois'     => 'chien',
+		'angora'              => 'chat',
+		'persan'              => 'chat',
+		'européen'            => 'chat',
+		'sphinx'              => 'chat',
 	];
 
 	public function load(ObjectManager $manager)
 	{
-		foreach (self::$breedNameList as $breedName) {
+		foreach (self::$breedNameList as $breedName => $specie) {
 			$breed = new Breed();
+			$breed->setSpecie($this->getReference($specie));
 			$breed->setLabel($breedName);
 
 			$manager->persist($breed);
 		}
 
 		$manager->flush();
+	}
+
+	public function getOrder()
+	{
+		return 2;
 	}
 }

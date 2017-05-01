@@ -3,10 +3,11 @@
 namespace AppBundle\DataFixtures\ORM;
 
 use AppBundle\Entity\AgeType;
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class LoadAgeTypeData implements FixtureInterface
+class LoadAgeTypeData extends AbstractFixture implements OrderedFixtureInterface
 {
 	private static $ageTypeNameList = [
 		'mois',
@@ -23,5 +24,10 @@ class LoadAgeTypeData implements FixtureInterface
 		}
 
 		$manager->flush();
+	}
+
+	public function getOrder()
+	{
+		return 5;
 	}
 }
