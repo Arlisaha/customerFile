@@ -5,7 +5,7 @@ namespace AppBundle\Entity\Customer;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Temper
+ * Class LifeStyle
  * @package AppBundle\Entity\Customer
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\Customer\LifeStyleRepository")
