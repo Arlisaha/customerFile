@@ -19,6 +19,21 @@ class Dog extends AbstractAnimal
 	private $breed;
 
 	/**
+	 * @ORM\Column(name="daily_walk_time", type="float")
+	 */
+	private $dailyWalkTime;
+
+	/**
+	 * @ORM\Column(name="daily_walk_time_unit", type="binary")
+	 */
+	private $dailyWalkTimeUnit;
+
+	public static $dailyWalkTimeUnits = [
+		0 => 'minutes',
+		1 => 'heures',
+	];
+
+	/**
 	 * @return DogBreed
 	 */
 	public function getBreed()
@@ -34,6 +49,46 @@ class Dog extends AbstractAnimal
 	public function setBreed(DogBreed $breed)
 	{
 		$this->breed = $breed;
+
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getDailyWalkTime()
+	{
+		return $this->dailyWalkTime;
+	}
+
+	/**
+	 * @param mixed $dailyWalkTime
+	 *
+	 * @return Dog
+	 */
+	public function setDailyWalkTime($dailyWalkTime)
+	{
+		$this->dailyWalkTime = $dailyWalkTime;
+
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getDailyWalkTimeUnit()
+	{
+		return $this->dailyWalkTimeUnit;
+	}
+
+	/**
+	 * @param mixed $dailyWalkTimeUnit
+	 *
+	 * @return Dog
+	 */
+	public function setDailyWalkTimeUnit($dailyWalkTimeUnit)
+	{
+		$this->dailyWalkTimeUnit = $dailyWalkTimeUnit;
 
 		return $this;
 	}

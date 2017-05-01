@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\Animal\AnimalRepository")
  * @ORM\Table(name="animal")
  * @ORM\InheritanceType("SINGLE_TABLE")
- * @ORM\DiscriminatorColumn(name="specie", type="integer")
+ * @ORM\DiscriminatorColumn(name="specie", type="binary")
  * @ORM\DiscriminatorMap({"0" = "Dog", "1" = "Cat"})
  */
 abstract class AbstractAnimal
@@ -35,9 +35,9 @@ abstract class AbstractAnimal
 	private $ageValue;
 
 	/**
-	 * @ORM\Column(name="age_type", type="binary")
+	 * @ORM\Column(name="age_unit", type="binary")
 	 */
-	private $ageType;
+	private $ageUnit;
 
 	/**
 	 * @ORM\Column(name="gender", type="binary")
@@ -69,11 +69,31 @@ abstract class AbstractAnimal
 	private $temper;
 
 	/**
+	 * @ORM\Column(name="lives_outside", type="boolean")
+	 */
+	private $livesOutside;
+
+	/**
+	 * @ORM\Column(name="outside_time", type="float")
+	 */
+	private $outsideTime;
+
+	/**
+	 * @ORM\Column(name="outside_time_unit", type="binary")
+	 */
+	private $outsideTimeUnit;
+
+	/**
+	 * @ORM\Column(name="health_issues", type="text")
+	 */
+	private $healthIssues;
+
+	/**
 	 * @ORM\Column(name="comment", type="text")
 	 */
 	private $comment;
 
-	public static $ageTypes = [
+	public static $ageUnits = [
 		0 => 'mois',
 		1 => 'ans',
 	];
@@ -81,6 +101,11 @@ abstract class AbstractAnimal
 	public static $genders = [
 		0 => 'mâle',
 		1 => 'femelle',
+	];
+
+	public static $outsideTimeUnits = [
+		0 => 'minutes',
+		1 => 'heures',
 	];
 
 	public function __construct()
@@ -151,19 +176,19 @@ abstract class AbstractAnimal
 	/**
 	 * @return mixed
 	 */
-	public function getAgeType()
+	public function getAgeUnit()
 	{
-		return $this->ageType;
+		return $this->ageUnit;
 	}
 
 	/**
-	 * @param mixed $ageType
+	 * @param mixed $ageUnit
 	 *
 	 * @return AbstractAnimal
 	 */
-	public function setAgeType(AgeType $ageType)
+	public function setAgeUnit($ageUnit)
 	{
-		$this->ageType = $ageType;
+		$this->ageUnit = $ageUnit;
 
 		return $this;
 	}
@@ -181,7 +206,7 @@ abstract class AbstractAnimal
 	 *
 	 * @return AbstractAnimal
 	 */
-	public function setGender(Gender $gender)
+	public function setGender($gender)
 	{
 		$this->gender = $gender;
 
@@ -249,7 +274,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @return Temper
+	 * @return ArrayCollection
 	 */
 	public function getTemper()
 	{
@@ -261,9 +286,96 @@ abstract class AbstractAnimal
 	 *
 	 * @return AbstractAnimal
 	 */
-	public function setTemper(Temper $temper)
+	public function setTemper(ArrayCollection $temper)
 	{
 		$this->temper = $temper;
+
+		return $this;
+	}
+
+	public function addTemper(Temper $temper)
+	{
+		$this->temper->add($temper);
+
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getLivesOutside()
+	{
+		return $this->livesOutside;
+	}
+
+	/**
+	 * @param mixed $livesOutside
+	 *
+	 * @return AbstractAnimal
+	 */
+	public function setLivesOutside($livesOutside)
+	{
+		$this->livesOutside = $livesOutside;
+
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getOutsideTime()
+	{
+		return $this->outsideTime;
+	}
+
+	/**
+	 * @param mixed $outsideTime
+	 *
+	 * @return AbstractAnimal
+	 */
+	public function setOutsideTime($outsideTime)
+	{
+		$this->outsideTime = $outsideTime;
+
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getOutsideTimeUnit()
+	{
+		return $this->outsideTimeUnit;
+	}
+
+	/**
+	 * @param mixed $outsideTimeUnit
+	 *
+	 * @return AbstractAnimal
+	 */
+	public function setOutsideTimeUnit($outsideTimeUnit)
+	{
+		$this->outsideTimeUnit = $outsideTimeUnit;
+
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getHealthIssues()
+	{
+		return $this->healthIssues;
+	}
+
+	/**
+	 * @param mixed $healthIssues
+	 *
+	 * @return AbstractAnimal
+	 */
+	public function setHealthIssues($healthIssues)
+	{
+		$this->healthIssues = $healthIssues;
 
 		return $this;
 	}
