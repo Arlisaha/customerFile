@@ -61,7 +61,8 @@ class Owner
 	private $comment;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Customer\Customer")
+	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Customer\Customer", inversedBy="owners")
+	 * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
 	 */
 	private $customer;
 

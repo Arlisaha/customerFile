@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity\Customer;
 
+use AppBundle\Entity\Animal\AbstractAnimal;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -23,12 +24,13 @@ class Customer
 
 	/**
 	 * @ORM\OneToMany(targetEntity="AppBundle\Entity\Customer\Owner", mappedBy="customer")
-	 * @ORM\JoinTable(name="l__customer_owner",
-	 *	 joinColumns={@ORM\JoinColumn(name="customer_id", referencedColumnName="id")},
-	 *	 inverseJoinColumns={@ORM\JoinColumn(name="owner_id", referencedColumnName="id")}
-	 * )
 	 */
 	private $owners;
+
+	/**
+	 * @ORM\OneToMany(targetEntity="AppBundle\Entity\Animal\AbstractAnimal", mappedBy="customer")
+	 */
+	private $animals;
 
 	/**
 	 * @ORM\Column(name="status", type="string", length=255)
@@ -36,18 +38,34 @@ class Customer
 	private $status;
 
 	/**
-	 * @ORM\Column(name="children", type="boolean")
+	 * @ORM\Column(name="address", type="string", length=255)
 	 */
-	private $children;
+	private $address;
 
 	/**
-	 * @ORM\Column(name="children_number", type="integer")
+	 * @ORM\Column(name="zip_code", type="string", length=5)
 	 */
-	private $childrenNumber;
+	private $zipCode;
+
+	/**
+	 * @ORM\Column(name="city", type="string", length=255)
+	 */
+	private $city;
+
+	/**
+	 * @ORM\Column(name="phone", type="string", length=10)
+	 */
+	private $phone;
+
+	/**
+	 * @ORM\Column(name="email", type="string", length=255)
+	 */
+	private $email;
 
 	public function __construct()
 	{
-		$this->owners = new ArrayCollection();
+		$this->owners  = new ArrayCollection();
+		$this->animals = new ArrayCollection();
 	}
 
 	/**
@@ -100,6 +118,33 @@ class Customer
 	/**
 	 * @return mixed
 	 */
+	public function getAnimals()
+	{
+		return $this->animals;
+	}
+
+	/**
+	 * @param mixed $animals
+	 *
+	 * @return Customer
+	 */
+	public function setAnimals($animals)
+	{
+		$this->animals = $animals;
+
+		return $this;
+	}
+
+	public function addAnimal(AbstractAnimal $animal)
+	{
+		$this->animals->add($animal);
+
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
 	public function getStatus()
 	{
 		return $this->status;
@@ -118,21 +163,21 @@ class Customer
 	}
 
 	/**
-	 * @return boolean
+	 * @return mixed
 	 */
-	public function hasChildren()
+	public function getAddress()
 	{
-		return $this->children;
+		return $this->address;
 	}
 
 	/**
-	 * @param mixed $children
+	 * @param mixed $address
 	 *
 	 * @return Customer
 	 */
-	public function setChildren($children)
+	public function setAddress($address)
 	{
-		$this->children = $children;
+		$this->address = $address;
 
 		return $this;
 	}
@@ -140,19 +185,79 @@ class Customer
 	/**
 	 * @return mixed
 	 */
-	public function getChildrenNumber()
+	public function getZipCode()
 	{
-		return $this->childrenNumber;
+		return $this->zipCode;
 	}
 
 	/**
-	 * @param mixed $childrenNumber
+	 * @param mixed $zipCode
 	 *
 	 * @return Customer
 	 */
-	public function setChildrenNumber($childrenNumber)
+	public function setZipCode($zipCode)
 	{
-		$this->childrenNumber = $childrenNumber;
+		$this->zipCode = $zipCode;
+
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getCity()
+	{
+		return $this->city;
+	}
+
+	/**
+	 * @param mixed $city
+	 *
+	 * @return Customer
+	 */
+	public function setCity($city)
+	{
+		$this->city = $city;
+
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getPhone()
+	{
+		return $this->phone;
+	}
+
+	/**
+	 * @param mixed $phone
+	 *
+	 * @return Customer
+	 */
+	public function setPhone($phone)
+	{
+		$this->phone = $phone;
+
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getEmail()
+	{
+		return $this->email;
+	}
+
+	/**
+	 * @param mixed $email
+	 *
+	 * @return Customer
+	 */
+	public function setEmail($email)
+	{
+		$this->email = $email;
 
 		return $this;
 	}

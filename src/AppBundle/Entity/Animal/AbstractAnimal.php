@@ -93,6 +93,11 @@ abstract class AbstractAnimal
 	 */
 	private $comment;
 
+	/**
+	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Customer\Customer", inversedBy="animals")
+	 */
+	private $customer;
+
 	public static $ageUnits = [
 		0 => 'mois',
 		1 => 'ans',
@@ -438,6 +443,26 @@ abstract class AbstractAnimal
 	public function setComment($comment)
 	{
 		$this->comment = $comment;
+
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getCustomer()
+	{
+		return $this->customer;
+	}
+
+	/**
+	 * @param mixed $customer
+	 *
+	 * @return AbstractAnimal
+	 */
+	public function setCustomer($customer)
+	{
+		$this->customer = $customer;
 
 		return $this;
 	}
