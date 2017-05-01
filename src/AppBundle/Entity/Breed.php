@@ -21,6 +21,12 @@ class Breed
 	private $id;
 
 	/**
+	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\Specie")
+	 * @ORM\JoinColumn(name="specie_id", referencedColumnName="id")
+	 */
+	private $specie;
+
+	/**
 	 * @ORM\Column(name="label", type="string", length=255)
 	 */
 	private $label;
@@ -41,6 +47,26 @@ class Breed
 	public function setId($id)
 	{
 		$this->id = $id;
+
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getSpecie()
+	{
+		return $this->specie;
+	}
+
+	/**
+	 * @param mixed $specie
+	 *
+	 * @return Specie
+	 */
+	public function setSpecie(Specie $specie)
+	{
+		$this->specie = $specie;
 
 		return $this;
 	}
