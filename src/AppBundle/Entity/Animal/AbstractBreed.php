@@ -5,13 +5,16 @@ namespace AppBundle\Entity\Animal;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Breed
+ * Class AbstractBreed
  * @package AppBundle\Entity\Animal
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\Animal\BreedRepository")
  * @ORM\Table(name="breed")
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="specie", type="integer")
+ * @ORM\DiscriminatorMap({"0" = "DogBreed", "1" = "CatBreed"})
  */
-class Breed
+abstract class AbstractBreed
 {
 	/**
 	 * @ORM\Id
@@ -19,12 +22,6 @@ class Breed
 	 * @ORM\Column(name="id", type="integer")
 	 */
 	private $id;
-
-	/**
-	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Animal\Specie")
-	 * @ORM\JoinColumn(name="specie_id", referencedColumnName="id")
-	 */
-	private $specie;
 
 	/**
 	 * @ORM\Column(name="label", type="string", length=255)
@@ -42,31 +39,11 @@ class Breed
 	/**
 	 * @param mixed $id
 	 *
-	 * @return Breed
+	 * @return AbstractBreed
 	 */
 	public function setId($id)
 	{
 		$this->id = $id;
-
-		return $this;
-	}
-
-	/**
-	 * @return Specie
-	 */
-	public function getSpecie()
-	{
-		return $this->specie;
-	}
-
-	/**
-	 * @param Specie $specie
-	 *
-	 * @return Breed
-	 */
-	public function setSpecie(Specie $specie)
-	{
-		$this->specie = $specie;
 
 		return $this;
 	}
@@ -82,7 +59,7 @@ class Breed
 	/**
 	 * @param mixed $label
 	 *
-	 * @return Breed
+	 * @return AbstractBreed
 	 */
 	public function setLabel($label)
 	{

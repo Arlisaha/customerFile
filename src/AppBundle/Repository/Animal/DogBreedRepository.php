@@ -4,7 +4,7 @@ namespace AppBundle\Repository\Animal;
 
 use Doctrine\ORM\EntityRepository;
 
-class GenderRepository extends EntityRepository
+class DogBreedRepository extends EntityRepository
 {
 
 }

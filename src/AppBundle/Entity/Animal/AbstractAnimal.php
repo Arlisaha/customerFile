@@ -5,13 +5,16 @@ namespace AppBundle\Entity\Animal;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Animal
+ * Class AbstractAnimal
  * @package AppBundle\Entity\Animal
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\Animal\AnimalRepository")
  * @ORM\Table(name="animal")
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="specie", type="integer")
+ * @ORM\DiscriminatorMap({"0" = "Dog", "1" = "Cat"})
  */
-class Animal
+abstract class AbstractAnimal
 {
 	/**
 	 * @ORM\Id
@@ -26,25 +29,17 @@ class Animal
 	private $name;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Animal\Breed")
-	 * @ORM\JoinColumn(name="breed_id", referencedColumnName="id")
-	 */
-	private $breed;
-
-	/**
 	 * @ORM\Column(name="age_value", type="integer")
 	 */
 	private $ageValue;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Animal\AgeType")
-	 * @ORM\JoinColumn(name="age_type_id", referencedColumnName="id")
+	 * @ORM\Column(name="age_type", type="binary")
 	 */
 	private $ageType;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Animal\Gender")
-	 * @ORM\JoinColumn(name="gender_id", referencedColumnName="id")
+	 * @ORM\Column(name="gender", type="binary")
 	 */
 	private $gender;
 
@@ -77,6 +72,16 @@ class Animal
 	 */
 	private $comment;
 
+	public static $ageTypes = [
+		0 => 'mois',
+		1 => 'ans',
+	];
+
+	public static $genders = [
+		0 => 'mâle',
+		1 => 'femelle',
+	];
+
 	/**
 	 * @return mixed
 	 */
@@ -88,7 +93,7 @@ class Animal
 	/**
 	 * @param mixed $id
 	 *
-	 * @return Animal
+	 * @return AbstractAnimal
 	 */
 	public function setId($id)
 	{
@@ -108,31 +113,11 @@ class Animal
 	/**
 	 * @param mixed $name
 	 *
-	 * @return Animal
+	 * @return AbstractAnimal
 	 */
 	public function setName($name)
 	{
 		$this->name = $name;
-
-		return $this;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getBreed()
-	{
-		return $this->breed;
-	}
-
-	/**
-	 * @param mixed $breed
-	 *
-	 * @return Animal
-	 */
-	public function setBreed(Breed $breed)
-	{
-		$this->breed = $breed;
 
 		return $this;
 	}
@@ -148,7 +133,7 @@ class Animal
 	/**
 	 * @param mixed $ageValue
 	 *
-	 * @return Animal
+	 * @return AbstractAnimal
 	 */
 	public function setAgeValue($ageValue)
 	{
@@ -168,7 +153,7 @@ class Animal
 	/**
 	 * @param mixed $ageType
 	 *
-	 * @return Animal
+	 * @return AbstractAnimal
 	 */
 	public function setAgeType(AgeType $ageType)
 	{
@@ -188,7 +173,7 @@ class Animal
 	/**
 	 * @param mixed $gender
 	 *
-	 * @return Animal
+	 * @return AbstractAnimal
 	 */
 	public function setGender(Gender $gender)
 	{
@@ -208,7 +193,7 @@ class Animal
 	/**
 	 * @param mixed $castrated
 	 *
-	 * @return Animal
+	 * @return AbstractAnimal
 	 */
 	public function setCastrated($castrated)
 	{
@@ -228,7 +213,7 @@ class Animal
 	/**
 	 * @param mixed $weight
 	 *
-	 * @return Animal
+	 * @return AbstractAnimal
 	 */
 	public function setWeight($weight)
 	{
@@ -248,7 +233,7 @@ class Animal
 	/**
 	 * @param mixed $size
 	 *
-	 * @return Animal
+	 * @return AbstractAnimal
 	 */
 	public function setSize($size)
 	{
@@ -268,7 +253,7 @@ class Animal
 	/**
 	 * @param mixed $temper
 	 *
-	 * @return Animal
+	 * @return AbstractAnimal
 	 */
 	public function setTemper(Temper $temper)
 	{
@@ -288,7 +273,7 @@ class Animal
 	/**
 	 * @param mixed $comment
 	 *
-	 * @return Animal
+	 * @return AbstractAnimal
 	 */
 	public function setComment($comment)
 	{
