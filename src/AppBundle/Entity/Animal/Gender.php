@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Class Gender
  * @package AppBundle\Entity\Animal
  *
- * @ORM\Entity(repositoryClass="AppBundle\Repository\Animal\AnimalGenderRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Animal\GenderRepository")
  * @ORM\Table(name="animal_gender")
  */
 class Gender
