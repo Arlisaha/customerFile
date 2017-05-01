@@ -49,8 +49,8 @@ class Owner
 	/**
 	 * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Customer\LifeStyle")
 	 * @ORM\JoinTable(name="l__owner_life_style",
-	 *	 joinColumns={@ORM\JoinColumn(name="owner_id", referencedColumnName="id")},
-	 *	 inverseJoinColumns={@ORM\JoinColumn(name="life_style_id", referencedColumnName="id")}
+	 *     joinColumns={@ORM\JoinColumn(name="owner_id", referencedColumnName="id")},
+	 *     inverseJoinColumns={@ORM\JoinColumn(name="life_style_id", referencedColumnName="id")}
 	 * )
 	 */
 	private $lifeStyle;
@@ -59,6 +59,11 @@ class Owner
 	 * @ORM\Column(name="comment", type="text")
 	 */
 	private $comment;
+
+	/**
+	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Customer\Customer")
+	 */
+	private $customer;
 
 	public static $genders = [
 		0 => 'homme',
@@ -165,7 +170,7 @@ class Owner
 	 */
 	public function setGender($gender)
 	{
-		if(!array_key_exists($gender, static::$genders) && !in_array($gender, static::$genders)) {
+		if (!array_key_exists($gender, static::$genders) && !in_array($gender, static::$genders)) {
 			throw new \InvalidArgumentException(
 				sprintf(
 					'The given gender value must be either a valid string (%s) nor a valid int key (%s).',
@@ -252,6 +257,26 @@ class Owner
 	public function setComment($comment)
 	{
 		$this->comment = $comment;
+
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getCustomer()
+	{
+		return $this->customer;
+	}
+
+	/**
+	 * @param mixed $customer
+	 *
+	 * @return Owner
+	 */
+	public function setCustomer($customer)
+	{
+		$this->customer = $customer;
 
 		return $this;
 	}
