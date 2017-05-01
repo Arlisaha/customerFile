@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity\Animal;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -81,6 +82,11 @@ abstract class AbstractAnimal
 		0 => 'mâle',
 		1 => 'femelle',
 	];
+
+	public function __construct()
+	{
+		$this->temper = new ArrayCollection();
+	}
 
 	/**
 	 * @return mixed
