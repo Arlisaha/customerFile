@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\Animal\BreedRepository")
  * @ORM\Table(name="breed")
  * @ORM\InheritanceType("SINGLE_TABLE")
- * @ORM\DiscriminatorColumn(name="specie", type="integer")
+ * @ORM\DiscriminatorColumn(name="specie", type="binary")
  * @ORM\DiscriminatorMap({"0" = "DogBreed", "1" = "CatBreed"})
  */
 abstract class AbstractBreed
