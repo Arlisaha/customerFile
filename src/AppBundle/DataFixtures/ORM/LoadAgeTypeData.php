@@ -17,7 +17,7 @@ class LoadAgeTypeData implements FixtureInterface
 	{
 		foreach (self::$ageTypeNameList as $ageTypeName) {
 			$ageType = new AgeType();
-			$ageType->setName($ageTypeName);
+			$ageType->setLabel($ageTypeName);
 
 			$manager->persist($ageType);
 		}

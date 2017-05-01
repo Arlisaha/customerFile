@@ -24,7 +24,7 @@ class LoadBreedData implements FixtureInterface
 	{
 		foreach (self::$breedNameList as $breedName) {
 			$breed = new Breed();
-			$breed->setName($breedName);
+			$breed->setLabel($breedName);
 
 			$manager->persist($breed);
 		}

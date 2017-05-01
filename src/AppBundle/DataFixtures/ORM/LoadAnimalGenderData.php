@@ -17,7 +17,7 @@ class LoadAnimalGenderData implements FixtureInterface
 	{
 		foreach (self::$animalGenderNameList as $animalGenderName) {
 			$animalGender = new AnimalGender();
-			$animalGender->setName($animalGenderName);
+			$animalGender->setLabel($animalGenderName);
 
 			$manager->persist($animalGender);
 		}
