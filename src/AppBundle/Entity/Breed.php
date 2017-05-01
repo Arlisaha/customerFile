@@ -21,7 +21,7 @@ class Breed
 	private $id;
 
 	/**
-	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\Specie")
+	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Specie")
 	 * @ORM\JoinColumn(name="specie_id", referencedColumnName="id")
 	 */
 	private $specie;

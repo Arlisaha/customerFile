@@ -26,7 +26,7 @@ class Animal
 	private $name;
 
 	/**
-	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\Breed")
+	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Breed")
 	 * @ORM\JoinColumn(name="breed_id", referencedColumnName="id")
 	 */
 	private $breed;
@@ -37,13 +37,13 @@ class Animal
 	private $ageValue;
 
 	/**
-	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\AgeType")
+	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\AgeType")
 	 * @ORM\JoinColumn(name="age_type_id", referencedColumnName="id")
 	 */
 	private $ageType;
 
 	/**
-	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\AnimalGender")
+	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\AnimalGender")
 	 * @ORM\JoinColumn(name="gender_id", referencedColumnName="id")
 	 */
 	private $gender;
