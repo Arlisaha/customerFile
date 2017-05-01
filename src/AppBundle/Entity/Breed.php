@@ -9,21 +9,21 @@ use Doctrine\ORM\Mapping as ORM;
  * @package AppBundle\Entity
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\BreedRepository")
- * @ORM\Table(name="breed")
+ * @ORM\Table(label="breed")
  */
 class Breed
 {
 	/**
 	 * @ORM\Id
 	 * @ORM\GeneratedValue(strategy="AUTO")
-	 * @ORM\Column(name="id", type="integer")
+	 * @ORM\Column(label="id", type="integer")
 	 */
 	private $id;
 
 	/**
-	 * @ORM\Column(name="name", type="string", length=255)
+	 * @ORM\Column(label="label", type="string", length=255)
 	 */
-	private $name;
+	private $label;
 
 	/**
 	 * @return mixed
@@ -48,19 +48,19 @@ class Breed
 	/**
 	 * @return mixed
 	 */
-	public function getName()
+	public function getLabel()
 	{
-		return $this->name;
+		return $this->label;
 	}
 
 	/**
-	 * @param mixed $name
+	 * @param mixed $label
 	 *
 	 * @return Breed
 	 */
-	public function setName($name)
+	public function setLabel($label)
 	{
-		$this->name = $name;
+		$this->label = $label;
 
 		return $this;
 	}
