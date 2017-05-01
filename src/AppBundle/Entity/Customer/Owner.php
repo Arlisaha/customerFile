@@ -1,15 +1,15 @@
 <?php
 
-namespace AppBundle\Entity\Owner;
+namespace AppBundle\Entity\Customer;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class Gender
- * @package AppBundle\Entity\Owner
+ * @package AppBundle\Entity\Customer
  *
- * @ORM\Entity(repositoryClass="AppBundle\Repository\Owner\OwnerRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Customer\OwnerRepository")
  * @ORM\Table(name="owner")
  */
 class Owner
@@ -47,7 +47,7 @@ class Owner
 	private $job;
 
 	/**
-	 * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Animal\LifeStyle")
+	 * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Customer\LifeStyle")
 	 * @ORM\JoinTable(name="l__owner_life_style",
 	 *	 joinColumns={@ORM\JoinColumn(name="owner_id", referencedColumnName="id")},
 	 *	 inverseJoinColumns={@ORM\JoinColumn(name="life_style_id", referencedColumnName="id")}

@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Repository\Owner;
+namespace AppBundle\Repository\Customer;
 
 use Doctrine\ORM\EntityRepository;
 

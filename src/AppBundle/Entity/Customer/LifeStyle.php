@@ -1,14 +1,14 @@
 <?php
 
-namespace AppBundle\Entity\Animal;
+namespace AppBundle\Entity\Customer;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class Temper
- * @package AppBundle\Entity\Owner
+ * @package AppBundle\Entity\Customer
  *
- * @ORM\Entity(repositoryClass="AppBundle\Repository\Owner\LifeStyleRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Customer\LifeStyleRepository")
  * @ORM\Table(name="life_style")
  */
 class LifeStyle
