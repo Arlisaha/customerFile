@@ -225,6 +225,18 @@ class Owner
 	}
 
 	/**
+	 * @param LifeStyle $lifeStyle
+	 *
+	 * @return $this
+	 */
+	public function addLifeStyle(LifeStyle $lifeStyle)
+	{
+		$this->lifeStyle->add($lifeStyle);
+
+		return $this;
+	}
+
+	/**
 	 * @return mixed
 	 */
 	public function getComment()
