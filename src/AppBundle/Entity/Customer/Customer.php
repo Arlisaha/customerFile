@@ -62,6 +62,11 @@ class Customer
 	 */
 	private $email;
 
+	/**
+	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\CustomerCard", inversedBy="customer")
+	 */
+	private $customerCard;
+
 	public function __construct()
 	{
 		$this->owners  = new ArrayCollection();
@@ -258,6 +263,26 @@ class Customer
 	public function setEmail($email)
 	{
 		$this->email = $email;
+
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getCustomerCard()
+	{
+		return $this->customerCard;
+	}
+
+	/**
+	 * @param mixed $customerCard
+	 *
+	 * @return Customer
+	 */
+	public function setCustomerCard($customerCard)
+	{
+		$this->customerCard = $customerCard;
 
 		return $this;
 	}
