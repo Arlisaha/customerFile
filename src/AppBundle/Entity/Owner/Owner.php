@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity\Owner;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,14 +22,14 @@ class Owner
 	private $id;
 
 	/**
-	 * @ORM\Column(name="firstname", type="string", length=255)
+	 * @ORM\Column(name="first_name", type="string", length=255)
 	 */
-	private $firstname;
+	private $firstName;
 
 	/**
-	 * @ORM\Column(name="lastname", type="string", length=255)
+	 * @ORM\Column(name="last_name", type="string", length=255)
 	 */
-	private $lastname;
+	private $lastName;
 
 	/**
 	 * @ORM\Column(name="age", type="integer")
@@ -36,8 +37,7 @@ class Owner
 	private $age;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Owner\Gender")
-	 * @ORM\JoinColumn(name="gender_id", referencedColumnName="id")
+	 * @ORM\Column(name="gender", type="binary")
 	 */
 	private $gender;
 
@@ -47,9 +47,28 @@ class Owner
 	private $job;
 
 	/**
+	 * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Animal\LifeStyle")
+	 * @ORM\JoinTable(name="l__owner_life_style",
+	 *	 joinColumns={@ORM\JoinColumn(name="owner_id", referencedColumnName="id")},
+	 *	 inverseJoinColumns={@ORM\JoinColumn(name="life_style_id", referencedColumnName="id")}
+	 * )
+	 */
+	private $lifeStyle;
+
+	/**
 	 * @ORM\Column(name="comment", type="text")
 	 */
 	private $comment;
+
+	public static $genders = [
+		0 => 'homme',
+		1 => 'femme',
+	];
+
+	public function __construct()
+	{
+		$this->lifeStyle = new ArrayCollection();
+	}
 
 	/**
 	 * @return mixed
@@ -74,19 +93,19 @@ class Owner
 	/**
 	 * @return mixed
 	 */
-	public function getFirstname()
+	public function getFirstName()
 	{
-		return $this->firstname;
+		return $this->firstName;
 	}
 
 	/**
-	 * @param mixed $firstname
+	 * @param mixed $firstName
 	 *
 	 * @return Owner
 	 */
-	public function setFirstname($firstname)
+	public function setFirstName($firstName)
 	{
-		$this->firstname = $firstname;
+		$this->firstName = $firstName;
 
 		return $this;
 	}
@@ -94,19 +113,19 @@ class Owner
 	/**
 	 * @return mixed
 	 */
-	public function getLastname()
+	public function getLastName()
 	{
-		return $this->lastname;
+		return $this->lastName;
 	}
 
 	/**
-	 * @param mixed $lastname
+	 * @param mixed $lastName
 	 *
 	 * @return Owner
 	 */
-	public function setLastname($lastname)
+	public function setLastName($lastName)
 	{
-		$this->lastname = $lastname;
+		$this->lastName = $lastName;
 
 		return $this;
 	}
@@ -146,6 +165,20 @@ class Owner
 	 */
 	public function setGender($gender)
 	{
+		if(!array_key_exists($gender, static::$genders) && !in_array($gender, static::$genders)) {
+			throw new \InvalidArgumentException(
+				sprintf(
+					'The given gender value must be either a valid string (%s) nor a valid int key (%s).',
+					join(', ', static::$genders),
+					join(', ', array_flip(static::$genders))
+				)
+			);
+		}
+
+		if (is_string($gender)) {
+			$gender = array_flip(static::$genders)[$gender];
+		}
+
 		$this->gender = $gender;
 
 		return $this;
@@ -167,6 +200,26 @@ class Owner
 	public function setJob($job)
 	{
 		$this->job = $job;
+
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getLifeStyle()
+	{
+		return $this->lifeStyle;
+	}
+
+	/**
+	 * @param mixed $lifeStyle
+	 *
+	 * @return Owner
+	 */
+	public function setLifeStyle($lifeStyle)
+	{
+		$this->lifeStyle = $lifeStyle;
 
 		return $this;
 	}
