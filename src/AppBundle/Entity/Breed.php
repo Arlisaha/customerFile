@@ -9,19 +9,19 @@ use Doctrine\ORM\Mapping as ORM;
  * @package AppBundle\Entity
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\BreedRepository")
- * @ORM\Table(label="breed")
+ * @ORM\Table(name="breed")
  */
 class Breed
 {
 	/**
 	 * @ORM\Id
 	 * @ORM\GeneratedValue(strategy="AUTO")
-	 * @ORM\Column(label="id", type="integer")
+	 * @ORM\Column(name="id", type="integer")
 	 */
 	private $id;
 
 	/**
-	 * @ORM\Column(label="label", type="string", length=255)
+	 * @ORM\Column(name="label", type="string", length=255)
 	 */
 	private $label;
 
