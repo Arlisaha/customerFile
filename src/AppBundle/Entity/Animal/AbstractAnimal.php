@@ -69,9 +69,9 @@ abstract class AbstractAnimal
 	private $temper;
 
 	/**
-	 * @ORM\Column(name="lives_outside", type="boolean")
+	 * @ORM\Column(name="living_outside", type="boolean")
 	 */
-	private $livesOutside;
+	private $livingOutside;
 
 	/**
 	 * @ORM\Column(name="outside_time", type="float")
@@ -188,6 +188,20 @@ abstract class AbstractAnimal
 	 */
 	public function setAgeUnit($ageUnit)
 	{
+		if(!array_key_exists($ageUnit, static::$ageUnits) && !in_array($ageUnit, static::$ageUnits)) {
+			throw new \InvalidArgumentException(
+				sprintf(
+					'The given time unit value must be either a valid string (%s) nor a valid int key (%s).',
+					join(', ', static::$ageUnits),
+					join(', ', array_flip(static::$ageUnits))
+				)
+			);
+		}
+
+		if (is_string($ageUnit)) {
+			$ageUnit = array_flip(static::$ageUnits)[$ageUnit];
+		}
+
 		$this->ageUnit = $ageUnit;
 
 		return $this;
@@ -208,6 +222,20 @@ abstract class AbstractAnimal
 	 */
 	public function setGender($gender)
 	{
+		if(!array_key_exists($gender, static::$genders) && !in_array($gender, static::$genders)) {
+			throw new \InvalidArgumentException(
+				sprintf(
+					'The given time unit value must be either a valid string (%s) nor a valid int key (%s).',
+					join(', ', static::$genders),
+					join(', ', array_flip(static::$genders))
+				)
+			);
+		}
+
+		if (is_string($gender)) {
+			$gender = array_flip(static::$genders)[$gender];
+		}
+
 		$this->gender = $gender;
 
 		return $this;
@@ -303,19 +331,19 @@ abstract class AbstractAnimal
 	/**
 	 * @return mixed
 	 */
-	public function getLivesOutside()
+	public function isLivingOutside()
 	{
-		return $this->livesOutside;
+		return $this->livingOutside;
 	}
 
 	/**
-	 * @param mixed $livesOutside
+	 * @param mixed $livingOutside
 	 *
 	 * @return AbstractAnimal
 	 */
-	public function setLivesOutside($livesOutside)
+	public function setLivingOutside($livingOutside)
 	{
-		$this->livesOutside = $livesOutside;
+		$this->livingOutside = $livingOutside;
 
 		return $this;
 	}
@@ -355,6 +383,20 @@ abstract class AbstractAnimal
 	 */
 	public function setOutsideTimeUnit($outsideTimeUnit)
 	{
+		if(!array_key_exists($outsideTimeUnit, static::$outsideTimeUnits) && !in_array($outsideTimeUnit, static::$outsideTimeUnits)) {
+			throw new \InvalidArgumentException(
+				sprintf(
+					'The given time unit value must be either a valid string (%s) nor a valid int key (%s).',
+					join(', ', static::$outsideTimeUnits),
+					join(', ', array_flip(static::$outsideTimeUnits))
+				)
+			);
+		}
+
+		if (is_string($outsideTimeUnit)) {
+			$outsideTimeUnit = array_flip(static::$outsideTimeUnits)[$outsideTimeUnit];
+		}
+
 		$this->outsideTimeUnit = $outsideTimeUnit;
 
 		return $this;

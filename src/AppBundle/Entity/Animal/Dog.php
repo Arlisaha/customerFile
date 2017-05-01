@@ -88,6 +88,20 @@ class Dog extends AbstractAnimal
 	 */
 	public function setDailyWalkTimeUnit($dailyWalkTimeUnit)
 	{
+		if(!array_key_exists($dailyWalkTimeUnit, static::$dailyWalkTimeUnits) && !in_array($dailyWalkTimeUnit, static::$dailyWalkTimeUnits)) {
+			throw new \InvalidArgumentException(
+				sprintf(
+					'The given time unit value must be either a valid string (%s) nor a valid int key (%s).',
+					join(', ', static::$dailyWalkTimeUnits),
+					join(', ', array_flip(static::$dailyWalkTimeUnits))
+				)
+			);
+		}
+
+		if (is_string($dailyWalkTimeUnit)) {
+			$dailyWalkTimeUnit = array_flip(static::$dailyWalkTimeUnits)[$dailyWalkTimeUnit];
+		}
+
 		$this->dailyWalkTimeUnit = $dailyWalkTimeUnit;
 
 		return $this;
