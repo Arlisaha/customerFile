@@ -10,12 +10,15 @@ use Doctrine\Common\Persistence\ObjectManager;
 class LoadTemperData extends AbstractFixture implements OrderedFixtureInterface
 {
 	private static $temperTypeList = [
-		'Curieux',
-		'Agressif',
-		'Défensif',
-		'Timide',
-		'Joueur',
-		'Vif',
+		'curieux',
+		'agressif',
+		'défensif',
+		'timide',
+		'joueur',
+		'vif',
+		'sensible',
+		'peureux',
+		'craintif',
 	];
 
 	public function load(ObjectManager $manager)
