@@ -28,9 +28,21 @@ class Customer
 	private $owners;
 
 	/**
+	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\Customer\Owner")
+	 * @ORM\JoinColumn(name="main_owner_id", referencedColumnName="id")
+	 */
+	private $mainOwner;
+
+	/**
 	 * @ORM\OneToMany(targetEntity="AppBundle\Entity\Animal\AbstractAnimal", mappedBy="customer")
 	 */
 	private $animals;
+
+	/**
+	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\Animal\AbstractAnimal")
+	 * @ORM\JoinColumn(name="main_animal_id", referencedColumnName="id")
+	 */
+	private $mainAnimal;
 
 	/**
 	 * @ORM\Column(name="status", type="string", length=255)
@@ -123,6 +135,26 @@ class Customer
 	/**
 	 * @return mixed
 	 */
+	public function getMainOwner()
+	{
+		return $this->mainOwner;
+	}
+
+	/**
+	 * @param mixed $mainOwner
+	 *
+	 * @return Customer
+	 */
+	public function setMainOwner(Owner $mainOwner)
+	{
+		$this->mainOwner = $mainOwner;
+
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
 	public function getAnimals()
 	{
 		return $this->animals;
@@ -143,6 +175,26 @@ class Customer
 	public function addAnimal(AbstractAnimal $animal)
 	{
 		$this->animals->add($animal);
+
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getMainAnimal()
+	{
+		return $this->mainAnimal;
+	}
+
+	/**
+	 * @param mixed $mainAnimal
+	 *
+	 * @return Customer
+	 */
+	public function setMainAnimal(AbstractAnimal $mainAnimal)
+	{
+		$this->mainAnimal = $mainAnimal;
 
 		return $this;
 	}
