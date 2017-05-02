@@ -1,8 +1,7 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace AppBundle\Entity\CustomerCard;
 
-use AppBundle\Entity\Consultation\Consultation;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Class CustomerCard
  * @package AppBundle\Entity
  *
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CustomerCardRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CustomerCard\CustomerCardRepository")
  * @ORM\Table(name="customer_card")
  */
 class CustomerCard
@@ -29,7 +28,7 @@ class CustomerCard
 	private $customer;
 
 	/**
-	 * @ORM\OneToMany(targetEntity="AppBundle\Entity\Consultation\Consultation", mappedBy="id")
+	 * @ORM\OneToMany(targetEntity="AppBundle\Entity\CustomerCard\Consultation", mappedBy="id")
 	 */
 	private $consultations;
 

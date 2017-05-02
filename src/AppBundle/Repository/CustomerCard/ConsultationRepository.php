@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Repository\Consultation;
+namespace AppBundle\Repository\CustomerCard;
 
 use Doctrine\ORM\EntityRepository;
 

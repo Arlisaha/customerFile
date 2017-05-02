@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity\Consultation;
+namespace AppBundle\Entity\CustomerCard;
 
 use AppBundle\Entity\Animal\AbstractAnimal;
 use AppBundle\Entity\Customer\Owner;
@@ -8,10 +8,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Consultation
+ * Class CustomerCard
  * @package AppBundle\Entity
  *
- * @ORM\Entity(repositoryClass="AppBundle\Repository\Consultation\ConsultationRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CustomerCard\ConsultationRepository")
  * @ORM\Table(name="consultation")
  */
 class Consultation
