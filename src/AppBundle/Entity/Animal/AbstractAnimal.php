@@ -98,6 +98,11 @@ abstract class AbstractAnimal
 	 */
 	private $customer;
 
+	/**
+	 * @ORM\Column(name="adopted_from_association", type="boolean")
+	 */
+	private $adoptedFromAssociation;
+
 	public static $ageUnits = [
 		0 => 'mois',
 		1 => 'ans',
@@ -463,6 +468,26 @@ abstract class AbstractAnimal
 	public function setCustomer($customer)
 	{
 		$this->customer = $customer;
+
+		return $this;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function isAdoptedFromAssociation()
+	{
+		return $this->adoptedFromAssociation;
+	}
+
+	/**
+	 * @param mixed $adoptedFromAssociation
+	 *
+	 * @return AbstractAnimal
+	 */
+	public function setAdoptedFromAssociation($adoptedFromAssociation)
+	{
+		$this->adoptedFromAssociation = $adoptedFromAssociation;
 
 		return $this;
 	}
