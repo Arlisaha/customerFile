@@ -32,12 +32,12 @@ abstract class AbstractAnimal
 	private $name;
 
 	/**
-	 * @ORM\Column(name="birth_date", type="datetime")
+	 * @ORM\Column(name="birth_date", type="datetime", nullable=true)
 	 */
 	private $birthDate;
 
 	/**
-	 * @ORM\Column(name="gender", type="binary")
+	 * @ORM\Column(name="gender", type="binary", nullable=true)
 	 */
 	private $gender;
 
@@ -47,12 +47,12 @@ abstract class AbstractAnimal
 	private $castrated;
 
 	/**
-	 * @ORM\Column(name="weight", type="float")
+	 * @ORM\Column(name="weight", type="float", nullable=true)
 	 */
 	private $weight;
 
 	/**
-	 * @ORM\Column(name="size", type="float")
+	 * @ORM\Column(name="size", type="float", nullable=true)
 	 */
 	private $size;
 
@@ -66,27 +66,27 @@ abstract class AbstractAnimal
 	private $temper;
 
 	/**
-	 * @ORM\Column(name="living_outside", type="boolean")
+	 * @ORM\Column(name="living_outside", type="boolean", nullable=true)
 	 */
 	private $livingOutside;
 
 	/**
-	 * @ORM\Column(name="outside_time", type="float")
+	 * @ORM\Column(name="outside_time", type="float", nullable=true)
 	 */
 	private $outsideTime;
 
 	/**
-	 * @ORM\Column(name="outside_time_unit", type="binary")
+	 * @ORM\Column(name="outside_time_unit", type="binary", nullable=true)
 	 */
 	private $outsideTimeUnit;
 
 	/**
-	 * @ORM\Column(name="health_issues", type="text")
+	 * @ORM\Column(name="health_issues", type="text", nullable=true)
 	 */
 	private $healthIssues;
 
 	/**
-	 * @ORM\Column(name="comment", type="text")
+	 * @ORM\Column(name="comment", type="text", nullable=true)
 	 */
 	private $comment;
 
@@ -96,7 +96,7 @@ abstract class AbstractAnimal
 	private $customer;
 
 	/**
-	 * @ORM\Column(name="adopted_from_association", type="boolean")
+	 * @ORM\Column(name="adopted_from_association", type="boolean", nullable=true)
 	 */
 	private $adoptedFromAssociation;
 

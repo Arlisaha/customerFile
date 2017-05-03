@@ -46,22 +46,22 @@ class Customer
 	private $mainAnimal;
 
 	/**
-	 * @ORM\Column(name="status", type="string", length=255)
+	 * @ORM\Column(name="status", type="string", length=255, nullable=true)
 	 */
 	private $status;
 
 	/**
-	 * @ORM\Column(name="address", type="string", length=255)
+	 * @ORM\Column(name="address", type="string", length=255, nullable=true)
 	 */
 	private $address;
 
 	/**
-	 * @ORM\Column(name="zip_code", type="string", length=5)
+	 * @ORM\Column(name="zip_code", type="string", length=5, nullable=true)
 	 */
 	private $zipCode;
 
 	/**
-	 * @ORM\Column(name="city", type="string", length=255)
+	 * @ORM\Column(name="city", type="string", length=255, nullable=true)
 	 */
 	private $city;
 

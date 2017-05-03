@@ -34,7 +34,7 @@ class CustomerCard
 	private $consultations;
 
 	/**
-	 * @ORM\Column(name="comments", type="text")
+	 * @ORM\Column(name="comments", type="text", nullable=true)
 	 */
 	private $comments;
 

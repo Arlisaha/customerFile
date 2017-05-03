@@ -28,17 +28,17 @@ class Owner
 	private $firstName;
 
 	/**
-	 * @ORM\Column(name="last_name", type="string", length=255)
+	 * @ORM\Column(name="last_name", type="string", length=255, nullable=true)
 	 */
 	private $lastName;
 
 	/**
-	 * @ORM\Column(name="birth_date", type="datetime")
+	 * @ORM\Column(name="birth_date", type="datetime", nullable=true)
 	 */
 	private $birthDate;
 
 	/**
-	 * @ORM\Column(name="gender", type="binary")
+	 * @ORM\Column(name="gender", type="binary", nullable=true)
 	 */
 	private $gender;
 
@@ -48,12 +48,12 @@ class Owner
 	private $job;
 
 	/**
-	 * @ORM\Column(name="phone", type="string", length=10)
+	 * @ORM\Column(name="phone", type="string", length=10, nullable=true)
 	 */
 	private $phone;
 
 	/**
-	 * @ORM\Column(name="email", type="string", length=255)
+	 * @ORM\Column(name="email", type="string", length=255, nullable=true)
 	 */
 	private $email;
 
@@ -67,7 +67,7 @@ class Owner
 	private $lifeStyle;
 
 	/**
-	 * @ORM\Column(name="comment", type="text")
+	 * @ORM\Column(name="comment", type="text", nullable=true)
 	 */
 	private $comment;
 

@@ -24,7 +24,7 @@ class Consultation
 	private $id;
 
 	/**
-	 * @ORM\Column(name="price", type="float")
+	 * @ORM\Column(name="price", type="float", nullable=true)
 	 */
 	private $price;
 
@@ -34,12 +34,12 @@ class Consultation
 	private $date;
 
 	/**
-	 * @ORM\Column(name="duration", type="float")
+	 * @ORM\Column(name="duration", type="float", nullable=true)
 	 */
 	private $duration;
 
 	/**
-	 * @ORM\Column(name="location", type="string", length=255)
+	 * @ORM\Column(name="location", type="string", length=255, nullable=true)
 	 */
 	private $location;
 
