@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Form\Owner;
+namespace AppBundle\Form\Customer;
 
 use AppBundle\Entity\Customer\Owner;
 use Symfony\Component\Form\AbstractType;

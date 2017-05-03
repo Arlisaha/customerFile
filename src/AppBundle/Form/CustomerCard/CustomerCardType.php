@@ -3,7 +3,6 @@
 namespace AppBundle\Form\CustomerCard;
 
 use AppBundle\Entity\CustomerCard\CustomerCard;
-use AppBundle\Form\Customer\ConsultationType;
 use AppBundle\Form\Customer\CustomerType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;

@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Form\Customer;
+namespace AppBundle\Form\CustomerCard;
 
 use AppBundle\Entity\CustomerCard\Consultation;
 use Doctrine\ORM\EntityRepository;
@@ -27,10 +27,13 @@ class ConsultationType extends AbstractType
 				'query_builder' => function (EntityRepository $er) use($consultation) {
 					$qb = $er->createQueryBuilder('o');
 					$qb
-						->innerJoin('owner.customer', 'c')
+						->innerJoin('o.customer', 'c')
 						->innerJoin('c.customerCard', 'cc')
-						->where($qb->expr()->eq('cc.id', $consultation->getCustomerCard()->getId()))
 						->orderBy('o.lastName', 'ASC');
+
+					if($consultation) {
+						$qb->where($qb->expr()->eq('cc.id', $consultation->getCustomerCard()->getId()));
+					}
 
 					return $qb;
 				},
@@ -44,8 +47,11 @@ class ConsultationType extends AbstractType
 					$qb
 						->innerJoin('a.customer', 'c')
 						->innerJoin('c.customerCard', 'cc')
-						->where($qb->expr()->eq('cc.id', $consultation->getCustomerCard()->getId()))
 						->orderBy('a.name', 'ASC');
+
+					if($consultation) {
+						$qb->where($qb->expr()->eq('cc.id', $consultation->getCustomerCard()->getId()));
+					}
 
 					return $qb;
 				},

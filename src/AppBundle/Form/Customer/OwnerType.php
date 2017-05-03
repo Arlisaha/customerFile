@@ -3,7 +3,6 @@
 namespace AppBundle\Form\Customer;
 
 use AppBundle\Entity\Customer\Owner;
-use AppBundle\Form\Owner\GenderType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
