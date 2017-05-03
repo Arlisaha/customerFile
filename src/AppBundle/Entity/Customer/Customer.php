@@ -65,16 +65,6 @@ class Customer
 	private $city;
 
 	/**
-	 * @ORM\Column(name="phone", type="string", length=10)
-	 */
-	private $phone;
-
-	/**
-	 * @ORM\Column(name="email", type="string", length=255)
-	 */
-	private $email;
-
-	/**
 	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\CustomerCard", inversedBy="customer")
 	 */
 	private $customerCard;
@@ -275,46 +265,6 @@ class Customer
 	public function setCity($city)
 	{
 		$this->city = $city;
-
-		return $this;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getPhone()
-	{
-		return $this->phone;
-	}
-
-	/**
-	 * @param mixed $phone
-	 *
-	 * @return Customer
-	 */
-	public function setPhone($phone)
-	{
-		$this->phone = $phone;
-
-		return $this;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getEmail()
-	{
-		return $this->email;
-	}
-
-	/**
-	 * @param mixed $email
-	 *
-	 * @return Customer
-	 */
-	public function setEmail($email)
-	{
-		$this->email = $email;
 
 		return $this;
 	}

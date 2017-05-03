@@ -32,9 +32,9 @@ class Owner
 	private $lastName;
 
 	/**
-	 * @ORM\Column(name="age", type="integer")
+	 * @ORM\Column(name="birth_date", type="datetime")
 	 */
-	private $age;
+	private $birthDate;
 
 	/**
 	 * @ORM\Column(name="gender", type="binary")
@@ -45,6 +45,16 @@ class Owner
 	 * @ORM\Column(name="job", type="string", length=255, nullable=true)
 	 */
 	private $job;
+
+	/**
+	 * @ORM\Column(name="phone", type="string", length=10)
+	 */
+	private $phone;
+
+	/**
+	 * @ORM\Column(name="email", type="string", length=255)
+	 */
+	private $email;
 
 	/**
 	 * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Customer\LifeStyle")
@@ -139,19 +149,19 @@ class Owner
 	/**
 	 * @return mixed
 	 */
-	public function getAge()
+	public function getBirthDate()
 	{
-		return $this->age;
+		return $this->birthDate;
 	}
 
 	/**
-	 * @param mixed $age
+	 * @param mixed $birthDate
 	 *
 	 * @return Owner
 	 */
-	public function setAge($age)
+	public function setBirthDate(\DateTime $birthDate)
 	{
-		$this->age = $age;
+		$this->birthDate = $birthDate;
 
 		return $this;
 	}
@@ -206,6 +216,46 @@ class Owner
 	public function setJob($job)
 	{
 		$this->job = $job;
+
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getPhone()
+	{
+		return $this->phone;
+	}
+
+	/**
+	 * @param mixed $phone
+	 *
+	 * @return Owner
+	 */
+	public function setPhone($phone)
+	{
+		$this->phone = $phone;
+
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getEmail()
+	{
+		return $this->email;
+	}
+
+	/**
+	 * @param mixed $email
+	 *
+	 * @return Owner
+	 */
+	public function setEmail($email)
+	{
+		$this->email = $email;
 
 		return $this;
 	}
