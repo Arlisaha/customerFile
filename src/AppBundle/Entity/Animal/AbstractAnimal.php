@@ -454,4 +454,9 @@ abstract class AbstractAnimal
 
 		return $this;
 	}
+
+	public function __toString()
+	{
+		return $this->name;
+	}
 }
