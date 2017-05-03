@@ -299,4 +299,13 @@ class Customer
 
 		return $this;
 	}
+
+	public function __toString()
+	{
+		return sprintf(
+			'%s - %s',
+			$this->getMainAnimal()->getName(),
+			$this->getMainOwner()->getLastName()
+		);
+	}
 }

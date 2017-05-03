@@ -256,4 +256,9 @@ class Consultation
 
 		return $this;
 	}
+
+	public function __toString()
+	{
+		return $this->getDate()->format('d/m/Y');
+	}
 }
