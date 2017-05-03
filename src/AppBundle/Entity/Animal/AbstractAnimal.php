@@ -30,14 +30,9 @@ abstract class AbstractAnimal
 	private $name;
 
 	/**
-	 * @ORM\Column(name="age_value", type="integer")
+	 * @ORM\Column(name="birth_date", type="datetime")
 	 */
-	private $ageValue;
-
-	/**
-	 * @ORM\Column(name="age_unit", type="binary")
-	 */
-	private $ageUnit;
+	private $birthDate;
 
 	/**
 	 * @ORM\Column(name="gender", type="binary")
@@ -103,11 +98,6 @@ abstract class AbstractAnimal
 	 */
 	private $adoptedFromAssociation;
 
-	public static $ageUnits = [
-		0 => 'mois',
-		1 => 'ans',
-	];
-
 	public static $genders = [
 		0 => 'mâle',
 		1 => 'femelle',
@@ -166,53 +156,19 @@ abstract class AbstractAnimal
 	/**
 	 * @return mixed
 	 */
-	public function getAgeValue()
+	public function getBirthDate()
 	{
-		return $this->ageValue;
+		return $this->birthDate;
 	}
 
 	/**
-	 * @param mixed $ageValue
+	 * @param mixed $birthDate
 	 *
 	 * @return AbstractAnimal
 	 */
-	public function setAgeValue($ageValue)
+	public function setBirthDate(\DateTime $birthDate)
 	{
-		$this->ageValue = $ageValue;
-
-		return $this;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getAgeUnit()
-	{
-		return $this->ageUnit;
-	}
-
-	/**
-	 * @param mixed $ageUnit
-	 *
-	 * @return AbstractAnimal
-	 */
-	public function setAgeUnit($ageUnit)
-	{
-		if(!array_key_exists($ageUnit, static::$ageUnits) && !in_array($ageUnit, static::$ageUnits)) {
-			throw new \InvalidArgumentException(
-				sprintf(
-					'The given time unit value must be either a valid string (%s) nor a valid int key (%s).',
-					join(', ', static::$ageUnits),
-					join(', ', array_flip(static::$ageUnits))
-				)
-			);
-		}
-
-		if (is_string($ageUnit)) {
-			$ageUnit = array_flip(static::$ageUnits)[$ageUnit];
-		}
-
-		$this->ageUnit = $ageUnit;
+		$this->birthDate = $birthDate;
 
 		return $this;
 	}
