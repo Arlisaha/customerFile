@@ -26,7 +26,7 @@ class Temper
 	private $label;
 
 	/**
-	 * @return mixed
+	 * @return int
 	 */
 	public function getId()
 	{
@@ -34,7 +34,7 @@ class Temper
 	}
 
 	/**
-	 * @param mixed $id
+	 * @param int $id
 	 *
 	 * @return Temper
 	 */
@@ -46,7 +46,7 @@ class Temper
 	}
 
 	/**
-	 * @return mixed
+	 * @return string
 	 */
 	public function getLabel()
 	{
@@ -54,7 +54,7 @@ class Temper
 	}
 
 	/**
-	 * @param mixed $label
+	 * @param string $label
 	 *
 	 * @return Temper
 	 */

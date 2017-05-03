@@ -29,7 +29,7 @@ abstract class AbstractBreed
 	private $label;
 
 	/**
-	 * @return mixed
+	 * @return int
 	 */
 	public function getId()
 	{
@@ -37,7 +37,7 @@ abstract class AbstractBreed
 	}
 
 	/**
-	 * @param mixed $id
+	 * @param int $id
 	 *
 	 * @return AbstractBreed
 	 */
@@ -49,7 +49,7 @@ abstract class AbstractBreed
 	}
 
 	/**
-	 * @return mixed
+	 * @return string
 	 */
 	public function getLabel()
 	{
@@ -57,7 +57,7 @@ abstract class AbstractBreed
 	}
 
 	/**
-	 * @param mixed $label
+	 * @param string $label
 	 *
 	 * @return AbstractBreed
 	 */

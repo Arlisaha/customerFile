@@ -42,7 +42,7 @@ class Dog extends AbstractAnimal
 	}
 
 	/**
-	 * @param mixed $breed
+	 * @param DogBreed $breed
 	 *
 	 * @return Dog
 	 */
@@ -54,7 +54,7 @@ class Dog extends AbstractAnimal
 	}
 
 	/**
-	 * @return mixed
+	 * @return float
 	 */
 	public function getDailyWalkTime()
 	{
@@ -62,7 +62,7 @@ class Dog extends AbstractAnimal
 	}
 
 	/**
-	 * @param mixed $dailyWalkTime
+	 * @param float $dailyWalkTime
 	 *
 	 * @return Dog
 	 */
@@ -74,7 +74,7 @@ class Dog extends AbstractAnimal
 	}
 
 	/**
-	 * @return mixed
+	 * @return int
 	 */
 	public function getDailyWalkTimeUnit()
 	{
@@ -82,7 +82,7 @@ class Dog extends AbstractAnimal
 	}
 
 	/**
-	 * @param mixed $dailyWalkTimeUnit
+	 * @param int|string $dailyWalkTimeUnit
 	 *
 	 * @return Dog
 	 */

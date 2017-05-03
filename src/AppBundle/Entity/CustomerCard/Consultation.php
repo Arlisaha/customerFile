@@ -34,7 +34,7 @@ class Consultation
 	private $date;
 
 	/**
-	 * @ORM\Column(name="duration", type="integer")
+	 * @ORM\Column(name="duration", type="float")
 	 */
 	private $duration;
 
@@ -62,7 +62,7 @@ class Consultation
 	private $owners;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CustomerCard")
+	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CustomerCard\CustomerCard")
 	 * @ORM\JoinColumn(name="customer_card_id", referencedColumnName="id")
 	 */
 	private $customerCard;
@@ -74,7 +74,7 @@ class Consultation
 	}
 
 	/**
-	 * @return mixed
+	 * @return int
 	 */
 	public function getId()
 	{
@@ -82,7 +82,7 @@ class Consultation
 	}
 
 	/**
-	 * @param mixed $id
+	 * @param int $id
 	 *
 	 * @return Consultation
 	 */
@@ -94,7 +94,7 @@ class Consultation
 	}
 
 	/**
-	 * @return mixed
+	 * @return float
 	 */
 	public function getPrice()
 	{
@@ -102,7 +102,7 @@ class Consultation
 	}
 
 	/**
-	 * @param mixed $price
+	 * @param float $price
 	 *
 	 * @return Consultation
 	 */
@@ -114,7 +114,7 @@ class Consultation
 	}
 
 	/**
-	 * @return mixed
+	 * @return \DateTime
 	 */
 	public function getDate()
 	{
@@ -126,7 +126,7 @@ class Consultation
 	 *
 	 * @return Consultation
 	 */
-	public function setDate($date)
+	public function setDate(\DateTime $date)
 	{
 		$this->date = $date;
 
@@ -134,7 +134,7 @@ class Consultation
 	}
 
 	/**
-	 * @return mixed
+	 * @return float
 	 */
 	public function getDuration()
 	{
@@ -142,7 +142,7 @@ class Consultation
 	}
 
 	/**
-	 * @param mixed $duration
+	 * @param float $duration
 	 *
 	 * @return Consultation
 	 */
@@ -154,7 +154,7 @@ class Consultation
 	}
 
 	/**
-	 * @return mixed
+	 * @return string
 	 */
 	public function getLocation()
 	{
@@ -162,7 +162,7 @@ class Consultation
 	}
 
 	/**
-	 * @param mixed $location
+	 * @param string $location
 	 *
 	 * @return Consultation
 	 */
@@ -174,7 +174,7 @@ class Consultation
 	}
 
 	/**
-	 * @return mixed
+	 * @return ArrayCollection
 	 */
 	public function getAnimals()
 	{
@@ -182,7 +182,7 @@ class Consultation
 	}
 
 	/**
-	 * @param mixed $animals
+	 * @param ArrayCollection $animals
 	 *
 	 * @return Consultation
 	 */
@@ -206,7 +206,7 @@ class Consultation
 	}
 
 	/**
-	 * @return mixed
+	 * @return ArrayCollection
 	 */
 	public function getOwners()
 	{
@@ -214,7 +214,7 @@ class Consultation
 	}
 
 	/**
-	 * @param mixed $owners
+	 * @param ArrayCollection $owners
 	 *
 	 * @return Consultation
 	 */
@@ -238,7 +238,7 @@ class Consultation
 	}
 
 	/**
-	 * @return mixed
+	 * @return CustomerCard
 	 */
 	public function getCustomerCard()
 	{
@@ -246,7 +246,7 @@ class Consultation
 	}
 
 	/**
-	 * @param mixed $customerCard
+	 * @param CustomerCard $customerCard
 	 *
 	 * @return Consultation
 	 */

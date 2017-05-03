@@ -2,12 +2,13 @@
 
 namespace AppBundle\Entity\CustomerCard;
 
+use AppBundle\Entity\Customer\Customer;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class CustomerCard
- * @package AppBundle\Entity
+ * @package AppBundle\Entity\CustomerCard
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CustomerCard\CustomerCardRepository")
  * @ORM\Table(name="customer_card")
@@ -43,7 +44,7 @@ class CustomerCard
 	}
 
 	/**
-	 * @return mixed
+	 * @return int
 	 */
 	public function getId()
 	{
@@ -51,7 +52,7 @@ class CustomerCard
 	}
 
 	/**
-	 * @param mixed $id
+	 * @param int $id
 	 *
 	 * @return CustomerCard
 	 */
@@ -63,7 +64,7 @@ class CustomerCard
 	}
 
 	/**
-	 * @return mixed
+	 * @return Customer
 	 */
 	public function getCustomer()
 	{
@@ -71,11 +72,11 @@ class CustomerCard
 	}
 
 	/**
-	 * @param mixed $customer
+	 * @param Customer $customer
 	 *
 	 * @return CustomerCard
 	 */
-	public function setCustomer($customer)
+	public function setCustomer(Customer $customer)
 	{
 		$this->customer = $customer;
 
@@ -83,7 +84,7 @@ class CustomerCard
 	}
 
 	/**
-	 * @return mixed
+	 * @return ArrayCollection
 	 */
 	public function getConsultations()
 	{
@@ -91,7 +92,7 @@ class CustomerCard
 	}
 
 	/**
-	 * @param mixed $consultations
+	 * @param ArrayCollection $consultations
 	 *
 	 * @return CustomerCard
 	 */
@@ -115,7 +116,7 @@ class CustomerCard
 	}
 
 	/**
-	 * @return mixed
+	 * @return string
 	 */
 	public function getComments()
 	{
@@ -123,7 +124,7 @@ class CustomerCard
 	}
 
 	/**
-	 * @param mixed $comments
+	 * @param string $comments
 	 *
 	 * @return CustomerCard
 	 */

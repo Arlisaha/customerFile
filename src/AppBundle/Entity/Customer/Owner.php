@@ -4,6 +4,7 @@ namespace AppBundle\Entity\Customer;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use \DateTime;
 
 /**
  * Class Gender
@@ -87,7 +88,7 @@ class Owner
 	}
 
 	/**
-	 * @return mixed
+	 * @return int
 	 */
 	public function getId()
 	{
@@ -95,7 +96,7 @@ class Owner
 	}
 
 	/**
-	 * @param mixed $id
+	 * @param int $id
 	 *
 	 * @return Owner
 	 */
@@ -107,7 +108,7 @@ class Owner
 	}
 
 	/**
-	 * @return mixed
+	 * @return string
 	 */
 	public function getFirstName()
 	{
@@ -115,7 +116,7 @@ class Owner
 	}
 
 	/**
-	 * @param mixed $firstName
+	 * @param string $firstName
 	 *
 	 * @return Owner
 	 */
@@ -127,7 +128,7 @@ class Owner
 	}
 
 	/**
-	 * @return mixed
+	 * @return string
 	 */
 	public function getLastName()
 	{
@@ -135,7 +136,7 @@ class Owner
 	}
 
 	/**
-	 * @param mixed $lastName
+	 * @param string $lastName
 	 *
 	 * @return Owner
 	 */
@@ -147,7 +148,7 @@ class Owner
 	}
 
 	/**
-	 * @return mixed
+	 * @return DateTime
 	 */
 	public function getBirthDate()
 	{
@@ -155,11 +156,11 @@ class Owner
 	}
 
 	/**
-	 * @param mixed $birthDate
+	 * @param DateTime $birthDate
 	 *
 	 * @return Owner
 	 */
-	public function setBirthDate(\DateTime $birthDate)
+	public function setBirthDate(DateTime $birthDate)
 	{
 		$this->birthDate = $birthDate;
 
@@ -167,7 +168,7 @@ class Owner
 	}
 
 	/**
-	 * @return mixed
+	 * @return int
 	 */
 	public function getGender()
 	{
@@ -175,7 +176,7 @@ class Owner
 	}
 
 	/**
-	 * @param mixed $gender
+	 * @param int|string $gender
 	 *
 	 * @return Owner
 	 */
@@ -201,7 +202,7 @@ class Owner
 	}
 
 	/**
-	 * @return mixed
+	 * @return string
 	 */
 	public function getJob()
 	{
@@ -209,7 +210,7 @@ class Owner
 	}
 
 	/**
-	 * @param mixed $job
+	 * @param string $job
 	 *
 	 * @return Owner
 	 */
@@ -221,7 +222,7 @@ class Owner
 	}
 
 	/**
-	 * @return mixed
+	 * @return string
 	 */
 	public function getPhone()
 	{
@@ -229,7 +230,7 @@ class Owner
 	}
 
 	/**
-	 * @param mixed $phone
+	 * @param string $phone
 	 *
 	 * @return Owner
 	 */
@@ -241,7 +242,7 @@ class Owner
 	}
 
 	/**
-	 * @return mixed
+	 * @return string
 	 */
 	public function getEmail()
 	{
@@ -249,7 +250,7 @@ class Owner
 	}
 
 	/**
-	 * @param mixed $email
+	 * @param string $email
 	 *
 	 * @return Owner
 	 */
@@ -261,7 +262,7 @@ class Owner
 	}
 
 	/**
-	 * @return mixed
+	 * @return ArrayCollection
 	 */
 	public function getLifeStyle()
 	{
@@ -269,7 +270,7 @@ class Owner
 	}
 
 	/**
-	 * @param mixed $lifeStyle
+	 * @param ArrayCollection $lifeStyle
 	 *
 	 * @return Owner
 	 */
@@ -283,7 +284,7 @@ class Owner
 	/**
 	 * @param LifeStyle $lifeStyle
 	 *
-	 * @return $this
+	 * @return Owner
 	 */
 	public function addLifeStyle(LifeStyle $lifeStyle)
 	{
@@ -293,7 +294,7 @@ class Owner
 	}
 
 	/**
-	 * @return mixed
+	 * @return string
 	 */
 	public function getComment()
 	{
@@ -301,7 +302,7 @@ class Owner
 	}
 
 	/**
-	 * @param mixed $comment
+	 * @param string $comment
 	 *
 	 * @return Owner
 	 */
@@ -313,7 +314,7 @@ class Owner
 	}
 
 	/**
-	 * @return mixed
+	 * @return Customer
 	 */
 	public function getCustomer()
 	{
@@ -321,11 +322,11 @@ class Owner
 	}
 
 	/**
-	 * @param mixed $customer
+	 * @param Customer $customer
 	 *
 	 * @return Owner
 	 */
-	public function setCustomer($customer)
+	public function setCustomer(Customer $customer)
 	{
 		$this->customer = $customer;
 

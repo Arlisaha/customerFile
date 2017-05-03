@@ -3,6 +3,7 @@
 namespace AppBundle\Entity\Customer;
 
 use AppBundle\Entity\Animal\AbstractAnimal;
+use AppBundle\Entity\CustomerCard\CustomerCard;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -65,7 +66,7 @@ class Customer
 	private $city;
 
 	/**
-	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\CustomerCard", inversedBy="customer")
+	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\CustomerCard\CustomerCard", inversedBy="customer")
 	 */
 	private $customerCard;
 
@@ -76,7 +77,7 @@ class Customer
 	}
 
 	/**
-	 * @return mixed
+	 * @return int
 	 */
 	public function getId()
 	{
@@ -84,7 +85,7 @@ class Customer
 	}
 
 	/**
-	 * @param mixed $id
+	 * @param int $id
 	 *
 	 * @return Customer
 	 */
@@ -96,7 +97,7 @@ class Customer
 	}
 
 	/**
-	 * @return mixed
+	 * @return ArrayCollection
 	 */
 	public function getOwners()
 	{
@@ -104,7 +105,7 @@ class Customer
 	}
 
 	/**
-	 * @param mixed $owners
+	 * @param ArrayCollection $owners
 	 *
 	 * @return Customer
 	 */
@@ -115,6 +116,11 @@ class Customer
 		return $this;
 	}
 
+	/**
+	 * @param Owner $owner
+	 *
+	 * @return Customer
+	 */
 	public function addOwner(Owner $owner)
 	{
 		$this->owners->add($owner);
@@ -123,7 +129,7 @@ class Customer
 	}
 
 	/**
-	 * @return mixed
+	 * @return Owner
 	 */
 	public function getMainOwner()
 	{
@@ -131,7 +137,7 @@ class Customer
 	}
 
 	/**
-	 * @param mixed $mainOwner
+	 * @param Owner $mainOwner
 	 *
 	 * @return Customer
 	 */
@@ -143,7 +149,7 @@ class Customer
 	}
 
 	/**
-	 * @return mixed
+	 * @return ArrayCollection
 	 */
 	public function getAnimals()
 	{
@@ -151,7 +157,7 @@ class Customer
 	}
 
 	/**
-	 * @param mixed $animals
+	 * @param ArrayCollection $animals
 	 *
 	 * @return Customer
 	 */
@@ -162,6 +168,11 @@ class Customer
 		return $this;
 	}
 
+	/**
+	 * @param AbstractAnimal $animal
+	 *
+	 * @return Customer
+	 */
 	public function addAnimal(AbstractAnimal $animal)
 	{
 		$this->animals->add($animal);
@@ -170,7 +181,7 @@ class Customer
 	}
 
 	/**
-	 * @return mixed
+	 * @return AbstractAnimal
 	 */
 	public function getMainAnimal()
 	{
@@ -178,7 +189,7 @@ class Customer
 	}
 
 	/**
-	 * @param mixed $mainAnimal
+	 * @param AbstractAnimal $mainAnimal
 	 *
 	 * @return Customer
 	 */
@@ -190,7 +201,7 @@ class Customer
 	}
 
 	/**
-	 * @return mixed
+	 * @return string
 	 */
 	public function getStatus()
 	{
@@ -198,7 +209,7 @@ class Customer
 	}
 
 	/**
-	 * @param mixed $status
+	 * @param string $status
 	 *
 	 * @return Customer
 	 */
@@ -210,7 +221,7 @@ class Customer
 	}
 
 	/**
-	 * @return mixed
+	 * @return string
 	 */
 	public function getAddress()
 	{
@@ -218,7 +229,7 @@ class Customer
 	}
 
 	/**
-	 * @param mixed $address
+	 * @param string $address
 	 *
 	 * @return Customer
 	 */
@@ -230,7 +241,7 @@ class Customer
 	}
 
 	/**
-	 * @return mixed
+	 * @return string
 	 */
 	public function getZipCode()
 	{
@@ -238,7 +249,7 @@ class Customer
 	}
 
 	/**
-	 * @param mixed $zipCode
+	 * @param string $zipCode
 	 *
 	 * @return Customer
 	 */
@@ -250,7 +261,7 @@ class Customer
 	}
 
 	/**
-	 * @return mixed
+	 * @return string
 	 */
 	public function getCity()
 	{
@@ -258,7 +269,7 @@ class Customer
 	}
 
 	/**
-	 * @param mixed $city
+	 * @param string $city
 	 *
 	 * @return Customer
 	 */
@@ -270,7 +281,7 @@ class Customer
 	}
 
 	/**
-	 * @return mixed
+	 * @return CustomerCard
 	 */
 	public function getCustomerCard()
 	{
@@ -278,11 +289,11 @@ class Customer
 	}
 
 	/**
-	 * @param mixed $customerCard
+	 * @param CustomerCard $customerCard
 	 *
 	 * @return Customer
 	 */
-	public function setCustomerCard($customerCard)
+	public function setCustomerCard(CustomerCard $customerCard)
 	{
 		$this->customerCard = $customerCard;
 

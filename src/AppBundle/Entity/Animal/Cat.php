@@ -27,7 +27,7 @@ class Cat extends AbstractAnimal
 	}
 
 	/**
-	 * @param mixed $breed
+	 * @param CatBreed $breed
 	 *
 	 * @return Cat
 	 */

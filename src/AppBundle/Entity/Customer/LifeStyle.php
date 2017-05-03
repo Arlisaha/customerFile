@@ -26,7 +26,7 @@ class LifeStyle
 	private $label;
 
 	/**
-	 * @return mixed
+	 * @return int
 	 */
 	public function getId()
 	{
@@ -34,7 +34,7 @@ class LifeStyle
 	}
 
 	/**
-	 * @param mixed $id
+	 * @param int $id
 	 *
 	 * @return LifeStyle
 	 */
@@ -46,7 +46,7 @@ class LifeStyle
 	}
 
 	/**
-	 * @return mixed
+	 * @return string
 	 */
 	public function getLabel()
 	{
@@ -54,7 +54,7 @@ class LifeStyle
 	}
 
 	/**
-	 * @param mixed $label
+	 * @param string $label
 	 *
 	 * @return LifeStyle
 	 */

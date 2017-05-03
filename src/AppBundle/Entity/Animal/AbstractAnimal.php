@@ -2,8 +2,10 @@
 
 namespace AppBundle\Entity\Animal;
 
+use AppBundle\Entity\Customer\Customer;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use \DateTime;
 
 /**
  * Class AbstractAnimal
@@ -114,7 +116,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @return mixed
+	 * @return int
 	 */
 	public function getId()
 	{
@@ -122,7 +124,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @param mixed $id
+	 * @param int $id
 	 *
 	 * @return AbstractAnimal
 	 */
@@ -134,7 +136,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @return mixed
+	 * @return string
 	 */
 	public function getName()
 	{
@@ -142,7 +144,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @param mixed $name
+	 * @param string $name
 	 *
 	 * @return AbstractAnimal
 	 */
@@ -154,7 +156,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @return mixed
+	 * @return DateTime
 	 */
 	public function getBirthDate()
 	{
@@ -162,11 +164,11 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @param mixed $birthDate
+	 * @param DateTime $birthDate
 	 *
 	 * @return AbstractAnimal
 	 */
-	public function setBirthDate(\DateTime $birthDate)
+	public function setBirthDate(DateTime $birthDate)
 	{
 		$this->birthDate = $birthDate;
 
@@ -174,7 +176,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @return mixed
+	 * @return int
 	 */
 	public function getGender()
 	{
@@ -182,7 +184,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @param mixed $gender
+	 * @param int|string $gender
 	 *
 	 * @return AbstractAnimal
 	 */
@@ -216,7 +218,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @param mixed $castrated
+	 * @param bool $castrated
 	 *
 	 * @return AbstractAnimal
 	 */
@@ -228,7 +230,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @return mixed
+	 * @return float
 	 */
 	public function getWeight()
 	{
@@ -236,7 +238,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @param mixed $weight
+	 * @param float $weight
 	 *
 	 * @return AbstractAnimal
 	 */
@@ -248,7 +250,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @return mixed
+	 * @return float
 	 */
 	public function getSize()
 	{
@@ -256,7 +258,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @param mixed $size
+	 * @param float $size
 	 *
 	 * @return AbstractAnimal
 	 */
@@ -276,17 +278,22 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @param mixed $temper
+	 * @param ArrayCollection $temper
 	 *
 	 * @return AbstractAnimal
 	 */
-	public function setTemper(ArrayCollection $temper)
+	public function setTemper($temper)
 	{
 		$this->temper = $temper;
 
 		return $this;
 	}
 
+	/**
+	 * @param Temper $temper
+	 *
+	 * @return AbstractAnimal
+	 */
 	public function addTemper(Temper $temper)
 	{
 		$this->temper->add($temper);
@@ -295,7 +302,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @return mixed
+	 * @return bool
 	 */
 	public function isLivingOutside()
 	{
@@ -303,7 +310,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @param mixed $livingOutside
+	 * @param bool $livingOutside
 	 *
 	 * @return AbstractAnimal
 	 */
@@ -315,7 +322,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @return mixed
+	 * @return float
 	 */
 	public function getOutsideTime()
 	{
@@ -323,7 +330,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @param mixed $outsideTime
+	 * @param float $outsideTime
 	 *
 	 * @return AbstractAnimal
 	 */
@@ -335,7 +342,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @return mixed
+	 * @return int
 	 */
 	public function getOutsideTimeUnit()
 	{
@@ -343,7 +350,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @param mixed $outsideTimeUnit
+	 * @param int|string $outsideTimeUnit
 	 *
 	 * @return AbstractAnimal
 	 */
@@ -369,7 +376,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @return mixed
+	 * @return string
 	 */
 	public function getHealthIssues()
 	{
@@ -377,7 +384,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @param mixed $healthIssues
+	 * @param string $healthIssues
 	 *
 	 * @return AbstractAnimal
 	 */
@@ -389,7 +396,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @return mixed
+	 * @return string
 	 */
 	public function getComment()
 	{
@@ -397,7 +404,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @param mixed $comment
+	 * @param string $comment
 	 *
 	 * @return AbstractAnimal
 	 */
@@ -409,7 +416,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @return mixed
+	 * @return Customer
 	 */
 	public function getCustomer()
 	{
@@ -417,11 +424,11 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @param mixed $customer
+	 * @param Customer $customer
 	 *
 	 * @return AbstractAnimal
 	 */
-	public function setCustomer($customer)
+	public function setCustomer(Customer $customer)
 	{
 		$this->customer = $customer;
 
@@ -429,7 +436,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @return boolean
+	 * @return bool
 	 */
 	public function isAdoptedFromAssociation()
 	{
@@ -437,7 +444,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @param mixed $adoptedFromAssociation
+	 * @param bool $adoptedFromAssociation
 	 *
 	 * @return AbstractAnimal
 	 */
