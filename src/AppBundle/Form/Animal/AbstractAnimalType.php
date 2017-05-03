@@ -42,16 +42,6 @@ abstract class AbstractAnimalType extends AbstractType
 			->add('outsideTimeUnit', OutsideTimeUnitType::class, [])
 			->add('healthIssues', TextareaType::class, [])
 			->add('comment', TextareaType::class, [])
-			->add('customer', EntityType::class, [
-				'class'    => 'AppBundle\Entity\Customer\Customer',
-				'expanded' => false,
-				'multiple' => false,
-				'query_builder' => function (EntityRepository $er) {
-					return $er->createQueryBuilder('c')
-						->innerJoin('c.mainAnimal', 'ma')
-						->orderBy('ma.name', 'ASC');
-				},
-			])
 			->add('adoptedFromAssociation', CheckboxType::class, []);
 	}
 
