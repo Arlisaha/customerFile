@@ -3,7 +3,7 @@
 namespace AppBundle\Form\Customer;
 
 use AppBundle\Entity\Customer\Customer;
-use AppBundle\Form\Animal\AbstractAnimalType;
+use AppBundle\Form\Animal\AnimalType;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -19,7 +19,7 @@ class CustomerType extends AbstractType
 	{
 		$builder
 			->add('animals', CollectionType::class, [
-				'entry_type'   => AbstractAnimalType::class,
+				'entry_type'   => AnimalType::class,
 				'allow_add'    => true,
 				'allow_delete' => true,
 			])

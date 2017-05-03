@@ -7,7 +7,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CatType extends AbstractAnimalType
+class CatType extends AnimalType
 {
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
