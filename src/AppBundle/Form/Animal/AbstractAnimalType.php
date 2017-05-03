@@ -3,8 +3,6 @@
 namespace AppBundle\Form\Animal;
 
 use AppBundle\Entity\Animal\AbstractAnimal;
-use Doctrine\ORM\EntityRepository;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -27,15 +25,7 @@ abstract class AbstractAnimalType extends AbstractType
 			->add('castrated', CheckboxType::class, [])
 			->add('weight', NumberType::class, [])
 			->add('size', NumberType::class, [])
-			->add('temper', EntityType::class, [
-				'class'         => 'AppBundle\Entity\Animal\Temper',
-				'expanded'      => true,
-				'multiple'      => true,
-				'query_builder' => function (EntityRepository $er) {
-					return $er->createQueryBuilder('t')
-						->orderBy('t.label', 'ASC');
-				},
-			])
+			->add('temper', TemperType::class, [])
 			->add('livingOutside', CheckboxType::class, [])
 			->add('outsideTime', NumberType::class, [])
 			->add('outsideTimeUnit', OutsideTimeUnitType::class, [])
