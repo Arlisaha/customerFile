@@ -20,6 +20,7 @@ class CustomerCardType extends AbstractType
 				'entry_type'   => ConsultationType::class,
 				'allow_add'    => true,
 				'allow_delete' => true,
+				'prototype'    => true,
 			])
 			->add('comments', TextareaType::class, []);
     }

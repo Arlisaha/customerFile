@@ -22,11 +22,13 @@ class CustomerType extends AbstractType
 				'entry_type'   => AnimalType::class,
 				'allow_add'    => true,
 				'allow_delete' => true,
+				'prototype'    => true,
 			])
 			->add('owners', CollectionType::class, [
 				'entry_type'   => OwnerType::class,
 				'allow_add'    => true,
 				'allow_delete' => true,
+				'prototype'    => true,
 			])
 			->add('mainAnimal', EntityType::class, [
 				'class'         => 'AppBundle\Entity\Animal\AbstractAnimal',
