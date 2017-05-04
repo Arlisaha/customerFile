@@ -75,7 +75,8 @@ assetic:
     filters:
         cssrewrite: ~
         lessphp:
-            apply_to: \.less$
+            apply_to: ".less$"
+            file: '%kernel.root_dir%/../vendor/leafo/lessphp/lessc.inc.php'
             formatter: "compressed"
             preserve_comments: false
 #            presets:

@@ -2,6 +2,12 @@
 
 {% block subtitle %} - {% block pagetitle %}{% endblock %}{% endblock %}
 
+{% block stylesheets %}
+    {% stylesheets 'public/less/*' filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
 {% block body %}
     <header>
         {% include '::header.html.twig' %}
@@ -13,6 +19,7 @@
         {% include '::footer.html.twig' %}
     </footer>
 {% endblock %}
+
 {% block javascripts %}
     {% javascripts
         'public/js/components/chosen/js/chosen.jquery.min.js'
