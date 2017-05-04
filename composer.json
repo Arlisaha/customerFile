@@ -24,11 +24,17 @@
         "symfony/polyfill-apcu": "^1.0",
         "symfony/swiftmailer-bundle": "^2.3.10",
         "symfony/symfony": "3.2.*",
-        "twig/twig": "^1.0||^2.0"
+        "symfony/assetic-bundle": "2.8.*",
+        "twig/twig": "^1.0||^2.0",
+        "leafo/lessphp": "0.5.*",
+        "friendsofsymfony/jsrouting-bundle": "1.6.*",
+        "components/jquery": "3.2.*",
+        "drmonty/chosen": "1.6.*"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
-        "symfony/phpunit-bridge": "^3.0"
+        "symfony/phpunit-bridge": "^3.0",
+        "symfony/var-dumper": "3.2.*"
     },
     "scripts": {
         "symfony-scripts": [
@@ -43,7 +49,9 @@
             "@symfony-scripts"
         ],
         "post-update-cmd": [
-            "@symfony-scripts"
+            "@symfony-scripts",
+            "rm -R ./web/public/js/components",
+            "mv ./components ./web/public/js"
         ]
     },
     "config": {
