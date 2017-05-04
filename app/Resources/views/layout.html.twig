@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+
+{% block subtitle %} - {% block pagetitle %}{% endblock %}{% endblock %}
+
+{% block body %}
+    <header>
+        {% include '::header.html.twig' %}
+    </header>
+    <div id="container">
+        {% block container %}{% endblock %}
+    </div>
+    <footer>
+        {% include '::footer.html.twig' %}
+    </footer>
+{% endblock %}
+{% block javascripts %}
+    {% javascripts
+        'public/js/components/chosen/js/chosen.jquery.min.js'
+        'public/js/components/jquery/jquery.min.js'
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
