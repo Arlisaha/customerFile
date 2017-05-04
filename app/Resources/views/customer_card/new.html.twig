@@ -1,0 +1,14 @@
+{% extends '::layout.html.twig' %}
+
+{% set page = 'Nouvelle Fiche Client' %}
+
+{% block pagetitle %}{{ page }}{% endblock %}
+
+{% block container %}
+    <h1 id="page_title">{{ page }}</h1>
+    <div id="container">
+        {{ form_start(form) }}
+        {{ form_row(form) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
