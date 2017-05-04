@@ -68,3 +68,15 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+    filters:
+        cssrewrite: ~
+        lessphp:
+            apply_to: \.less$
+            formatter: "compressed"
+            preserve_comments: false
+#            presets:
+#                my_variable: "#000"
