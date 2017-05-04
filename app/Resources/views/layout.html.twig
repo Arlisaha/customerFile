@@ -6,6 +6,7 @@
     {% stylesheets 'public/less/*' filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
+    {% block pagestylesheets %}{% endblock %}
 {% endblock %}
 
 {% block body %}
@@ -27,4 +28,5 @@
     %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
+    {% block pagejavascripts %}{% endblock %}
 {% endblock %}
