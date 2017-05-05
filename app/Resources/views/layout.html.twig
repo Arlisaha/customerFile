@@ -4,8 +4,10 @@
 
 {% block stylesheets %}
     {% stylesheets
+        'public/js/froala_editor_2.6.0/css/froala_editor.min.css'
+        'public/js/froala_editor_2.6.0/css/froala_editor.pkgd.min.css'
+        'public/css/font-awesome-4.7.0/css/font-awesome.min.css'
         'public/less/*'
-        'public/js/alohaeditor-1.4.9/aloha/css/aloha.css'
     filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
@@ -28,9 +30,9 @@
     {% javascripts
         'public/js/components/jquery/jquery.min.js'
         'public/js/components/chosen/js/chosen.jquery.min.js'
-        'public/js/alohaeditor-1.4.9/aloha/lib/aloha.js'
+        'public/js/froala_editor_2.6.0/js/froala_editor.pkgd.min.js'
     %}
-        <script src="{{ asset_url }}"></script>
+    <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {% block pagejavascripts %}{% endblock %}
 {% endblock %}

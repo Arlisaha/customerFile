@@ -18,8 +18,9 @@ function addTypePart(e, data) {
 }
 
 $(document).ready(function() {
+    $('textarea').froalaEditor();
     $('#add_owner').click(function(e) {addTypePart(e, ownersData)});
     $('#add_cat').click(function(e) {addTypePart(e, catsData)});
     $('#add_dog').click(function(e) {addTypePart(e, dogsData)});
     $('#add_consultation').click(function(e) {addTypePart(e, consultationsData)});
-})
+});
