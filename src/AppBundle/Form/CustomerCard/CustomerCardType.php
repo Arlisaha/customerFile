@@ -12,23 +12,25 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CustomerCardType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+	public function buildForm(FormBuilderInterface $builder, array $options)
+	{
 		$builder
 			->add('customer', CustomerType::class, [])
 			->add('consultations', CollectionType::class, [
-				'entry_type'   => ConsultationType::class,
-				'allow_add'    => true,
-				'allow_delete' => true,
-				'prototype'    => true,
+				'entry_type'     => ConsultationType::class,
+				'allow_add'      => true,
+				'allow_delete'   => true,
+				'prototype'      => true,
+				'prototype_name' => '__consultation__',
+				'by_reference'   => false,
 			])
 			->add('comments', TextareaType::class, []);
-    }
+	}
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
+	public function configureOptions(OptionsResolver $resolver)
+	{
 		$resolver->setDefaults([
 			'data_class' => CustomerCard::class,
 		]);
-    }
+	}
 }

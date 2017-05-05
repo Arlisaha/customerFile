@@ -4,6 +4,8 @@ namespace AppBundle\Form\Customer;
 
 use AppBundle\Entity\Customer\Customer;
 use AppBundle\Form\Animal\AnimalType;
+use AppBundle\Form\Animal\CatType;
+use AppBundle\Form\Animal\DogType;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -18,17 +20,29 @@ class CustomerType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder
-			->add('animals', CollectionType::class, [
-				'entry_type'   => AnimalType::class,
-				'allow_add'    => true,
-				'allow_delete' => true,
-				'prototype'    => true,
+			->add('cats', CollectionType::class, [
+				'entry_type'     => CatType::class,
+				'allow_add'      => true,
+				'allow_delete'   => true,
+				'prototype'      => true,
+				'prototype_name' => '__cat__',
+				'by_reference'   => false,
+			])
+			->add('dogs', CollectionType::class, [
+				'entry_type'     => DogType::class,
+				'allow_add'      => true,
+				'allow_delete'   => true,
+				'prototype'      => true,
+				'prototype_name' => '__dog__',
+				'by_reference'   => false,
 			])
 			->add('owners', CollectionType::class, [
 				'entry_type'   => OwnerType::class,
 				'allow_add'    => true,
 				'allow_delete' => true,
 				'prototype'    => true,
+				'prototype_name' => '__owner__',
+				'by_reference'   => false,
 			])
 			->add('mainAnimal', EntityType::class, [
 				'class'         => 'AppBundle\Entity\Animal\AbstractAnimal',
