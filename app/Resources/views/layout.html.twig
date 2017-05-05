@@ -3,7 +3,10 @@
 {% block subtitle %} - {% block pagetitle %}{% endblock %}{% endblock %}
 
 {% block stylesheets %}
-    {% stylesheets 'public/less/*' filter='cssrewrite' %}
+    {% stylesheets
+        'public/less/*'
+        'public/js/alohaeditor-1.4.9/aloha/css/aloha.css'
+    filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
     {% block pagestylesheets %}{% endblock %}
@@ -25,6 +28,7 @@
     {% javascripts
         'public/js/components/jquery/jquery.min.js'
         'public/js/components/chosen/js/chosen.jquery.min.js'
+        'public/js/alohaeditor-1.4.9/aloha/lib/aloha.js'
     %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
