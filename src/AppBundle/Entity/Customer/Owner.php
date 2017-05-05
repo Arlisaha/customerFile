@@ -294,6 +294,18 @@ class Owner
 	}
 
 	/**
+	 * @param LifeStyle $lifeStyle
+	 *
+	 * @return Owner
+	 */
+	public function removeLifeStyle(LifeStyle $lifeStyle)
+	{
+		$this->lifeStyle->remove($lifeStyle);
+
+		return $this;
+	}
+
+	/**
 	 * @return string
 	 */
 	public function getComment()

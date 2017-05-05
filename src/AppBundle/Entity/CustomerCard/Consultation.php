@@ -206,6 +206,18 @@ class Consultation
 	}
 
 	/**
+	 * @param AbstractAnimal $animal
+	 *
+	 * @return $this
+	 */
+	public function removeAnimal(AbstractAnimal $animal)
+	{
+		$this->animals->remove($animal);
+
+		return $this;
+	}
+
+	/**
 	 * @return ArrayCollection
 	 */
 	public function getOwners()
@@ -233,6 +245,18 @@ class Consultation
 	public function addOwner(Owner $owner)
 	{
 		$this->owners->add($owner);
+
+		return $this;
+	}
+
+	/**
+	 * @param Owner $owner
+	 *
+	 * @return $this
+	 */
+	public function removeOwner(Owner $owner)
+	{
+		$this->owners->remove($owner);
 
 		return $this;
 	}

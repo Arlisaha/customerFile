@@ -3,6 +3,8 @@
 namespace AppBundle\Entity\Customer;
 
 use AppBundle\Entity\Animal\AbstractAnimal;
+use AppBundle\Entity\Animal\Cat;
+use AppBundle\Entity\Animal\Dog;
 use AppBundle\Entity\CustomerCard\CustomerCard;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -129,6 +131,18 @@ class Customer
 	}
 
 	/**
+	 * @param Owner $owner
+	 *
+	 * @return Customer
+	 */
+	public function removeOwner(Owner $owner)
+	{
+		$this->owners->remove($owner);
+
+		return $this;
+	}
+
+	/**
 	 * @return Owner
 	 */
 	public function getMainOwner()
@@ -176,6 +190,66 @@ class Customer
 	public function addAnimal(AbstractAnimal $animal)
 	{
 		$this->animals->add($animal);
+
+		return $this;
+	}
+
+	/**
+	 * @param AbstractAnimal $animal
+	 *
+	 * @return Customer
+	 */
+	public function removeAnimal(AbstractAnimal $animal)
+	{
+		$this->animals->remove($animal);
+
+		return $this;
+	}
+
+	/**
+	 * @param Cat $cat
+	 *
+	 * @return Customer
+	 */
+	public function addCat(Cat $cat)
+	{
+		$this->addAnimal($cat);
+
+		return $this;
+	}
+
+	/**
+	 * @param Cat $cat
+	 *
+	 * @return Customer
+	 */
+	public function removeCat(Cat $cat)
+	{
+		$this->removeAnimal($cat);
+
+		return $this;
+	}
+
+	/**
+	 * @param Dog $dog
+	 *
+	 * @return Customer
+	 */
+	public function addDog(Dog $dog)
+	{
+		$this->addAnimal($dog);
+
+		return $this;
+	}
+
+	/**
+	 * @param Dog $dog
+	 *
+	 * @return Customer
+	 */
+	public function removeDog(Dog $dog)
+	{
+		$this->removeAnimal($dog);
 
 		return $this;
 	}

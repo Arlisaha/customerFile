@@ -116,6 +116,18 @@ class CustomerCard
 	}
 
 	/**
+	 * @param Consultation $consultation
+	 *
+	 * @return $this
+	 */
+	public function removeConsultation(Consultation $consultation)
+	{
+		$this->consultations->remove($consultation);
+
+		return $this;
+	}
+
+	/**
 	 * @return string
 	 */
 	public function getComments()

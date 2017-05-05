@@ -302,6 +302,18 @@ abstract class AbstractAnimal
 	}
 
 	/**
+	 * @param Temper $temper
+	 *
+	 * @return AbstractAnimal
+	 */
+	public function removeTemper(Temper $temper)
+	{
+		$this->temper->remove($temper);
+
+		return $this;
+	}
+
+	/**
 	 * @return bool
 	 */
 	public function isLivingOutside()
