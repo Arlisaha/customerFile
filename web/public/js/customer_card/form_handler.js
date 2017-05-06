@@ -20,7 +20,6 @@ function addTypePart(e, data) {
 $(document).ready(function() {
     $('textarea').froalaEditor();
     $('select').chosen({
-        width: '20%',
         no_results_text: "Pas de r&eacute:sultats !",
         disable_search_threshold: 10
     });
