@@ -4,8 +4,8 @@ namespace AppBundle\Form\Animal;
 
 use AppBundle\Entity\Animal\AbstractAnimal;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -20,7 +20,7 @@ class AnimalType extends AbstractType
 		$builder
 			->add('id', HiddenType::class, [])
 			->add('name', TextType::class, [])
-			->add('birthDate', DateType::class, [])
+			->add('birthDate', BirthdayType::class, [])
 			->add('gender', GenderType::class, [])
 			->add('castrated', CheckboxType::class, [])
 			->add('weight', NumberType::class, [])
