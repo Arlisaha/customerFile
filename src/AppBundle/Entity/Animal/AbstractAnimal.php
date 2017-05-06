@@ -71,14 +71,9 @@ abstract class AbstractAnimal
 	private $livingOutside;
 
 	/**
-	 * @ORM\Column(name="outside_time", type="float", nullable=true)
+	 * @ORM\Column(name="outside_time", type="time", nullable=true)
 	 */
 	private $outsideTime;
-
-	/**
-	 * @ORM\Column(name="outside_time_unit", type="binary", nullable=true)
-	 */
-	private $outsideTimeUnit;
 
 	/**
 	 * @ORM\Column(name="health_issues", type="text", nullable=true)
@@ -103,11 +98,6 @@ abstract class AbstractAnimal
 	public static $genders = [
 		0 => 'mâle',
 		1 => 'femelle',
-	];
-
-	public static $outsideTimeUnits = [
-		0 => 'minutes',
-		1 => 'heures',
 	];
 
 	public function __construct()
@@ -349,40 +339,6 @@ abstract class AbstractAnimal
 	public function setOutsideTime($outsideTime)
 	{
 		$this->outsideTime = $outsideTime;
-
-		return $this;
-	}
-
-	/**
-	 * @return int
-	 */
-	public function getOutsideTimeUnit()
-	{
-		return $this->outsideTimeUnit;
-	}
-
-	/**
-	 * @param int|string $outsideTimeUnit
-	 *
-	 * @return AbstractAnimal
-	 */
-	public function setOutsideTimeUnit($outsideTimeUnit)
-	{
-		if(!array_key_exists($outsideTimeUnit, static::$outsideTimeUnits) && !in_array($outsideTimeUnit, static::$outsideTimeUnits)) {
-			throw new \InvalidArgumentException(
-				sprintf(
-					'The given time unit value must be either a valid string (%s) nor a valid int key (%s).',
-					join(', ', static::$outsideTimeUnits),
-					join(', ', array_flip(static::$outsideTimeUnits))
-				)
-			);
-		}
-
-		if (is_string($outsideTimeUnit)) {
-			$outsideTimeUnit = array_flip(static::$outsideTimeUnits)[$outsideTimeUnit];
-		}
-
-		$this->outsideTimeUnit = $outsideTimeUnit;
 
 		return $this;
 	}

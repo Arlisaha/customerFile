@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -27,8 +28,11 @@ class AnimalType extends AbstractType
 			->add('size', NumberType::class, [])
 			->add('temper', TemperType::class, [])
 			->add('livingOutside', CheckboxType::class, [])
-			->add('outsideTime', NumberType::class, [])
-			->add('outsideTimeUnit', OutsideTimeUnitType::class, [])
+			->add('outsideTime', TimeType::class, [
+				'html5'  => true,
+				'widget' => 'single_text',
+				'input'  => 'string',
+			])
 			->add('healthIssues', TextareaType::class, [])
 			->add('comment', TextareaType::class, [])
 			->add('adoptedFromAssociation', CheckboxType::class, []);
