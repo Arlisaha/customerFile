@@ -10,32 +10,44 @@
         {{ form_start(form) }}
             <span class="block_title">Client</span>
             <div id="customer" class="form_block">
-                <div id="address">
-                    <label class="align_top">Adresse : </label>
-                    {{ form_widget(form.customer.address) }}
-                    <div id="address_elts">
-                        <div class="address_elts">
+                <table id="address">
+                    <tr id="address_elts">
+                        <td>
+                            <label class="no_margin_left">Adresse : </label>
+                        </td>
+                        <td>
+                            {{ form_widget(form.customer.address) }}
+                        </td>
+                        <td>
                             <label>Code postal : </label>
+                        </td>
+                        <td>
                             {{ form_widget(form.customer.zipCode) }}
-                        </div>
-                        <div class="address_elts">
+                        </td>
+                        <td>
                             <label>Ville : </label>
+                        </td>
+                        <td>
                             {{ form_widget(form.customer.city) }}
-                        </div>
-                    </div>
-                </div>
-                <div id="status">
-                    <label>Statut : </label>
-                    {{ form_widget(form.customer.status) }}
-                </div>
+                        </td>
+                    </tr>
+                    <tr id="status">
+                        <td>
+                            <label>Statut : </label>
+                        </td>
+                        <td>
+                            {{ form_widget(form.customer.status) }}
+                        </td>
+                    </tr>
+                </table>
                 <div id="owners" class="inner_form_block left">
-                    <button id="add_owner">Ajouter un propriétaire</button>
+                    <button id="add_owner" class="add_button">Ajouter un propri&eacute;taire</button>
                     {{ form_widget(form.customer.owners) }}
                     {{ form_widget(form.customer.mainOwner) }}
                 </div>
                 <div id="animals" class="inner_form_block right">
-                    <button id="add_cat">Ajouter un chat</button>
-                    <button id="add_dog">Ajouter un chien</button>
+                    <button id="add_cat" class="add_button">Ajouter un chat</button>
+                    <button id="add_dog" class="add_button">Ajouter un chien</button>
                     {{ form_widget(form.customer.cats) }}
                     {{ form_widget(form.customer.dogs) }}
                     {{ form_widget(form.customer.mainAnimal) }}
@@ -43,7 +55,7 @@
             </div>
             <span class="block_title">Consultations</span>
             <div id="consultations" class="form_block">
-                <button id="add_consultation">Ajouter une consultation</button>
+                <button id="add_consultation" class="add_button">Ajouter une consultation</button>
                 {{ form_widget(form.consultations) }}
             </div>
             <span class="block_title">Commentaires</span>
@@ -51,7 +63,13 @@
                 {{ form_widget(form.comments, {'attr': {'class': 'froala'}}) }}
             </div>
             <span id="submit_btn">
-                {{ form_widget(form.submit, { 'label': 'Valider' }) }}
+                {{ form_widget(form.submit, {
+                    'label': 'Valider',
+                    'attr': {
+                        'class': 'submit_button',
+                        'id': 'submit_btn'
+                    }
+                }) }}
             </span>
             <div style="display: none">{{ form_rest(form) }}</div>
         {{ form_end(form) }}
@@ -79,6 +97,25 @@
             id: '#customer_card_consultations',
             prototype: '__consultation__',
             count: '{{ form.consultations|length }}'
+        };
+        var chosenOptions = {
+            no_results_text: "Pas de r&eacute:sultats !",
+            disable_search_threshold: 10
+        };
+        var froalaOptions = {
+            toolbarButtons: [
+                'fullscreen', '|',
+                'undo', 'redo' , '|',
+                'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|',
+                'fontFamily', 'fontSize', 'color', '|',
+                'paragraphStyle', 'paragraphFormat', 'align', '|',
+                'outdent', 'indent', '|',
+                'formatOL', 'formatUL', 'insertTable', 'quote', 'insertHorizontalLine', '|',
+                'insertLink', 'uploadFile', 'emoticons', 'specialCharacters'
+            ],
+            theme: 'grey',
+            zIndex: 2003,
+            placeholderText: 'Commentaires...'
         };
     </script>
     <script src="{{ asset('public/js/customer_card/form_handler.js') }}"></script>
