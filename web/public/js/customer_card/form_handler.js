@@ -18,7 +18,7 @@ function addTypePart(e, data) {
 }
 
 $(document).ready(function() {
-    $('textarea').froalaEditor();
+    $('.froala').froalaEditor();
     $('select').chosen({
         no_results_text: "Pas de r&eacute:sultats !",
         disable_search_threshold: 10
