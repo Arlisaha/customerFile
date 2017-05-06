@@ -10,6 +10,7 @@ class DogType extends AnimalType
 {
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
+		parent::buildForm($builder, $options);
 		$builder
 			->add('breed', BreedType::class, [
 				'class' => 'AppBundle\Entity\Animal\DogBreed',

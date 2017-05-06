@@ -11,6 +11,7 @@ class CatType extends AnimalType
 {
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
+		parent::buildForm($builder, $options);
 		$builder
 			->add('breed', EntityType::class, [
 				'class' => 'AppBundle\Entity\Animal\CatBreed',
