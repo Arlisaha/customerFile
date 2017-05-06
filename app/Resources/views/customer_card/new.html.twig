@@ -56,7 +56,50 @@
             <span class="block_title">Consultations</span>
             <div id="consultations" class="form_block">
                 <button id="add_consultation" class="add_button">Ajouter une consultation</button>
-                {{ form_widget(form.consultations) }}
+                <ul class="consultations_list" {#data-prototype="{{ form_widget(form.consultations.vars.prototype)|e('html_attr') }}"#}>
+                    <li><table>
+                        <tr>
+                            <td class="label">
+                                <label>Date de la consultation : </label>
+                            </td>
+                            <td class="value">
+                                {{ form_widget(form.consultations.vars.prototype.date) }}
+                            </td>
+                            <td class="label">
+                                <label>Lieu : </label>
+                            </td>
+                            <td class="value">
+                                {{ form_widget(form.consultations.vars.prototype.location) }}
+                            </td>
+                            <td class="label">
+                                <label>Dur&eacute;e : </label>
+                            </td>
+                            <td class="value">
+                                {{ form_widget(form.consultations.vars.prototype.duration) }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">
+                                <label>Prix pratiqu&eacute; &agrave; l&#39;heure : </label>
+                            </td>
+                            <td id="price_value" class="value">
+                                {{ form_widget(form.consultations.vars.prototype.price) }}
+                            </td>
+                            <td class="label">
+                                <label>Animaux pr&eacute;sents lors de la s&eacute;ance : </label>
+                            </td>
+                            <td class="value">
+                                {{ form_widget(form.consultations.vars.prototype.animals) }}
+                            </td>
+                            <td class="label">
+                                <label>Propri&eacute;taires pr&eacute;sents lors de la s&eacute;ance : </label>
+                            </td>
+                            <td class="value">
+                                {{ form_widget(form.consultations.vars.prototype.owners) }}
+                            </td>
+                        </tr>
+                    </table></li>
+                </ul>
             </div>
             <span class="block_title">Commentaires</span>
             <div id="comments" class="textarea_block">

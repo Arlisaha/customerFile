@@ -35,7 +35,7 @@ body {
 				border:        2px dashed #EFD2D7;
 				border-radius: 6px;
 				padding:       10px;
-				margin-bottom: 10px;
+				margin-bottom: 15px;
 				display:       flow-root;
 
 				.inner_form_block {
@@ -91,6 +91,43 @@ body {
 				}
 			}
 
+			#consultations {
+				.consultations_list {
+					padding: 0;
+
+					li {
+						list-style-type: none;
+						padding-left:    10px;
+
+						table {
+							tr {
+								width: 100%;
+
+								td {
+									input {
+										width: 80%;
+									}
+								}
+
+								.label {
+									width: 10%;
+								}
+
+								.value {
+									width: 10%;
+								}
+
+								#price_value {
+									input[type='text'] {
+										width: 73%;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
 			#submit_btn {
 				display:    inline-block;
 				margin-top: 5px;
@@ -111,7 +148,7 @@ body {
 				height:        35px;
 			}
 
-			input[type="text"] {
+			input {
 				outline:       none;
 				border-radius: 5px;
 				background:    #F2F2F2;
@@ -119,6 +156,14 @@ body {
 				box-shadow:    inset 2px 2px 1px rgba(0, 0, 0, 0.35);
 				border-width:  0;
 				width:         65.5%;
+			}
+
+			input[type="date"] {
+
+				&::-webkit-clear-button,
+				&::-webkit-inner-spin-button {
+					display: none;
+				}
 			}
 
 			.add_button {
