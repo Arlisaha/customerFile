@@ -34,7 +34,7 @@ class Consultation
 	private $date;
 
 	/**
-	 * @ORM\Column(name="duration", type="float", nullable=true)
+	 * @ORM\Column(name="duration", type="time", nullable=true)
 	 */
 	private $duration;
 
