@@ -24,14 +24,14 @@ class ConsultationType extends AbstractType
 				'class'         => 'AppBundle\Entity\Customer\Owner',
 				'expanded'      => false,
 				'multiple'      => true,
-				'query_builder' => function (EntityRepository $er) use($consultation) {
+				'query_builder' => function (EntityRepository $er) use ($consultation) {
 					$qb = $er->createQueryBuilder('o');
 					$qb
 						->innerJoin('o.customer', 'c')
 						->innerJoin('c.customerCard', 'cc')
 						->orderBy('o.lastName', 'ASC');
 
-					if($consultation) {
+					if ($consultation) {
 						$qb->where($qb->expr()->eq('cc.id', $consultation->getCustomerCard()->getId()));
 					}
 
@@ -42,25 +42,27 @@ class ConsultationType extends AbstractType
 				'class'         => 'AppBundle\Entity\Animal\AbstractAnimal',
 				'expanded'      => false,
 				'multiple'      => true,
-				'query_builder' => function (EntityRepository $er) use($consultation) {
+				'query_builder' => function (EntityRepository $er) use ($consultation) {
 					$qb = $er->createQueryBuilder('a');
 					$qb
 						->innerJoin('a.customer', 'c')
 						->innerJoin('c.customerCard', 'cc')
 						->orderBy('a.name', 'ASC');
 
-					if($consultation) {
+					if ($consultation) {
 						$qb->where($qb->expr()->eq('cc.id', $consultation->getCustomerCard()->getId()));
 					}
 
 					return $qb;
 				},
 			])
-			->add('date', DateType::class, [])
+			->add('date', DateType::class, [
+				'html5'  => true,
+				'widget' => 'single_text',
+			])
 			->add('location', TextType::class, [])
 			->add('duration', NumberType::class, [])
-			->add('price', NumberType::class, [])
-		;
+			->add('price', NumberType::class, []);
 	}
 
 	public function configureOptions(OptionsResolver $resolver)
