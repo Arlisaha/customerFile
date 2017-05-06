@@ -12,7 +12,7 @@ class OutsideTimeUnitType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
 		$resolver->setDefaults([
-			'choices' => AbstractAnimal::$outsideTimeUnits
+			'choices' => array_flip(AbstractAnimal::$outsideTimeUnits)
 		]);
     }
 

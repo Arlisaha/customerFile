@@ -12,7 +12,7 @@ class GenderType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
 		$resolver->setDefaults([
-			'choices' => AbstractAnimal::$genders
+			'choices' => array_flip(AbstractAnimal::$genders)
 		]);
     }
 
