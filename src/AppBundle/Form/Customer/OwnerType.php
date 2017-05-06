@@ -21,7 +21,11 @@ class OwnerType extends AbstractType
 			->add('gender', GenderType::class, [])
 			->add('comment', TextareaType::class, [])
 			->add('job', TextType::class, [])
-			->add('birthDate', DateType::class, [])
+			->add('birthDate', DateType::class, [
+				'html5'  => true,
+				'widget' => 'single_text',
+				'input'  => 'string',
+			])
 			->add('firstName', TextType::class, [])
 			->add('lastName', TextType::class, [])
 			->add('email', EmailType::class, [])

@@ -21,7 +21,11 @@ class AnimalType extends AbstractType
 		$builder
 			->add('id', HiddenType::class, [])
 			->add('name', TextType::class, [])
-			->add('birthDate', BirthdayType::class, [])
+			->add('birthDate', BirthdayType::class, [
+				'html5'  => true,
+				'widget' => 'single_text',
+				'input'  => 'string',
+			])
 			->add('gender', GenderType::class, [])
 			->add('castrated', CheckboxType::class, [])
 			->add('weight', NumberType::class, [])
