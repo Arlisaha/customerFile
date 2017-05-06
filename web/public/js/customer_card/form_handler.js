@@ -18,11 +18,8 @@ function addTypePart(e, data) {
 }
 
 $(document).ready(function() {
-    $('.froala').froalaEditor();
-    $('select').chosen({
-        no_results_text: "Pas de r&eacute:sultats !",
-        disable_search_threshold: 10
-    });
+    $('.froala').froalaEditor(froalaOptions);
+    $('select').chosen(chosenOptions);
     $('#add_owner').click(function(e) {addTypePart(e, ownersData)});
     $('#add_cat').click(function(e) {addTypePart(e, catsData)});
     $('#add_dog').click(function(e) {addTypePart(e, dogsData)});
