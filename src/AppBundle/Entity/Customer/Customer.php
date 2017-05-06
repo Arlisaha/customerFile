@@ -53,7 +53,7 @@ class Customer
 	private $status;
 
 	/**
-	 * @ORM\Column(name="address", type="string", length=255, nullable=true)
+	 * @ORM\Column(name="address", type="text", nullable=true)
 	 */
 	private $address;
 
