@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -62,7 +63,11 @@ class ConsultationType extends AbstractType
 				'widget' => 'single_text',
 			])
 			->add('location', TextType::class, [])
-			->add('duration', NumberType::class, [])
+			->add('duration', TimeType::class, [
+				'html5'  => true,
+				'widget' => 'single_text',
+				'input'  => 'string',
+			])
 			->add('price', MoneyType::class, []);
 	}
 
