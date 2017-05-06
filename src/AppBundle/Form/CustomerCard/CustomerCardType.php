@@ -6,6 +6,7 @@ use AppBundle\Entity\CustomerCard\CustomerCard;
 use AppBundle\Form\Customer\CustomerType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,7 +25,8 @@ class CustomerCardType extends AbstractType
 				'prototype_name' => '__consultation__',
 				'by_reference'   => false,
 			])
-			->add('comments', TextareaType::class, []);
+			->add('comments', TextareaType::class, [])
+			->add('submit', SubmitType::class, []);
 	}
 
 	public function configureOptions(OptionsResolver $resolver)
