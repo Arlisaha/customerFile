@@ -19,6 +19,11 @@ function addTypePart(e, data) {
 
 $(document).ready(function() {
     $('textarea').froalaEditor();
+    $('select').chosen({
+        width: '20%',
+        no_results_text: "Pas de r&eacute:sultats !",
+        disable_search_threshold: 10
+    });
     $('#add_owner').click(function(e) {addTypePart(e, ownersData)});
     $('#add_cat').click(function(e) {addTypePart(e, catsData)});
     $('#add_dog').click(function(e) {addTypePart(e, dogsData)});
