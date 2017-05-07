@@ -2,6 +2,10 @@
 
 {% set page = 'Nouveau Client' %}
 
+{% block pagestylesheets %}
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+{% endblock %}
+
 {% block pagetitle %}{{ page|raw }}{% endblock %}
 
 {% block container %}
@@ -242,6 +246,14 @@
             zIndex: 2003,
             placeholderText: 'Commentaires...'
         };
+        var ids = ['form_address', 'form_zipCode', 'form_city'];
+        var mapping = [
+            {id: 'form_address', address_components: ['street_number', 'route'], separator: ' '},
+            {id: 'form_zipCode', address_components: ['postal_code'], separator: ''},
+            {id: 'form_city', address_components: ['locality', 'administrative_area_level_2'], separator: ' - '}
+        ];
     </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBP25G6kEni4T3lhBgbfvx2UOOkIh8SB1o&libraries=places&project=symbiose-animale-fiche-client" async defer></script>
     <script src="{{ asset('public/js/customer/form_handler.js') }}"></script>
+    <script src="{{ asset('public/js/google_api.js') }}"></script>
 {% endblock %}
