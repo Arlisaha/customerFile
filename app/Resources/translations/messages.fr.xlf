@@ -28,6 +28,118 @@
                     <target>Chien</target>
                 </trans-unit>
             </group>
+            <group id="fixtures">
+                <group id="temper">
+                    <trans-unit id="curious" resname="fixtures.temper.curious">
+                        <source>Curious</source>
+                        <target>Curieux</target>
+                    </trans-unit>
+                    <trans-unit id="aggressive" resname="fixtures.temper.aggressive">
+                        <source>Aggressive</source>
+                        <target>Agressif</target>
+                    </trans-unit>
+                    <trans-unit id="defensive" resname="fixtures.temper.defensive">
+                        <source>Defensive</source>
+                        <target>Défensif</target>
+                    </trans-unit>
+                    <trans-unit id="shy" resname="fixtures.temper.shy">
+                        <source>Shy</source>
+                        <target>Timide</target>
+                    </trans-unit>
+                    <trans-unit id="playful" resname="fixtures.temper.playful">
+                        <source>Playful</source>
+                        <target>Joueur</target>
+                    </trans-unit>
+                    <trans-unit id="lively" resname="fixtures.temper.lively">
+                        <source>Lively</source>
+                        <target>Vif</target>
+                    </trans-unit>
+                    <trans-unit id="sensitive" resname="fixtures.temper.sensitive">
+                        <source>Sensitive</source>
+                        <target>Sensible</target>
+                    </trans-unit>
+                    <trans-unit id="coward" resname="fixtures.temper.coward">
+                        <source>Coward</source>
+                        <target>Peureux</target>
+                    </trans-unit>
+                    <trans-unit id="fearful" resname="fixtures.temper.fearful">
+                        <source>Fearful</source>
+                        <target>Craintif</target>
+                    </trans-unit>
+                </group>
+                <group id="life_style">
+                    <trans-unit id="sportive" resname="fixtures.life_style.sportive">
+                        <source>Sportive</source>
+                        <target>Sportif</target>
+                    </trans-unit>
+                    <trans-unit id="homebody" resname="fixtures.life_style.homebody">
+                        <source>Homebody</source>
+                        <target>Casanier</target>
+                    </trans-unit>
+                </group>
+                <group id="breed">
+                    <group id="dog">
+                        <trans-unit id="german_shepperd" resname="fixtures.breed.dog.german_shepperd">
+                            <source>German Shepperd</source>
+                            <target>Berger Allemand</target>
+                        </trans-unit>
+                        <trans-unit id="shih_tzu" resname="fixtures.breed.dog.shih_tzu">
+                            <source>Shih tzu</source>
+                            <target>Shih tzu</target>
+                        </trans-unit>
+                        <trans-unit id="french_bulldog" resname="fixtures.breed.dog.french_bulldog">
+                            <source>French Bulldog</source>
+                            <target>Bouledogue Français</target>
+                        </trans-unit>
+                        <trans-unit id="bulldog" resname="fixtures.breed.dog.bulldog">
+                            <source>Bulldog</source>
+                            <target>Bulldog Anglais</target>
+                        </trans-unit>
+                        <trans-unit id="beauceron" resname="fixtures.breed.dog.beauceron">
+                            <source>Beauceron</source>
+                            <target>Beauceron</target>
+                        </trans-unit>
+                        <trans-unit id="dalmatian" resname="fixtures.breed.dog.dalmatian">
+                            <source>Dalmatian</source>
+                            <target>Dalmatien</target>
+                        </trans-unit>
+                        <trans-unit id="chihuahua" resname="fixtures.breed.dog.chihuahua">
+                            <source>Chihuahua</source>
+                            <target>Chihuahua</target>
+                        </trans-unit>
+                        <trans-unit id="yorkshire" resname="fixtures.breed.dog.yorkshire">
+                            <source>Yorkshire</source>
+                            <target>Yorkshire</target>
+                        </trans-unit>
+                        <trans-unit id="bernese_moutain_dog" resname="fixtures.breed.dog.bernese_moutain_dog">
+                            <source>Bernese Mountain Dog</source>
+                            <target>Bouvier Bernois</target>
+                        </trans-unit>
+                    </group>
+                    <group id="cat">
+                        <trans-unit id="turkish_angora" resname="fixtures.breed.cat.turkish_angora">
+                            <source>Turkish Angora</source>
+                            <target>Angora Turc</target>
+                        </trans-unit>
+                        <trans-unit id="maine_coon" resname="fixtures.breed.cat.maine_coon">
+                            <source>Maine Coon</source>
+                            <target>Maine Coon</target>
+                        </trans-unit>
+                        <trans-unit id="sphynx" resname="fixtures.breed.cat.sphynx">
+                            <source>Sphynx</source>
+                            <target>Sphynx</target>
+                        </trans-unit>
+                        <trans-unit id="persian" resname="fixtures.breed.cat.persian">
+                            <source>Persian</source>
+                            <target>Persan</target>
+                        </trans-unit>
+                        <trans-unit id="european_shortair" resname="fixtures.breed.cat.european_shortair">
+                            <source>European Shortair</source>
+                            <target>Européen</target>
+                        </trans-unit>
+                    </group>
+                </group>
+            </group>
         </body>
     </file>
 </xliff>

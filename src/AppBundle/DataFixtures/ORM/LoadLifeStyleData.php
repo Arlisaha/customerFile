@@ -10,8 +10,8 @@ use Doctrine\Common\Persistence\ObjectManager;
 class LoadLifeStyleData extends AbstractFixture implements OrderedFixtureInterface
 {
 	private static $lifeStyleTypesList = [
-		'Sportif',
-		'Casanier',
+		'fixtures.life_style.sportive',
+		'fixtures.life_style.homebody',
 	];
 
 	public function load(ObjectManager $manager)

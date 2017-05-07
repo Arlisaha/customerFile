@@ -10,10 +10,11 @@ use Doctrine\Common\Persistence\ObjectManager;
 class LoadCatBreedData extends AbstractFixture implements OrderedFixtureInterface
 {
 	private static $breedNameList = [
-		'angora',
-		'persan',
-		'européen',
-		'sphinx',
+		'fixtures.breed.cat.turkish_angora',
+		'fixtures.breed.cat.maine_coon',
+		'fixtures.breed.cat.persian',
+		'fixtures.breed.cat.european_shortair',
+		'fixtures.breed.cat.sphynx',
 	];
 
 	public function load(ObjectManager $manager)

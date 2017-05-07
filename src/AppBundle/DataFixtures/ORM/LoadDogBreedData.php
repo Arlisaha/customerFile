@@ -10,15 +10,15 @@ use Doctrine\Common\Persistence\ObjectManager;
 class LoadDogBreedData extends AbstractFixture implements OrderedFixtureInterface
 {
 	private static $breedNameList = [
-		'berger allemand',
-		'shih-tzu',
-		'bouledogue français',
-		'bouledogue anglais',
-		'bauceron',
-		'dalmatien',
-		'chihuahua',
-		'yorkshire',
-		'bouvier bernois',
+		'fixtures.breed.dog.german_shepperd',
+		'fixtures.breed.dog.shih_tzu',
+		'fixtures.breed.dog.french_bulldog',
+		'fixtures.breed.dog.bulldog',
+		'fixtures.breed.dog.beauceron',
+		'fixtures.breed.dog.dalmatian',
+		'fixtures.breed.dog.chihuahua',
+		'fixtures.breed.dog.yorkshire',
+		'fixtures.breed.dog.bernese_moutain_dog',
 	];
 
 	public function load(ObjectManager $manager)
