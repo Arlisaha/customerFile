@@ -96,8 +96,8 @@ abstract class AbstractAnimal
 	private $adoptedFromAssociation;
 
 	public static $genders = [
-		0 => 'mâle',
-		1 => 'femelle',
+		0 => 'entity.animal.gender.male',
+		1 => 'entity.animal.gender.female',
 	];
 
 	public function __construct()

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+        <body>
+            <group id="entity">
+                <trans-unit id="animal.gender.male" resname="entity.animal.gender.male">
+                    <source>Male</source>
+                    <target>Mâle</target>
+                </trans-unit>
+                <trans-unit id="animal.gender.female" resname="entity.animal.gender.female">
+                    <source>Female</source>
+                    <target>Femelle</target>
+                </trans-unit>
+                <trans-unit id="owner.gender.male" resname="entity.owner.gender.male">
+                    <source>Male</source>
+                    <target>Mâle</target>
+                </trans-unit>
+                <trans-unit id="owner.gender.female" resname="entity.owner.gender.female">
+                    <source>Female</source>
+                    <target>Femelle</target>
+                </trans-unit>
+                <trans-unit id="customer.specie.cat" resname="entity.customer.specie.cat">
+                    <source>Cat</source>
+                    <target>Chat</target>
+                </trans-unit>
+                <trans-unit id="customer.specie.dog" resname="entity.customer.specie.dog">
+                    <source>Dog</source>
+                    <target>Chien</target>
+                </trans-unit>
+            </group>
+        </body>
+    </file>
+</xliff>

@@ -12,7 +12,8 @@ class GenderType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
 		$resolver->setDefaults([
-			'choices' => array_flip(Owner::$genders)
+			'choices' => array_flip(Owner::$genders),
+			'choice_translation_domain' => true,
 		]);
     }
 

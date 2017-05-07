@@ -9,14 +9,15 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class GenderType extends AbstractType
 {
-    public function configureOptions(OptionsResolver $resolver)
-    {
+	public function configureOptions(OptionsResolver $resolver)
+	{
 		$resolver->setDefaults([
-			'choices' => array_flip(AbstractAnimal::$genders)
+			'choices'                   => array_flip(AbstractAnimal::$genders),
+			'choice_translation_domain' => true,
 		]);
-    }
+	}
 
-    public function getParent()
+	public function getParent()
 	{
 		return ChoiceType::class;
 	}

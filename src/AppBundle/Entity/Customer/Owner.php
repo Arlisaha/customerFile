@@ -78,8 +78,8 @@ class Owner
 	private $customer;
 
 	public static $genders = [
-		0 => 'homme',
-		1 => 'femme',
+		0 => 'entity.owner.gender.male',
+		1 => 'entity.owner.gender.female',
 	];
 
 	public function __construct()
