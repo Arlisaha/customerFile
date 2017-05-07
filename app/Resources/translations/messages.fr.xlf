@@ -13,11 +13,11 @@
                 </trans-unit>
                 <trans-unit id="owner.gender.male" resname="entity.owner.gender.male">
                     <source>Male</source>
-                    <target>Mâle</target>
+                    <target>Homme</target>
                 </trans-unit>
                 <trans-unit id="owner.gender.female" resname="entity.owner.gender.female">
                     <source>Female</source>
-                    <target>Femelle</target>
+                    <target>Femme</target>
                 </trans-unit>
                 <trans-unit id="customer.specie.cat" resname="entity.customer.specie.cat">
                     <source>Cat</source>
