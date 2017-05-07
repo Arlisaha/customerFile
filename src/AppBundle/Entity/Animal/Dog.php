@@ -14,24 +14,14 @@ class Dog extends AbstractAnimal
 {
 	/**
 	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Animal\DogBreed")
-	 * @ORM\JoinColumn(name="breed_id", referencedColumnName="id")
+	 * @ORM\JoinColumn(name="breed_id", referencedColumnName="id", nullable=false)
 	 */
 	private $breed;
 
 	/**
-	 * @ORM\Column(name="daily_walk_time", type="float")
+	 * @ORM\Column(name="daily_walk_time", type="time", nullable=true)
 	 */
 	private $dailyWalkTime;
-
-	/**
-	 * @ORM\Column(name="daily_walk_time_unit", type="binary")
-	 */
-	private $dailyWalkTimeUnit;
-
-	public static $dailyWalkTimeUnits = [
-		0 => 'minutes',
-		1 => 'heures',
-	];
 
 	/**
 	 * @return DogBreed
@@ -69,40 +59,6 @@ class Dog extends AbstractAnimal
 	public function setDailyWalkTime($dailyWalkTime)
 	{
 		$this->dailyWalkTime = $dailyWalkTime;
-
-		return $this;
-	}
-
-	/**
-	 * @return int
-	 */
-	public function getDailyWalkTimeUnit()
-	{
-		return $this->dailyWalkTimeUnit;
-	}
-
-	/**
-	 * @param int|string $dailyWalkTimeUnit
-	 *
-	 * @return Dog
-	 */
-	public function setDailyWalkTimeUnit($dailyWalkTimeUnit)
-	{
-		if(!array_key_exists($dailyWalkTimeUnit, static::$dailyWalkTimeUnits) && !in_array($dailyWalkTimeUnit, static::$dailyWalkTimeUnits)) {
-			throw new \InvalidArgumentException(
-				sprintf(
-					'The given time unit value must be either a valid string (%s) nor a valid int key (%s).',
-					join(', ', static::$dailyWalkTimeUnits),
-					join(', ', array_flip(static::$dailyWalkTimeUnits))
-				)
-			);
-		}
-
-		if (is_string($dailyWalkTimeUnit)) {
-			$dailyWalkTimeUnit = array_flip(static::$dailyWalkTimeUnits)[$dailyWalkTimeUnit];
-		}
-
-		$this->dailyWalkTimeUnit = $dailyWalkTimeUnit;
 
 		return $this;
 	}

@@ -19,7 +19,7 @@ class Consultation
 	/**
 	 * @ORM\Id
 	 * @ORM\GeneratedValue(strategy="AUTO")
-	 * @ORM\Column(name="id", type="integer")
+	 * @ORM\Column(name="id", type="integer", nullable=false)
 	 */
 	private $id;
 
@@ -63,7 +63,7 @@ class Consultation
 
 	/**
 	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CustomerCard\CustomerCard")
-	 * @ORM\JoinColumn(name="customer_card_id", referencedColumnName="id")
+	 * @ORM\JoinColumn(name="customer_card_id", referencedColumnName="id", nullable=false)
 	 */
 	private $customerCard;
 

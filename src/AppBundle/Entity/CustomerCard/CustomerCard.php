@@ -18,13 +18,13 @@ class CustomerCard
 	/**
 	 * @ORM\Id
 	 * @ORM\GeneratedValue(strategy="AUTO")
-	 * @ORM\Column(name="id", type="integer")
+	 * @ORM\Column(name="id", type="integer",nullable=false)
 	 */
 	private $id;
 
 	/**
 	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\Customer\Customer", inversedBy="customerCard")
-	 * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
+	 * @ORM\JoinColumn(name="customer_id", referencedColumnName="id", nullable=false)
 	 */
 	private $customer;
 

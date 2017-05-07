@@ -22,12 +22,12 @@ abstract class AbstractAnimal
 	/**
 	 * @ORM\Id
 	 * @ORM\GeneratedValue(strategy="AUTO")
-	 * @ORM\Column(name="id", type="integer")
+	 * @ORM\Column(name="id", type="integer", nullable=false)
 	 */
 	private $id;
 
 	/**
-	 * @ORM\Column(name="name", type="string", length=255)
+	 * @ORM\Column(name="name", type="string", length=255, nullable=false)
 	 */
 	private $name;
 
@@ -37,7 +37,7 @@ abstract class AbstractAnimal
 	private $birthDate;
 
 	/**
-	 * @ORM\Column(name="gender", type="binary", nullable=true)
+	 * @ORM\Column(name="gender", type="binary", nullable=false)
 	 */
 	private $gender;
 

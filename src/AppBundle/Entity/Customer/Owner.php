@@ -48,12 +48,12 @@ class Owner
 	private $job;
 
 	/**
-	 * @ORM\Column(name="phone", type="string", length=10, nullable=true)
+	 * @ORM\Column(name="phone", type="string", length=10, nullable=false)
 	 */
 	private $phone;
 
 	/**
-	 * @ORM\Column(name="email", type="string", length=255, nullable=true)
+	 * @ORM\Column(name="email", type="string", length=255, nullable=false)
 	 */
 	private $email;
 
