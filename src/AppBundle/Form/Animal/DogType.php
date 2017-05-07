@@ -14,12 +14,14 @@ class DogType extends AnimalType
 		parent::buildForm($builder, $options);
 		$builder
 			->add('breed', BreedType::class, [
-				'class' => 'AppBundle\Entity\Animal\DogBreed',
+				'class'    => 'AppBundle\Entity\Animal\DogBreed',
+				'required' => true,
 			])
 			->add('dailyWalkTime', TimeType::class, [
-				'html5'  => true,
-				'widget' => 'single_text',
-				'input'  => 'string',
+				'html5'    => true,
+				'widget'   => 'single_text',
+				'input'    => 'string',
+				'required' => false,
 			]);
 	}
 

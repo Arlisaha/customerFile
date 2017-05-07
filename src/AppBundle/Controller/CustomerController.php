@@ -44,11 +44,10 @@ class CustomerController extends Controller
 				'mapped'                    => false,
 				'choice_translation_domain' => true,
 				'choices'                   => [
-					'entity.customer.specie.cat' => 0,
-					'entity.customer.specie.dog' => 1,
+					'entity.customer.specie.cat' => 'cat',
+					'entity.customer.specie.dog' => 'dog',
 				],
 			])
-			->add('submit', SubmitType::class, [])
 			->getForm();
 
 		return $this->render(':customer:new.html.twig', [

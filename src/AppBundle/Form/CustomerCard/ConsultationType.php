@@ -8,7 +8,6 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -26,6 +25,7 @@ class ConsultationType extends AbstractType
 				'class'         => 'AppBundle\Entity\Customer\Owner',
 				'expanded'      => false,
 				'multiple'      => true,
+				'required'      => false,
 				'query_builder' => function (EntityRepository $er) use ($consultation) {
 					$qb = $er->createQueryBuilder('o');
 					$qb
@@ -44,6 +44,7 @@ class ConsultationType extends AbstractType
 				'class'         => 'AppBundle\Entity\Animal\AbstractAnimal',
 				'expanded'      => false,
 				'multiple'      => true,
+				'required'      => false,
 				'query_builder' => function (EntityRepository $er) use ($consultation) {
 					$qb = $er->createQueryBuilder('a');
 					$qb
@@ -59,16 +60,22 @@ class ConsultationType extends AbstractType
 				},
 			])
 			->add('date', DateType::class, [
-				'html5'  => true,
-				'widget' => 'single_text',
+				'html5'    => true,
+				'widget'   => 'single_text',
+				'required' => true,
 			])
-			->add('location', TextType::class, [])
+			->add('location', TextType::class, [
+				'required' => false,
+			])
 			->add('duration', TimeType::class, [
-				'html5'  => true,
-				'widget' => 'single_text',
-				'input'  => 'string',
+				'html5'    => true,
+				'widget'   => 'single_text',
+				'input'    => 'string',
+				'required' => false,
 			])
-			->add('price', MoneyType::class, []);
+			->add('price', MoneyType::class, [
+				'required' => false,
+			]);
 	}
 
 	public function configureOptions(OptionsResolver $resolver)

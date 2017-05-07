@@ -2,10 +2,10 @@
 
 {% set page = 'Nouveau Client' %}
 
-{% block pagetitle %}{{ page }}{% endblock %}
+{% block pagetitle %}{{ page|raw }}{% endblock %}
 
 {% block container %}
-    <h1 id="page_title">{{ page }}</h1>
+    <h1 id="page_title">{{ page|raw }}</h1>
     <div id="container">
         {{ form_start(form) }}
         <div id="customer" class="form_block">
@@ -186,10 +186,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="label" class="padding_top" colspan="4">
+                        <td class="label padding_top" colspan="4">
                             <label>Problèmes de sant&eacute;e&nbsp;: </label>
                         </td>
-                        <td class="label" class="padding_top" colspan="4">
+                        <td class="label padding_top" colspan="4">
                             <label>Commentaires&nbsp;: </label>
                         </td>
                     </tr>
@@ -215,13 +215,7 @@
             </div>
         </div>
         <span id="submit_btn">
-            {{ form_widget(form.submit, {
-                'label': 'Valider',
-                'attr': {
-                    'class': 'submit_button',
-                    'id': 'submit_btn'
-                }
-            }) }}
+            <button id="submit_btn" class="submit_button">Valider</button>
         </span>
         {{ form_end(form) }}
     </div>

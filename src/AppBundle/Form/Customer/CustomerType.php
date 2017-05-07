@@ -3,7 +3,6 @@
 namespace AppBundle\Form\Customer;
 
 use AppBundle\Entity\Customer\Customer;
-use AppBundle\Form\Animal\AnimalType;
 use AppBundle\Form\Animal\CatType;
 use AppBundle\Form\Animal\DogType;
 use Doctrine\ORM\EntityRepository;
@@ -28,6 +27,7 @@ class CustomerType extends AbstractType
 				'prototype'      => true,
 				'prototype_name' => '__cat__',
 				'by_reference'   => false,
+				'required'       => false,
 			])
 			->add('dogs', CollectionType::class, [
 				'entry_type'     => DogType::class,
@@ -36,19 +36,24 @@ class CustomerType extends AbstractType
 				'prototype'      => true,
 				'prototype_name' => '__dog__',
 				'by_reference'   => false,
+				'required'       => false,
+
 			])
 			->add('owners', CollectionType::class, [
-				'entry_type'   => OwnerType::class,
-				'allow_add'    => true,
-				'allow_delete' => true,
-				'prototype'    => true,
+				'entry_type'     => OwnerType::class,
+				'allow_add'      => true,
+				'allow_delete'   => true,
+				'prototype'      => true,
 				'prototype_name' => '__owner__',
 				'by_reference'   => false,
+				'required'       => false,
+
 			])
 			->add('mainAnimal', EntityType::class, [
 				'class'         => 'AppBundle\Entity\Animal\AbstractAnimal',
 				'expanded'      => false,
 				'multiple'      => false,
+				'required'      => true,
 				'query_builder' => function (EntityRepository $er) {
 					return $er->createQueryBuilder('aa')
 						->orderBy('aa.name', 'ASC');
@@ -58,15 +63,24 @@ class CustomerType extends AbstractType
 				'class'         => 'AppBundle\Entity\Customer\Owner',
 				'expanded'      => false,
 				'multiple'      => false,
+				'required'      => true,
 				'query_builder' => function (EntityRepository $er) {
 					return $er->createQueryBuilder('o')
 						->orderBy('o.lastName', 'ASC');
 				},
 			])
-			->add('address', TextareaType::class, [])
-			->add('city', TextType::class, [])
-			->add('zipCode', NumberType::class, [])
-			->add('status', TextType::class, []);
+			->add('address', TextareaType::class, [
+				'required' => true,
+			])
+			->add('city', TextType::class, [
+				'required' => true,
+			])
+			->add('zipCode', NumberType::class, [
+				'required' => true,
+			])
+			->add('status', TextType::class, [
+				'required' => true,
+			]);
 	}
 
 	public function configureOptions(OptionsResolver $resolver)

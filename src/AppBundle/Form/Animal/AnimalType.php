@@ -20,26 +20,48 @@ class AnimalType extends AbstractType
 	{
 		$builder
 			->add('id', HiddenType::class, [])
-			->add('name', TextType::class, [])
+			->add('name', TextType::class, [
+				'required' => true,
+			])
 			->add('birthDate', BirthdayType::class, [
-				'html5'  => true,
-				'widget' => 'single_text',
-				'input'  => 'string',
+				'html5'    => true,
+				'widget'   => 'single_text',
+				'input'    => 'string',
+				'required' => false,
 			])
-			->add('gender', GenderType::class, [])
-			->add('castrated', CheckboxType::class, [])
-			->add('weight', NumberType::class, [])
-			->add('size', NumberType::class, [])
-			->add('temper', TemperType::class, [])
-			->add('livingOutside', CheckboxType::class, [])
+			->add('gender', GenderType::class, [
+				'required' => true,
+			])
+			->add('castrated', CheckboxType::class, [
+				'required' => true,
+			])
+			->add('weight', NumberType::class, [
+				'required' => false,
+			])
+			->add('size', NumberType::class, [
+				'required' => false,
+			])
+			->add('temper', TemperType::class, [
+				'required' => false,
+			])
+			->add('livingOutside', CheckboxType::class, [
+				'required' => false,
+			])
 			->add('outsideTime', TimeType::class, [
-				'html5'  => true,
-				'widget' => 'single_text',
-				'input'  => 'string',
+				'html5'    => true,
+				'widget'   => 'single_text',
+				'input'    => 'string',
+				'required' => false,
 			])
-			->add('healthIssues', TextareaType::class, [])
-			->add('comment', TextareaType::class, [])
-			->add('adoptedFromAssociation', CheckboxType::class, []);
+			->add('healthIssues', TextareaType::class, [
+				'required' => false,
+			])
+			->add('comment', TextareaType::class, [
+				'required' => false,
+			])
+			->add('adoptedFromAssociation', CheckboxType::class, [
+				'required' => false,
+			]);
 	}
 
 	public function configureOptions(OptionsResolver $resolver)
