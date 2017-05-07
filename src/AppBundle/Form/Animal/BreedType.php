@@ -9,20 +9,21 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class BreedType extends AbstractType
 {
-    public function configureOptions(OptionsResolver $resolver)
-    {
+	public function configureOptions(OptionsResolver $resolver)
+	{
 		$resolver->setDefaults([
-			'class'         => 'AppBundle\Entity\Animal\AbstractBreed',
-			'expanded'      => false,
-			'multiple'      => false,
-			'query_builder' => function (EntityRepository $er) {
+			'class'                     => 'AppBundle\Entity\Animal\AbstractBreed',
+			'expanded'                  => false,
+			'multiple'                  => false,
+			'choice_translation_domain' => null,
+			'query_builder'             => function (EntityRepository $er) {
 				return $er->createQueryBuilder('t')
 					->orderBy('t.label', 'ASC');
 			},
 		]);
-    }
+	}
 
-    public function getParent()
+	public function getParent()
 	{
 		return EntityType::class;
 	}

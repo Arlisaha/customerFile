@@ -9,20 +9,21 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class LifeStyleType extends AbstractType
 {
-    public function configureOptions(OptionsResolver $resolver)
-    {
+	public function configureOptions(OptionsResolver $resolver)
+	{
 		$resolver->setDefaults([
-			'class'         => 'AppBundle\Entity\Customer\LifeStyle',
-			'expanded'      => true,
-			'multiple'      => true,
-			'query_builder' => function (EntityRepository $er) {
+			'class'                     => 'AppBundle\Entity\Customer\LifeStyle',
+			'expanded'                  => true,
+			'multiple'                  => true,
+			'choice_translation_domain' => null,
+			'query_builder'             => function (EntityRepository $er) {
 				return $er->createQueryBuilder('ls')
 					->orderBy('ls.label', 'ASC');
 			},
 		]);
-    }
+	}
 
-    public function getParent()
+	public function getParent()
 	{
 		return EntityType::class;
 	}
