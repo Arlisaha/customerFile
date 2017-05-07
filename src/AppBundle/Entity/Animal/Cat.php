@@ -14,7 +14,7 @@ class Cat extends AbstractAnimal
 {
 	/**
 	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Animal\CatBreed")
-	 * @ORM\JoinColumn(name="breed_id", referencedColumnName="id", nullable=false)
+	 * @ORM\JoinColumn(name="breed_id", referencedColumnName="id", nullable=true)
 	 */
 	private $breed;
 
