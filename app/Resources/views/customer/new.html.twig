@@ -12,19 +12,19 @@
             <table id="address">
                 <tr id="address_elts">
                     <td>
-                        <label class="no_margin_left">Adresse : </label>
+                        <label class="no_margin_left">Adresse&nbsp;: </label>
                     </td>
                     <td>
                         {{ form_widget(form.address) }}
                     </td>
                     <td>
-                        <label>Code postal : </label>
+                        <label>Code postal&nbsp;: </label>
                     </td>
                     <td>
                         {{ form_widget(form.zipCode) }}
                     </td>
                     <td>
-                        <label>Ville : </label>
+                        <label>Ville&nbsp;: </label>
                     </td>
                     <td>
                         {{ form_widget(form.city) }}
@@ -32,40 +32,37 @@
                 </tr>
                 <tr id="status">
                     <td>
-                        <label>Statut : </label>
+                        <label>Statut&nbsp;: </label>
                     </td>
                     <td>
                         {{ form_widget(form.status) }}
                     </td>
                 </tr>
             </table>
-            <span class="inner_block_title left">Propri&eacute;taire principal</span>
-            <span class="inner_block_title right">Animal principal</span>
-            <div id="owners" class="inner_form_block left">
+            <span class="inner_block_title">Propri&eacute;taire principal</span>
+            <div id="owners" class="full_inner_form_block">
                 <table>
                     <tr>
                         <td class="label">
-                            <label>Pr&eacute;nom :</label>
+                            <label>Pr&eacute;nom&nbsp;:</label>
                         </td>
                         <td class="value">
                             {{ form_widget(form.mainOwner.firstName) }}
                         </td>
                         <td class="label">
-                            <label>Nom :</label>
+                            <label>Nom&nbsp;:</label>
                         </td>
                         <td class="value">
                             {{ form_widget(form.mainOwner.lastName) }}
                         </td>
-                    </tr>
-                    <tr>
                         <td class="label">
-                            <label>E-mail :</label>
+                            <label>E-mail&nbsp;:</label>
                         </td>
                         <td class="value">
                             {{ form_widget(form.mainOwner.email) }}
                         </td>
                         <td class="label">
-                            <label>T&eacute;l&eacute;phone :</label>
+                            <label>T&eacute;l&eacute;phone&nbsp;:</label>
                         </td>
                         <td class="value">
                             {{ form_widget(form.mainOwner.phone) }}
@@ -73,39 +70,37 @@
                     </tr>
                     <tr>
                         <td class="label">
-                            <label>Style de vie :</label>
+                            <label>Style de vie&nbsp;:</label>
                         </td>
                         <td class="value">
                             {{ form_widget(form.mainOwner.lifeStyle) }}
                         </td>
                         <td class="label">
-                            <label>Sexe :</label>
+                            <label>Sexe&nbsp;:</label>
                         </td>
                         <td class="value">
                             {{ form_widget(form.mainOwner.gender) }}
                         </td>
-                    </tr>
-                    <tr>
                         <td class="label">
-                            <label>Travail :</label>
+                            <label>Travail&nbsp;:</label>
                         </td>
                         <td class="value">
                             {{ form_widget(form.mainOwner.job) }}
                         </td>
                         <td class="label">
-                            <label>Date de naissance :</label>
+                            <label>Date de naissance&nbsp;:</label>
                         </td>
                         <td class="value">
                             {{ form_widget(form.mainOwner.birthDate) }}
                         </td>
                     </tr>
                     <tr>
-                        <td class="label" class="padding_top">
-                            <label>Commentaires</label>
+                        <td class="label padding_top" colspan="8">
+                            <label>Commentaires&nbsp;: </label>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="4">
+                        <td class="value" colspan="8">
                             {{ form_widget(form.mainOwner.comment, {
                                 'attr': {
                                     'class': 'froala'
@@ -115,7 +110,106 @@
                     </tr>
                 </table>
             </div>
-            <div id="animals" class="inner_form_block right">
+            <span class="inner_block_title">Animal principal</span>
+            <div id="animals" class="full_inner_form_block">
+                <table>
+                    <tr>
+                        <td class="label">
+                            <label>Esp&egrave;ce&nbsp;:</label>
+                        </td>
+                        <td class="value">
+                            {{ form_widget(form.specie) }}
+                        </td>
+                        <td class="label">
+                            <label>Nom&nbsp;:</label>
+                        </td>
+                        <td class="value">
+                            {{ form_widget(form.mainAnimal.name) }}
+                        </td>
+                        <td class="label">
+                            <label>Sexe&nbsp;:</label>
+                        </td>
+                        <td class="value">
+                            {{ form_widget(form.mainAnimal.gender) }}
+                        </td>
+                        <td class="label">
+                            <label>Date de naissance&nbsp;:</label>
+                        </td>
+                        <td class="value">
+                            {{ form_widget(form.mainAnimal.birthDate) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">
+                            <label>Poids&nbsp;:</label>
+                        </td>
+                        <td class="value">
+                            {{ form_widget(form.mainAnimal.weight) }}
+                        </td>
+                        <td class="label">
+                            <label>Taille&nbsp;:</label>
+                        </td>
+                        <td class="value">
+                            {{ form_widget(form.mainAnimal.size) }}
+                        </td>
+                        <td class="label">
+                            <label>Castr&eacute;&nbsp;?</label>
+                        </td>
+                        <td class="value">
+                            {{ form_widget(form.mainAnimal.castrated) }}
+                        </td>
+                        <td class="label">
+                            <label>Adopt&eacute; d'une association&nbsp;?</label>
+                        </td>
+                        <td class="value">
+                            {{ form_widget(form.mainAnimal.adoptedFromAssociation) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">
+                            <label>Vie dehors&nbsp;?</label>
+                        </td>
+                        <td class="value">
+                            {{ form_widget(form.mainAnimal.livingOutside) }}
+                        </td>
+                        <td class="label">
+                            <label>Temps pass&eacute; dehors&nbsp;:</label>
+                        </td>
+                        <td class="value">
+                            {{ form_widget(form.mainAnimal.outsideTime) }}
+                        </td>
+                        <td class="label">
+                            <label>Temp&eacute;ramment&nbsp;:</label>
+                        </td>
+                        <td colspan="3" class="value">
+                            {{ form_widget(form.mainAnimal.temper) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label" class="padding_top" colspan="4">
+                            <label>Problèmes de sant&eacute;e&nbsp;: </label>
+                        </td>
+                        <td class="label" class="padding_top" colspan="4">
+                            <label>Commentaires&nbsp;: </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="value" colspan="4">
+                            {{ form_widget(form.mainAnimal.healthIssues, {
+                                'attr': {
+                                    'class': 'froala'
+                                }
+                            }) }}
+                        </td>
+                        <td class="value" colspan="4">
+                            {{ form_widget(form.mainAnimal.comment, {
+                                'attr': {
+                                    'class': 'froala'
+                                }
+                            }) }}
+                        </td>
+                    </tr>
+                </table>
                 {{ form_widget(form.specie) }}
                 {{ form_widget(form.mainAnimal) }}
             </div>

@@ -43,13 +43,12 @@ body {
 					letter-spacing: 2px;
 					font-family:    "Lucida Console", Monaco, monospace;
 					width:          48%;
-					padding:        5px;
+					padding:        10px 5px 5px 5px;
 				}
 
-				.inner_form_block {
+				.inner_form_block, .full_inner_form_block {
 					border:        inherit;
 					border-radius: inherit;
-					width:         48%;
 					display:       inline-block;
 					padding:       5px;
 
@@ -61,18 +60,30 @@ body {
 						width: 100%;
 
 						.label {
-							width: 20%;
+							width: 8%;
 						}
 
 						.value {
+							width: 9%;
 
 							select, input[type="text"],
 							input[type="email"], input[type="date"],
-						input[type="time"], input[type="number"] {
+							input[type="time"], input[type="number"],
+							input[type="tel"] {
 								width: 69.5%;
 							}
 						}
 					}
+				}
+
+				.inner_form_block {
+					width: 48%;
+				}
+
+				.full_inner_form_block {
+					width:   99%;
+					margin:  auto;
+					display: block;
 				}
 
 				.left {
@@ -93,8 +104,7 @@ body {
 
 			#customer {
 				#address {
-					width:         95%;
-					margin-bottom: 1%;
+					width: 95%;
 
 					.align_top {
 						vertical-align: top;
@@ -177,7 +187,8 @@ body {
 			input[type="date"], input[type="text"],
 			input[type="number"], input[type="time"],
 			input[type="date"], input[type="date"],
-			input[type="datetime"], input[type="email"] {
+			input[type="datetime"], input[type="email"],
+			input[type="tel"] {
 				outline:       none;
 				border-radius: 5px;
 				background:    #F2F2F2;
