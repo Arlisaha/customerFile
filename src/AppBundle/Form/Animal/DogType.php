@@ -3,6 +3,7 @@
 namespace AppBundle\Form\Animal;
 
 use AppBundle\Entity\Animal\Dog;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,6 +15,11 @@ class DogType extends AnimalType
 		$builder
 			->add('breed', BreedType::class, [
 				'class' => 'AppBundle\Entity\Animal\DogBreed',
+			])
+			->add('dailyWalkTime', TimeType::class, [
+				'html5'  => true,
+				'widget' => 'single_text',
+				'input'  => 'string',
 			]);
 	}
 
