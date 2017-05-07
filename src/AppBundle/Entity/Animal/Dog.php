@@ -3,6 +3,7 @@
 namespace AppBundle\Entity\Animal;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Dog
@@ -15,11 +16,17 @@ class Dog extends AbstractAnimal
 	/**
 	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Animal\DogBreed")
 	 * @ORM\JoinColumn(name="breed_id", referencedColumnName="id", nullable=true)
+	 *
+	 * @var DogBreed
 	 */
 	private $breed;
 
 	/**
 	 * @ORM\Column(name="daily_walk_time", type="time", nullable=true)
+	 *
+	 * @Assert\Time()
+	 *
+	 * @var DateTime
 	 */
 	private $dailyWalkTime;
 

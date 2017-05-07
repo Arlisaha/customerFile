@@ -2,10 +2,10 @@
 
 {% set page = '&Eacute;diter La Fiche Client' %}
 
-{% block pagetitle %}{{ page }}{% endblock %}
+{% block pagetitle %}{{ page|raw }}{% endblock %}
 
 {% block container %}
-    <h1 id="page_title">{{ page }}</h1>
+    <h1 id="page_title">{{ page|raw }}</h1>
     <div id="container">
         {{ form_start(form) }}
             <span class="block_title">Client</span>
@@ -106,13 +106,7 @@
                 {{ form_widget(form.comments, {'attr': {'class': 'froala'}}) }}
             </div>
             <span id="submit_btn">
-                {{ form_widget(form.submit, {
-                    'label': 'Valider',
-                    'attr': {
-                        'class': 'submit_button',
-                        'id': 'submit_btn'
-                    }
-                }) }}
+                <button id="submit_btn" class="submit_button">Valider</button>
             </span>
             <div style="display: none">{{ form_rest(form) }}</div>
         {{ form_end(form) }}

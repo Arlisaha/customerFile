@@ -8,6 +8,7 @@ use AppBundle\Entity\Animal\Dog;
 use AppBundle\Entity\CustomerCard\CustomerCard;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Customer
@@ -22,48 +23,74 @@ class Customer
 	 * @ORM\Id
 	 * @ORM\GeneratedValue(strategy="AUTO")
 	 * @ORM\Column(name="id", type="integer", nullable=false)
+	 *
+	 * @var int
 	 */
 	private $id;
 
 	/**
 	 * @ORM\OneToMany(targetEntity="AppBundle\Entity\Customer\Owner", mappedBy="customer")
+	 *
+	 * @var Owner[]
 	 */
 	private $owners;
 
 	/**
 	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\Customer\Owner")
 	 * @ORM\JoinColumn(name="main_owner_id", referencedColumnName="id")
+	 *
+	 * @var Owner
 	 */
 	private $mainOwner;
 
 	/**
 	 * @ORM\OneToMany(targetEntity="AppBundle\Entity\Animal\AbstractAnimal", mappedBy="customer")
+	 *
+	 * @var AbstractAnimal[]
 	 */
 	private $animals;
 
 	/**
 	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\Animal\AbstractAnimal")
 	 * @ORM\JoinColumn(name="main_animal_id", referencedColumnName="id")
+	 *
+	 * @var AbstractAnimal
 	 */
 	private $mainAnimal;
 
 	/**
 	 * @ORM\Column(name="status", type="string", length=255, nullable=true)
+	 *
+	 * @Assert\Type(type="string")
+	 *
+	 * @var string
 	 */
 	private $status;
 
 	/**
 	 * @ORM\Column(name="address", type="text", nullable=true)
+	 *
+	 * @Assert\Type(type="string")
+	 *
+	 * @var string
 	 */
 	private $address;
 
 	/**
 	 * @ORM\Column(name="zip_code", type="string", length=5, nullable=true)
+	 *
+	 * @Assert\Regex("~\d{5}~")
+	 *
+	 * @var string
 	 */
 	private $zipCode;
 
 	/**
 	 * @ORM\Column(name="city", type="string", length=255, nullable=true)
+	 *
+	 * @Assert\Type(type="string")
+	 *
+	 * @var string
 	 */
 	private $city;
 

@@ -3,6 +3,7 @@
 namespace AppBundle\Entity\Animal;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class AbstractBreed
@@ -11,8 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\Animal\BreedRepository")
  * @ORM\Table(name="breed")
  * @ORM\InheritanceType("SINGLE_TABLE")
- * @ORM\DiscriminatorColumn(name="specie", type="binary")
- * @ORM\DiscriminatorMap({"0" = "DogBreed", "1" = "CatBreed"})
+ * @ORM\DiscriminatorColumn(name="specie", type="string", length=3)
+ * @ORM\DiscriminatorMap({"dog" = "DogBreed", "cat" = "CatBreed"})
  */
 abstract class AbstractBreed
 {
@@ -20,11 +21,18 @@ abstract class AbstractBreed
 	 * @ORM\Id
 	 * @ORM\GeneratedValue(strategy="AUTO")
 	 * @ORM\Column(name="id", type="integer", nullable=false)
+	 *
+	 * @var int
 	 */
 	private $id;
 
 	/**
 	 * @ORM\Column(name="label", type="string", length=255, nullable=false)
+	 *
+	 * @Assert\NotBlank()
+	 * @Assert\Type(type="string")
+	 *
+	 * @var string
 	 */
 	private $label;
 

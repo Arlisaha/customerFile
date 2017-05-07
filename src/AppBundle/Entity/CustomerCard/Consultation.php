@@ -4,7 +4,9 @@ namespace AppBundle\Entity\CustomerCard;
 
 use AppBundle\Entity\Animal\AbstractAnimal;
 use AppBundle\Entity\Customer\Owner;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,26 +22,44 @@ class Consultation
 	 * @ORM\Id
 	 * @ORM\GeneratedValue(strategy="AUTO")
 	 * @ORM\Column(name="id", type="integer", nullable=false)
+	 *
+	 * @var int
 	 */
 	private $id;
 
 	/**
 	 * @ORM\Column(name="price", type="float", nullable=true)
+	 *
+	 * @Assert\Type(type="float")
+	 *
+	 * @var float
 	 */
 	private $price;
 
 	/**
 	 * @ORM\Column(name="date", type="datetime")
+	 *
+	 * @Assert\Date()
+	 *
+	 * @var DateTime
 	 */
 	private $date;
 
 	/**
 	 * @ORM\Column(name="duration", type="time", nullable=true)
+	 *
+	 * @Assert\Time()
+	 *
+	 * @var DateTime
 	 */
 	private $duration;
 
 	/**
 	 * @ORM\Column(name="location", type="string", length=255, nullable=true)
+	 *
+	 * @Assert\Type(type="string")
+	 *
+	 * @var string
 	 */
 	private $location;
 
@@ -49,6 +69,8 @@ class Consultation
 	 *	 joinColumns={@ORM\JoinColumn(name="consultation_id", referencedColumnName="id")},
 	 *	 inverseJoinColumns={@ORM\JoinColumn(name="animal_id", referencedColumnName="id")}
 	 * )
+	 *
+	 * @var AbstractAnimal[]
 	 */
 	private $animals;
 
@@ -58,12 +80,16 @@ class Consultation
 	 *	 joinColumns={@ORM\JoinColumn(name="consultation_id", referencedColumnName="id")},
 	 *	 inverseJoinColumns={@ORM\JoinColumn(name="owner_id", referencedColumnName="id")}
 	 * )
+	 *
+	 * @var Owner[]
 	 */
 	private $owners;
 
 	/**
 	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CustomerCard\CustomerCard")
 	 * @ORM\JoinColumn(name="customer_card_id", referencedColumnName="id", nullable=false)
+	 *
+	 * @var CustomerCard
 	 */
 	private $customerCard;
 

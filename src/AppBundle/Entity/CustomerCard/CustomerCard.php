@@ -4,6 +4,7 @@ namespace AppBundle\Entity\CustomerCard;
 
 use AppBundle\Entity\Customer\Customer;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -19,22 +20,32 @@ class CustomerCard
 	 * @ORM\Id
 	 * @ORM\GeneratedValue(strategy="AUTO")
 	 * @ORM\Column(name="id", type="integer",nullable=false)
+	 *
+	 * @var int
 	 */
 	private $id;
 
 	/**
 	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\Customer\Customer", inversedBy="customerCard")
 	 * @ORM\JoinColumn(name="customer_id", referencedColumnName="id", nullable=false)
+	 *
+	 * @var Customer
 	 */
 	private $customer;
 
 	/**
 	 * @ORM\OneToMany(targetEntity="AppBundle\Entity\CustomerCard\Consultation", mappedBy="id")
+	 *
+	 * @var Consultation[]
 	 */
 	private $consultations;
 
 	/**
 	 * @ORM\Column(name="comments", type="text", nullable=true)
+	 *
+	 * @Assert\Type(type="string")
+	 *
+	 * @var string
 	 */
 	private $comments;
 

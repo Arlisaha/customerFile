@@ -3,6 +3,7 @@
 namespace AppBundle\Entity\Customer;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class LifeStyle
@@ -17,11 +18,18 @@ class LifeStyle
 	 * @ORM\Id
 	 * @ORM\GeneratedValue(strategy="AUTO")
 	 * @ORM\Column(name="id", type="integer", nullable=false)
+	 *
+	 * @var int
 	 */
 	private $id;
 
 	/**
 	 * @ORM\Column(name="label", type="string", length=255, nullable=false)
+	 *
+	 * @Assert\NotBlank()
+	 * @Assert\Type(type="string")
+	 *
+	 * @var string
 	 */
 	private $label;
 

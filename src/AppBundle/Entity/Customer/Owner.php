@@ -3,6 +3,7 @@
 namespace AppBundle\Entity\Customer;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use \DateTime;
 
@@ -19,41 +20,74 @@ class Owner
 	 * @ORM\Id
 	 * @ORM\GeneratedValue(strategy="AUTO")
 	 * @ORM\Column(name="id", type="integer")
+	 *
+	 * @var int
 	 */
 	private $id;
 
 	/**
-	 * @ORM\Column(name="first_name", type="string", length=255)
+	 * @ORM\Column(name="first_name", type="string", length=255, nullable=true)
+	 *
+	 * @Assert\Type(type="string")
+	 *
+	 * @var string
 	 */
 	private $firstName;
 
 	/**
-	 * @ORM\Column(name="last_name", type="string", length=255, nullable=true)
+	 * @ORM\Column(name="last_name", type="string", length=255, nullable=false)
+	 *
+	 * @Assert\NotBlank()
+	 * @Assert\Type(type="string")
+	 *
+	 * @var string
 	 */
 	private $lastName;
 
 	/**
-	 * @ORM\Column(name="birth_date", type="datetime", nullable=true)
+	 * @ORM\Column(name="birth_date", type="date", nullable=true)
+	 *
+	 * @Assert\Date()
+	 *
+	 * @var DateTime
 	 */
 	private $birthDate;
 
 	/**
 	 * @ORM\Column(name="gender", type="binary", nullable=true)
+	 *
+	 * @Assert\Choice(choices={"male", "female"}, message="Choose a valid gender")
+	 *
+	 * @var string
 	 */
 	private $gender;
 
 	/**
 	 * @ORM\Column(name="job", type="string", length=255, nullable=true)
+	 *
+	 * @Assert\Type(type="string")
+	 *
+	 * @var string
 	 */
 	private $job;
 
 	/**
 	 * @ORM\Column(name="phone", type="string", length=10, nullable=false)
+	 *
+	 * @Assert\Regex("~(\+\d{2,3}|0)\d{9}~")
+	 * @Assert\Type(type="string")
+	 *
+	 * @var string
 	 */
 	private $phone;
 
 	/**
 	 * @ORM\Column(name="email", type="string", length=255, nullable=false)
+	 *
+	 * @Assert\NotBlank()
+	 * @Assert\Email()
+	 *
+	 * @var string
 	 */
 	private $email;
 
@@ -63,23 +97,31 @@ class Owner
 	 *     joinColumns={@ORM\JoinColumn(name="owner_id", referencedColumnName="id")},
 	 *     inverseJoinColumns={@ORM\JoinColumn(name="life_style_id", referencedColumnName="id")}
 	 * )
+	 *
+	 * @var LifeStyle[]
 	 */
 	private $lifeStyle;
 
 	/**
 	 * @ORM\Column(name="comment", type="text", nullable=true)
+	 *
+	 * @Assert\Type(type="string")
+	 *
+	 * @var string
 	 */
 	private $comment;
 
 	/**
 	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Customer\Customer", inversedBy="owners")
 	 * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
+	 *
+	 * @var Customer
 	 */
 	private $customer;
 
 	public static $genders = [
-		0 => 'entity.owner.gender.male',
-		1 => 'entity.owner.gender.female',
+		'male'   => 'entity.owner.gender.male',
+		'female' => 'entity.owner.gender.female',
 	];
 
 	public function __construct()

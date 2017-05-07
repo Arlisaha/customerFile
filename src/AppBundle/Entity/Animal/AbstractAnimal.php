@@ -5,6 +5,7 @@ namespace AppBundle\Entity\Animal;
 use AppBundle\Entity\Customer\Customer;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use \DateTime;
 
 /**
@@ -14,8 +15,8 @@ use \DateTime;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\Animal\AnimalRepository")
  * @ORM\Table(name="animal")
  * @ORM\InheritanceType("SINGLE_TABLE")
- * @ORM\DiscriminatorColumn(name="specie", type="binary")
- * @ORM\DiscriminatorMap({"0" = "Dog", "1" = "Cat"})
+ * @ORM\DiscriminatorColumn(name="specie", type="string", length=3)
+ * @ORM\DiscriminatorMap({"dog" = "Dog", "cat" = "Cat"})
  */
 abstract class AbstractAnimal
 {
@@ -23,83 +24,137 @@ abstract class AbstractAnimal
 	 * @ORM\Id
 	 * @ORM\GeneratedValue(strategy="AUTO")
 	 * @ORM\Column(name="id", type="integer", nullable=false)
+	 *
+	 * @var int
 	 */
 	private $id;
 
 	/**
 	 * @ORM\Column(name="name", type="string", length=255, nullable=false)
+	 *
+	 * @Assert\NotBlank()
+	 * @Assert\Type(type="string")
+	 *
+	 * @var string
 	 */
 	private $name;
 
 	/**
 	 * @ORM\Column(name="birth_date", type="datetime", nullable=true)
+	 *
+	 * @Assert\Date()
+	 *
+	 * @var DateTime
 	 */
 	private $birthDate;
 
 	/**
-	 * @ORM\Column(name="gender", type="binary", nullable=false)
+	 * @ORM\Column(name="gender", type="string", length=6, nullable=false)
+	 *
+	 * @Assert\Choice(choices={"male", "female"}, message="Choose a valid gender")
+	 *
+	 * @var string
 	 */
 	private $gender;
 
 	/**
 	 * @ORM\Column(name="castrated", type="boolean", nullable=false)
+	 *
+	 * @Assert\Type(type="bool")
+	 *
+	 * @var bool
 	 */
 	private $castrated;
 
 	/**
 	 * @ORM\Column(name="weight", type="float", nullable=true)
+	 *
+	 * @Assert\GreaterThan(value="0")
+	 *
+	 * @var float
 	 */
 	private $weight;
 
 	/**
 	 * @ORM\Column(name="size", type="float", nullable=true)
+	 *
+	 * @Assert\GreaterThan(value="0")
+	 *
+	 * @var float
 	 */
 	private $size;
 
 	/**
 	 * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Animal\Temper")
 	 * @ORM\JoinTable(name="l__animal_temper",
-	 *	 joinColumns={@ORM\JoinColumn(name="animal_id", referencedColumnName="id")},
-	 *	 inverseJoinColumns={@ORM\JoinColumn(name="temper_id", referencedColumnName="id")}
+	 *     joinColumns={@ORM\JoinColumn(name="animal_id", referencedColumnName="id")},
+	 *     inverseJoinColumns={@ORM\JoinColumn(name="temper_id", referencedColumnName="id")}
 	 * )
+	 *
+	 * @var Temper
 	 */
 	private $temper;
 
 	/**
 	 * @ORM\Column(name="living_outside", type="boolean", nullable=true)
+	 *
+	 * @Assert\Type(type="bool")
+	 *
+	 * @var bool
 	 */
 	private $livingOutside;
 
 	/**
 	 * @ORM\Column(name="outside_time", type="time", nullable=true)
+	 *
+	 * @Assert\Time()
+	 *
+	 * @var DateTime
 	 */
 	private $outsideTime;
 
 	/**
 	 * @ORM\Column(name="health_issues", type="text", nullable=true)
+	 *
+	 * @Assert\Type(type="string")
+	 *
+	 * @var string
 	 */
 	private $healthIssues;
 
 	/**
 	 * @ORM\Column(name="comment", type="text", nullable=true)
+	 *
+	 * @Assert\Type(type="string")
+	 *
+	 * @var string
 	 */
 	private $comment;
 
 	/**
 	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Customer\Customer", inversedBy="animals")
+	 *
+	 * @var Customer
 	 */
 	private $customer;
 
 	/**
 	 * @ORM\Column(name="adopted_from_association", type="boolean", nullable=true)
+	 *
+	 * @Assert\Type(type="bool")
+	 *
+	 * @var bool
 	 */
 	private $adoptedFromAssociation;
 
 	public static $genders = [
-		0 => 'entity.animal.gender.male',
-		1 => 'entity.animal.gender.female',
+		'male'   => 'entity.animal.gender.male',
+		'female' => 'entity.animal.gender.female',
 	];
 
+	/**
+	 * AbstractAnimal constructor.
+	 */
 	public function __construct()
 	{
 		$this->temper = new ArrayCollection();
@@ -180,7 +235,7 @@ abstract class AbstractAnimal
 	 */
 	public function setGender($gender)
 	{
-		if(!array_key_exists($gender, static::$genders) && !in_array($gender, static::$genders)) {
+		if (!array_key_exists($gender, static::$genders) && !in_array($gender, static::$genders)) {
 			throw new \InvalidArgumentException(
 				sprintf(
 					'The given time unit value must be either a valid string (%s) nor a valid int key (%s).',
