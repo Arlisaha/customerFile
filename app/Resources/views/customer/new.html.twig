@@ -1,0 +1,159 @@
+{% extends '::layout.html.twig' %}
+
+{% set page = 'Nouveau Client' %}
+
+{% block pagetitle %}{{ page }}{% endblock %}
+
+{% block container %}
+    <h1 id="page_title">{{ page }}</h1>
+    <div id="container">
+        {{ form_start(form) }}
+        <div id="customer" class="form_block">
+            <table id="address">
+                <tr id="address_elts">
+                    <td>
+                        <label class="no_margin_left">Adresse : </label>
+                    </td>
+                    <td>
+                        {{ form_widget(form.address) }}
+                    </td>
+                    <td>
+                        <label>Code postal : </label>
+                    </td>
+                    <td>
+                        {{ form_widget(form.zipCode) }}
+                    </td>
+                    <td>
+                        <label>Ville : </label>
+                    </td>
+                    <td>
+                        {{ form_widget(form.city) }}
+                    </td>
+                </tr>
+                <tr id="status">
+                    <td>
+                        <label>Statut : </label>
+                    </td>
+                    <td>
+                        {{ form_widget(form.status) }}
+                    </td>
+                </tr>
+            </table>
+            <span class="inner_block_title left">Propri&eacute;taire principal</span>
+            <span class="inner_block_title right">Animal principal</span>
+            <div id="owners" class="inner_form_block left">
+                <table>
+                    <tr>
+                        <td class="label">
+                            <label>Pr&eacute;nom :</label>
+                        </td>
+                        <td class="value">
+                            {{ form_widget(form.mainOwner.firstName) }}
+                        </td>
+                        <td class="label">
+                            <label>Nom :</label>
+                        </td>
+                        <td class="value">
+                            {{ form_widget(form.mainOwner.lastName) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">
+                            <label>E-mail :</label>
+                        </td>
+                        <td class="value">
+                            {{ form_widget(form.mainOwner.email) }}
+                        </td>
+                        <td class="label">
+                            <label>T&eacute;l&eacute;phone :</label>
+                        </td>
+                        <td class="value">
+                            {{ form_widget(form.mainOwner.phone) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">
+                            <label>Style de vie :</label>
+                        </td>
+                        <td class="value">
+                            {{ form_widget(form.mainOwner.lifeStyle) }}
+                        </td>
+                        <td class="label">
+                            <label>Sexe :</label>
+                        </td>
+                        <td class="value">
+                            {{ form_widget(form.mainOwner.gender) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">
+                            <label>Travail :</label>
+                        </td>
+                        <td class="value">
+                            {{ form_widget(form.mainOwner.job) }}
+                        </td>
+                        <td class="label">
+                            <label>Date de naissance :</label>
+                        </td>
+                        <td class="value">
+                            {{ form_widget(form.mainOwner.birthDate) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label" class="padding_top">
+                            <label>Commentaires</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            {{ form_widget(form.mainOwner.comment, {
+                                'attr': {
+                                    'class': 'froala'
+                                }
+                            }) }}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="animals" class="inner_form_block right">
+                {{ form_widget(form.specie) }}
+                {{ form_widget(form.mainAnimal) }}
+            </div>
+        </div>
+        <span id="submit_btn">
+            {{ form_widget(form.submit, {
+                'label': 'Valider',
+                'attr': {
+                    'class': 'submit_button',
+                    'id': 'submit_btn'
+                }
+            }) }}
+        </span>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block pagejavascripts %}
+    <script>
+        var chosenOptions = {
+            no_results_text: "Pas de r&eacute:sultats !",
+            disable_search_threshold: 10
+        };
+        var froalaOptions = {
+            toolbarButtons: [
+                'fullscreen', '|',
+                'undo', 'redo', '|',
+                'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|',
+                'fontFamily', 'fontSize', 'color', '|',
+                'paragraphStyle', 'paragraphFormat', 'align', '|',
+                'outdent', 'indent', '|',
+                'formatOL', 'formatUL', 'insertTable', 'quote', 'insertHorizontalLine', '|',
+                'insertLink', 'uploadFile', 'emoticons', 'specialCharacters'
+            ],
+            theme: 'grey',
+            zIndex: 2003,
+            placeholderText: 'Commentaires...'
+        };
+    </script>
+    <script src="{{ asset('public/js/customer/form_handler.js') }}"></script>
+{% endblock %}
