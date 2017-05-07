@@ -1,0 +1,9 @@
+{% block number_widget %}
+    {% set type = type|default('number') %}
+    {{ block('form_widget_simple') }}
+{% endblock number_widget %}
+
+{% block tel_widget %}
+    {% set type = type|default('tel') %}
+    {{ block('form_widget_simple') }}
+{% endblock tel_widget %}

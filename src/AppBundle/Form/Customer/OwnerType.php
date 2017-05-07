@@ -3,6 +3,7 @@
 namespace AppBundle\Form\Customer;
 
 use AppBundle\Entity\Customer\Owner;
+use AppBundle\Form\FormType\TelType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -29,7 +30,7 @@ class OwnerType extends AbstractType
 			->add('firstName', TextType::class, [])
 			->add('lastName', TextType::class, [])
 			->add('email', EmailType::class, [])
-			->add('phone', NumberType::class, []);
+			->add('phone', TelType::class, []);
     }
 
     public function configureOptions(OptionsResolver $resolver)

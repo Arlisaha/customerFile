@@ -24,9 +24,13 @@ class CustomerCardController extends Controller
 	 *
 	 * @Route("/", name="customer_card")
 	 */
-	public function indexAction($name)
+	public function indexAction()
 	{
-		return $this->render('', ['name' => $name]);
+		$form = $this->createForm(CustomerCardType::class, null, []);
+
+		return $this->render(':customer_card:edit.html.twig', [
+			'form' => $form->createView(),
+		]);
 	}
 
 	/**
