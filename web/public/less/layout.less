@@ -38,6 +38,14 @@ body {
 				margin-bottom: 15px;
 				display:       flow-root;
 
+				.inner_block_title {
+					display:        inline-block;
+					letter-spacing: 2px;
+					font-family:    "Lucida Console", Monaco, monospace;
+					width:          48%;
+					padding:        5px;
+				}
+
 				.inner_form_block {
 					border:        inherit;
 					border-radius: inherit;
@@ -47,6 +55,21 @@ body {
 
 					select {
 						width: 40%;
+					}
+
+					table {
+						width: 100%;
+
+						.label {
+						}
+
+						.value {
+
+							select, input[type="text"],
+							input[type="email"] {
+								width: 69.5%;
+							}
+						}
 					}
 				}
 
@@ -94,6 +117,7 @@ body {
 			#consultations {
 				.consultations_list {
 					padding: 0;
+					margin:  0;
 
 					li {
 						list-style-type: none;
@@ -148,7 +172,10 @@ body {
 				height:        35px;
 			}
 
-			input {
+			input[type="date"], input[type="text"],
+			input[type="number"], input[type="time"],
+			input[type="date"], input[type="date"],
+			input[type="datetime"], input[type="email"] {
 				outline:       none;
 				border-radius: 5px;
 				background:    #F2F2F2;
@@ -245,6 +272,10 @@ body {
 					filter:           progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#E0E0E0, endColorstr=#BDBBBC);
 				}
 			}
+		}
+
+		.padding_top {
+			padding-top: 7px;
 		}
 	}
 	footer {
