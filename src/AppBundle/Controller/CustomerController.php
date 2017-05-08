@@ -75,6 +75,8 @@ class CustomerController extends Controller
 			$em->persist($owner);
 			$customerCard->setCustomer($customer);
 			$em->persist($customerCard);
+			$customer->setCustomerCard($customerCard);
+			$em->persist($customer);
 
 			$em->flush();
 
