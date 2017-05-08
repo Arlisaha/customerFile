@@ -202,7 +202,7 @@ class Owner
 	 *
 	 * @return Owner
 	 */
-	public function setBirthDate(DateTime $birthDate)
+	public function setBirthDate(DateTime $birthDate = null)
 	{
 		$this->birthDate = $birthDate;
 

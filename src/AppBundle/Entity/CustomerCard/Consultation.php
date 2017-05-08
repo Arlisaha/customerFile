@@ -37,7 +37,7 @@ class Consultation
 	private $price;
 
 	/**
-	 * @ORM\Column(name="date", type="datetime")
+	 * @ORM\Column(name="date", type="datetime", nullable=false)
 	 *
 	 * @Assert\Date()
 	 *
