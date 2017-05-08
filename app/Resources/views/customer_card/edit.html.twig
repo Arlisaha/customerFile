@@ -41,9 +41,98 @@
                     </tr>
                 </table>
                 <div id="owners" class="inner_form_block left">
-                    <button id="add_owner" class="add_button">Ajouter un propri&eacute;taire</button>
-                    {{ form_widget(form.customer.owners) }}
-                    {{ form_widget(form.customer.mainOwner) }}
+                    <table>
+                        <tr>
+                            <td class="label">
+                                <button id="add_owner" class="add_button">Ajouter un propri&eacute;taire</button>
+                            </td>
+                            <td class="label">
+                                <label>Propriétaire principal&nbsp;:</label>
+                            </td>
+                            <td class="value_long">
+                                {{ form_widget(form.customer.mainOwner) }}
+                            </td>
+                        </tr>
+                    </table>
+                    <ul class="list">
+                        {% for owner in form.customer.owners %}
+                            <li>
+                                <table>
+                                    <tr>
+                                        <td class="label">
+                                            <label>Pr&eacute;nom&nbsp;:</label>
+                                        </td>
+                                        <td class="value">
+                                            {{ form_widget(owner.firstName) }}
+                                        </td>
+                                        <td class="label">
+                                            <label>Nom&nbsp;:</label>
+                                        </td>
+                                        <td class="value">
+                                            {{ form_widget(owner.lastName) }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label">
+                                            <label>E-mail&nbsp;:</label>
+                                        </td>
+                                        <td class="value">
+                                            {{ form_widget(owner.email) }}
+                                        </td>
+                                        <td class="label">
+                                            <label>T&eacute;l&eacute;phone&nbsp;:</label>
+                                        </td>
+                                        <td class="value">
+                                            {{ form_widget(owner.phone) }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label">
+                                            <label>Style de vie&nbsp;:</label>
+                                        </td>
+                                        <td class="value">
+                                            {{ form_widget(owner.lifeStyle) }}
+                                        </td>
+                                        <td class="label">
+                                            <label>Sexe&nbsp;:</label>
+                                        </td>
+                                        <td class="value">
+                                            {{ form_widget(owner.gender) }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label">
+                                            <label>Travail&nbsp;:</label>
+                                        </td>
+                                        <td class="value">
+                                            {{ form_widget(owner.job) }}
+                                        </td>
+                                        <td class="label">
+                                            <label>Date de naissance&nbsp;:</label>
+                                        </td>
+                                        <td class="value">
+                                            {{ form_widget(owner.birthDate) }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label padding_top" colspan="8">
+                                            <label>Commentaires&nbsp;: </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="value" colspan="8">
+                                            {{ form_widget(owner.comment, {
+                                                'attr': {
+                                                    'class': 'froala'
+                                                }
+                                            }) }}
+                                        </td>
+                                    </tr>
+                                </table>
+                                {% if loop.index0 > 0 %}<hr />{% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </div>
                 <div id="animals" class="inner_form_block right">
                     <button id="add_cat" class="add_button">Ajouter un chat</button>
@@ -154,6 +243,14 @@
             zIndex: 2003,
             placeholderText: 'Commentaires...'
         };
+        var ids = ['customer_card_customer_address', 'customer_card_customer_zipCode', 'customer_card_customer_city'];
+        var mapping = [
+            {id: 'customer_card_customer_address', address_components: ['street_number', 'route'], separator: ' '},
+            {id: 'customer_card_customer_zipCode', address_components: ['postal_code'], separator: ''},
+            {id: 'customer_card_customer_city', address_components: ['locality', 'administrative_area_level_2'], separator: ' - '}
+        ];
     </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBP25G6kEni4T3lhBgbfvx2UOOkIh8SB1o&libraries=places&project=symbiose-animale-fiche-client" async defer></script>
     <script src="{{ asset('public/js/customer_card/form_handler.js') }}"></script>
+    <script src="{{ asset('public/js/google_api.js') }}"></script>
 {% endblock %}
