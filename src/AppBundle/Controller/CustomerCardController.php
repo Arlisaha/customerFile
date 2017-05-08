@@ -60,7 +60,7 @@ class CustomerCardController extends Controller
 	 * @return \Symfony\Component\HttpFoundation\Response
 	 *
 	 * @Route("/get/{id}", requirements={"id" = "\d+"}, name="customer_card_get")
-	 * @ParamConverter("customerCard", class="AppBundle:CustomerCard\CustomerCard")
+	 * @ParamConverter("customerCard", class="AppBundle\Entity\CustomerCard\CustomerCard")
 	 */
 	public function getAction(Request $request, CustomerCard $customerCard)
 	{
