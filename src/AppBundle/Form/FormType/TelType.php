@@ -3,13 +3,13 @@
 namespace AppBundle\Form\FormType;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class TelType extends AbstractType
 {
 	public function getParent()
 	{
-		return NumberType::class;
+		return TextType::class;
 	}
 
 	public function getName()
