@@ -29,14 +29,14 @@ class Customer
 	private $id;
 
 	/**
-	 * @ORM\OneToMany(targetEntity="AppBundle\Entity\Customer\Owner", mappedBy="customer")
+	 * @ORM\OneToMany(targetEntity="AppBundle\Entity\Customer\Owner", mappedBy="customer", cascade={"persist"})
 	 *
 	 * @var Owner[]
 	 */
 	private $owners;
 
 	/**
-	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\Customer\Owner")
+	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\Customer\Owner", cascade={"persist"})
 	 * @ORM\JoinColumn(name="main_owner_id", referencedColumnName="id")
 	 *
 	 * @var Owner
@@ -44,14 +44,14 @@ class Customer
 	private $mainOwner;
 
 	/**
-	 * @ORM\OneToMany(targetEntity="AppBundle\Entity\Animal\AbstractAnimal", mappedBy="customer")
+	 * @ORM\OneToMany(targetEntity="AppBundle\Entity\Animal\AbstractAnimal", mappedBy="customer", cascade={"persist"})
 	 *
 	 * @var AbstractAnimal[]
 	 */
 	private $animals;
 
 	/**
-	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\Animal\AbstractAnimal")
+	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\Animal\AbstractAnimal", cascade={"persist"})
 	 * @ORM\JoinColumn(name="main_animal_id", referencedColumnName="id")
 	 *
 	 * @var AbstractAnimal

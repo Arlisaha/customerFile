@@ -112,7 +112,7 @@ class Owner
 	private $comment;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Customer\Customer", inversedBy="owners")
+	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Customer\Customer", inversedBy="owners", cascade={"persist"})
 	 * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
 	 *
 	 * @var Customer

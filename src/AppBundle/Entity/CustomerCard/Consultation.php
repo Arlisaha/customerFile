@@ -86,7 +86,7 @@ class Consultation
 	private $owners;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CustomerCard\CustomerCard")
+	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CustomerCard\CustomerCard", cascade={"persist"})
 	 * @ORM\JoinColumn(name="customer_card_id", referencedColumnName="id", nullable=false)
 	 *
 	 * @var CustomerCard

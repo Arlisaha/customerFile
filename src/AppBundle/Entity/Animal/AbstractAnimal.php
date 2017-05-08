@@ -132,7 +132,7 @@ abstract class AbstractAnimal
 	private $comment;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Customer\Customer", inversedBy="animals")
+	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Customer\Customer", inversedBy="animals", cascade={"persist"})
 	 *
 	 * @var Customer
 	 */
