@@ -2,7 +2,6 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Animal\AbstractAnimal;
 use AppBundle\Entity\Customer\Customer;
 use AppBundle\Entity\CustomerCard\CustomerCard;
 use AppBundle\Form\Animal\AnimalType;
@@ -66,13 +65,17 @@ class CustomerController extends Controller
 		$form->handleRequest($request);
 
 		if ($form->isSubmitted() && $form->isValid()) {
+			$customerCard = new CustomerCard();
 			$em = $this->get('doctrine.orm.default_entity_manager');
 
 			$em->persist($customer);
-			$customerCard = new CustomerCard();
+			$animal = $customer->getMainAnimal()->setCustomer($customer);
+			$em->persist($animal);
+			$owner = $customer->getMainOwner()->setCustomer($customer);
+			$em->persist($owner);
 			$customerCard->setCustomer($customer);
-
 			$em->persist($customerCard);
+
 			$em->flush();
 
 			return $this->redirectToRoute('customer_card_edit', ['id' => $customerCard->getId()]);
