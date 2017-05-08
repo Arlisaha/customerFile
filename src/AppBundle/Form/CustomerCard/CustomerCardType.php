@@ -26,19 +26,22 @@ class CustomerCardType extends AbstractType
 				'prototype_name' => '__consultation__',
 				'by_reference'   => false,
 				'required'       => false,
+				'entry_options'  => [
+					'customer_card_id' => $builder->getData()->getId(),
+				],
 			])
 			->add('comments', TextareaType::class, [
 				'required' => false,
 			]);
 	}
-
+	
 	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults([
 			'data_class' => CustomerCard::class,
 		]);
 	}
-
+	
 	public function getName()
 	{
 		return 'customer_card';
