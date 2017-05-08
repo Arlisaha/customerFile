@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Animal\AbstractAnimal;
 use AppBundle\Entity\Customer\Customer;
+use AppBundle\Entity\CustomerCard\CustomerCard;
 use AppBundle\Form\Animal\AnimalType;
 use AppBundle\Form\Animal\CatType;
 use AppBundle\Form\Animal\DogType;
@@ -44,7 +45,8 @@ class CustomerController extends Controller
 				$type = AnimalType::class;
 		}
 
-		$form = $this->createFormBuilder(new Customer())
+		$customer = new Customer();
+		$form = $this->createFormBuilder($customer)
 			->add('address', TextareaType::class, [])
 			->add('city', TextType::class, [])
 			->add('zipCode', NumberType::class, [])
@@ -64,7 +66,15 @@ class CustomerController extends Controller
 		$form->handleRequest($request);
 
 		if($form->isSubmitted() && $form->isValid()) {
-			dump($form); die;
+			$customerCard = new CustomerCard();
+			$customerCard->setCustomer($customer);
+
+			$em = $this->get('doctrine.orm.default_entity_manager');
+
+			$em->persist($customerCard);
+			$em->flush();
+
+			return $this->redirectToRoute('customer_card_edit', ['id' => $customerCard->getId()]);
 		}
 
 		return $this->render(':customer:new.html.twig', [
