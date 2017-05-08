@@ -95,7 +95,7 @@ class Customer
 	private $city;
 
 	/**
-	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\CustomerCard\CustomerCard", inversedBy="customer")
+	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\CustomerCard\CustomerCard", inversedBy="customer", cascade={"persist"})
 	 */
 	private $customerCard;
 

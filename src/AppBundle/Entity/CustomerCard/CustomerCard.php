@@ -34,7 +34,7 @@ class CustomerCard
 	private $customer;
 
 	/**
-	 * @ORM\OneToMany(targetEntity="AppBundle\Entity\CustomerCard\Consultation", mappedBy="id", cascade={"persist"})
+	 * @ORM\OneToMany(targetEntity="AppBundle\Entity\CustomerCard\Consultation", mappedBy="customerCard", cascade={"persist"})
 	 *
 	 * @var Consultation[]
 	 */
