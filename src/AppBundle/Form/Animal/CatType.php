@@ -3,7 +3,6 @@
 namespace AppBundle\Form\Animal;
 
 use AppBundle\Entity\Animal\Cat;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +12,7 @@ class CatType extends AnimalType
 	{
 		parent::buildForm($builder, $options);
 		$builder
-			->add('breed', EntityType::class, [
+			->add('breed', BreedType::class, [
 				'class'    => 'AppBundle\Entity\Animal\CatBreed',
 				'required' => true,
 			]);
