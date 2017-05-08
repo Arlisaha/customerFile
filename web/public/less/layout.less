@@ -73,6 +73,17 @@ body {
 								width: 69.5%;
 							}
 						}
+
+						.value_long {
+							width: 3%;
+
+							select, input[type="text"],
+							input[type="email"], input[type="date"],
+							input[type="time"], input[type="number"],
+							input[type="tel"] {
+								width: 150%;
+							}
+						}
 					}
 				}
 
@@ -105,6 +116,7 @@ body {
 			#customer {
 				#address {
 					width: 95%;
+					padding-bottom: 1%;
 
 					.align_top {
 						vertical-align: top;
@@ -122,6 +134,14 @@ body {
 							display:      inline-block;
 							margin-right: 20px;
 						}
+					}
+				}
+
+				#owners {
+					.list {
+						margin-top:      5px;
+						list-style-type: none;
+						padding-left:    25px;
 					}
 				}
 			}
