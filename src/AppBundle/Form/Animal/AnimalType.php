@@ -26,7 +26,6 @@ class AnimalType extends AbstractType
 			->add('birthDate', BirthdayType::class, [
 				'html5'    => true,
 				'widget'   => 'single_text',
-				'input'    => 'string',
 				'required' => false,
 			])
 			->add('gender', GenderType::class, [
@@ -50,7 +49,6 @@ class AnimalType extends AbstractType
 			->add('outsideTime', TimeType::class, [
 				'html5'    => true,
 				'widget'   => 'single_text',
-				'input'    => 'string',
 				'required' => false,
 			])
 			->add('healthIssues', TextareaType::class, [

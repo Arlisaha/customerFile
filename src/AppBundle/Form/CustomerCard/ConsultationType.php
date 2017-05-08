@@ -70,7 +70,6 @@ class ConsultationType extends AbstractType
 			->add('duration', TimeType::class, [
 				'html5'    => true,
 				'widget'   => 'single_text',
-				'input'    => 'string',
 				'required' => false,
 			])
 			->add('price', MoneyType::class, [

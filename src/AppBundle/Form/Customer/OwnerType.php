@@ -32,7 +32,6 @@ class OwnerType extends AbstractType
 			->add('birthDate', DateType::class, [
 				'html5'    => true,
 				'widget'   => 'single_text',
-				'input'    => 'string',
 				'required' => false,
 			])
 			->add('firstName', TextType::class, [
