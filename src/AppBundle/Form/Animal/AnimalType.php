@@ -33,7 +33,7 @@ class AnimalType extends AbstractType
 				'required' => true,
 			])
 			->add('castrated', CheckboxType::class, [
-				'required' => true,
+				'required' => false,
 			])
 			->add('weight', NumberType::class, [
 				'required' => false,

@@ -79,7 +79,7 @@ class CustomerType extends AbstractType
 				'required' => true,
 			])
 			->add('status', TextType::class, [
-				'required' => true,
+				'required' => false,
 			]);
 	}
 
