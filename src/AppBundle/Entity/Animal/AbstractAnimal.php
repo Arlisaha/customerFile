@@ -235,18 +235,13 @@ abstract class AbstractAnimal
 	 */
 	public function setGender($gender)
 	{
-		if (!array_key_exists($gender, static::$genders) && !in_array($gender, static::$genders)) {
+		if (!is_string($gender) || !array_key_exists($gender, static::$genders)) {
 			throw new \InvalidArgumentException(
 				sprintf(
-					'The given time unit value must be either a valid string (%s) nor a valid int key (%s).',
-					join(', ', static::$genders),
+					'The given gender value must be one of the valid string : "%s".',
 					join(', ', array_flip(static::$genders))
 				)
 			);
-		}
-
-		if (is_string($gender)) {
-			$gender = array_flip(static::$genders)[$gender];
 		}
 
 		$this->gender = $gender;
