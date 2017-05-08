@@ -95,7 +95,7 @@ class Customer
 	private $city;
 
 	/**
-	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\CustomerCard\CustomerCard", inversedBy="customer", cascade={"persist"})
+	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\CustomerCard\CustomerCard", inversedBy="customer")
 	 */
 	private $customerCard;
 
@@ -328,15 +328,15 @@ class Customer
 	 */
 	public function setDogs($dogs)
 	{
-		foreach($this->dogs as $dog) {
-			$this->animals->removeElement($dog);
+		foreach($this->dogs as $cat) {
+			$this->animals->removeElement($cat);
 		}
 
-		foreach ($dogs as $dog) {
-			$this->animals->add($dog);
+		foreach ($dogs as $cat) {
+			$this->animals->add($cat);
 		}
 
-		$this->dogs = $dogs;
+		$this->cats = $dogs;
 	}
 
 	/**
