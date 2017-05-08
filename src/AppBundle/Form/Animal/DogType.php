@@ -20,7 +20,6 @@ class DogType extends AnimalType
 			->add('dailyWalkTime', TimeType::class, [
 				'html5'    => true,
 				'widget'   => 'single_text',
-				'input'    => 'string',
 				'required' => false,
 			]);
 	}
