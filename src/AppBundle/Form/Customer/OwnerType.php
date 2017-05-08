@@ -54,4 +54,9 @@ class OwnerType extends AbstractType
 			'data_class' => Owner::class,
 		]);
 	}
+
+	public function getName()
+	{
+		return 'owner';
+	}
 }

@@ -21,4 +21,9 @@ class GenderType extends AbstractType
 	{
 		return ChoiceType::class;
 	}
+
+	public function getName()
+	{
+		return 'animal_gender';
+	}
 }

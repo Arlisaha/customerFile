@@ -32,4 +32,9 @@ class TemperType extends AbstractType
 	{
 		return EntityType::class;
 	}
+
+	public function getName()
+	{
+		return 'temper';
+	}
 }

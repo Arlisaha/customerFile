@@ -68,4 +68,9 @@ class AnimalType extends AbstractType
 			'data_class' => AbstractAnimal::class,
 		]);
 	}
+
+	public function getName()
+	{
+		return 'animal';
+	}
 }

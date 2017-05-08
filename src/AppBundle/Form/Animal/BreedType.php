@@ -27,4 +27,9 @@ class BreedType extends AbstractType
 	{
 		return EntityType::class;
 	}
+
+	public function getName()
+	{
+		return 'breed';
+	}
 }

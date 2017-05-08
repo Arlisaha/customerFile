@@ -30,4 +30,9 @@ class DogType extends AnimalType
 			'data_class' => Dog::class,
 		]);
 	}
+
+	public function getName()
+	{
+		return 'dog';
+	}
 }

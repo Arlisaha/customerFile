@@ -25,4 +25,9 @@ class CatType extends AnimalType
 			'data_class' => Cat::class,
 		]);
 	}
+
+	public function getName()
+	{
+		return 'cat';
+	}
 }

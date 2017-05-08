@@ -89,4 +89,9 @@ class CustomerType extends AbstractType
 			'data_class' => Customer::class,
 		]);
 	}
+
+	public function getName()
+	{
+		return 'customer';
+	}
 }

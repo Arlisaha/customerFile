@@ -83,4 +83,9 @@ class ConsultationType extends AbstractType
 			'data_class' => Consultation::class,
 		]);
 	}
+
+	public function getName()
+	{
+		return 'consultation';
+	}
 }

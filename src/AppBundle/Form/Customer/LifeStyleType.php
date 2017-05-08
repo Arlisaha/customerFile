@@ -27,4 +27,9 @@ class LifeStyleType extends AbstractType
 	{
 		return EntityType::class;
 	}
+
+	public function getName()
+	{
+		return 'life_style';
+	}
 }

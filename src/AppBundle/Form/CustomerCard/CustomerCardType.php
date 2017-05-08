@@ -38,4 +38,9 @@ class CustomerCardType extends AbstractType
 			'data_class' => CustomerCard::class,
 		]);
 	}
+
+	public function getName()
+	{
+		return 'customer_card';
+	}
 }
