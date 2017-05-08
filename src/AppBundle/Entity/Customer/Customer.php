@@ -487,8 +487,8 @@ class Customer
 	{
 		return sprintf(
 			'%s - %s',
-			$this->getMainAnimal()->getName(),
-			$this->getMainOwner()->getLastName()
+			$this->getMainOwner(),
+			$this->getMainAnimal()
 		);
 	}
 }

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity\Animal;
 
+use \DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -51,7 +52,7 @@ class Dog extends AbstractAnimal
 	}
 
 	/**
-	 * @return float
+	 * @return DateTime
 	 */
 	public function getDailyWalkTime()
 	{
@@ -59,11 +60,11 @@ class Dog extends AbstractAnimal
 	}
 
 	/**
-	 * @param float $dailyWalkTime
+	 * @param DateTime $dailyWalkTime
 	 *
 	 * @return Dog
 	 */
-	public function setDailyWalkTime($dailyWalkTime)
+	public function setDailyWalkTime(DateTime $dailyWalkTime = null)
 	{
 		$this->dailyWalkTime = $dailyWalkTime;
 

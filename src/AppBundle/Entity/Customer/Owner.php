@@ -384,6 +384,10 @@ class Owner
 
 	public function __toString()
 	{
-		return $this->lastName;
+		return sprintf(
+			'%s %s',
+			strtoupper($this->lastName),
+			ucfirst(strtolower($this->firstName))
+		);
 	}
 }

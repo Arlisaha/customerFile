@@ -475,6 +475,6 @@ abstract class AbstractAnimal
 
 	public function __toString()
 	{
-		return $this->name;
+		return ucfirst(strtolower($this->name));
 	}
 }

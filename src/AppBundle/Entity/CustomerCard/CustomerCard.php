@@ -160,6 +160,6 @@ class CustomerCard
 
 	public function __toString()
 	{
-		return (string)$this->id;
+		return $this->customer->__toString();
 	}
 }

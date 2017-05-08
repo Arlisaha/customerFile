@@ -309,6 +309,6 @@ class Consultation
 
 	public function __toString()
 	{
-		return $this->getDate()->format('d/m/Y');
+		return $this->date->format('d/m/Y');
 	}
 }
