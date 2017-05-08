@@ -160,7 +160,7 @@ class Consultation
 	}
 
 	/**
-	 * @return float
+	 * @return DateTime
 	 */
 	public function getDuration()
 	{
@@ -168,11 +168,11 @@ class Consultation
 	}
 
 	/**
-	 * @param float $duration
+	 * @param DateTime $duration
 	 *
 	 * @return Consultation
 	 */
-	public function setDuration($duration)
+	public function setDuration(DateTime $duration = null)
 	{
 		$this->duration = $duration;
 
@@ -238,7 +238,7 @@ class Consultation
 	 */
 	public function removeAnimal(AbstractAnimal $animal)
 	{
-		$this->animals->remove($animal);
+		$this->animals->removeElement($animal);
 
 		return $this;
 	}
@@ -282,7 +282,7 @@ class Consultation
 	 */
 	public function removeOwner(Owner $owner)
 	{
-		$this->owners->remove($owner);
+		$this->owners->removeElement($owner);
 
 		return $this;
 	}

@@ -337,7 +337,7 @@ class Owner
 	 */
 	public function removeLifeStyle(LifeStyle $lifeStyle)
 	{
-		$this->lifeStyle->remove($lifeStyle);
+		$this->lifeStyle->removeElement($lifeStyle);
 
 		return $this;
 	}

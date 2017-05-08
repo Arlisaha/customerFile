@@ -336,7 +336,7 @@ abstract class AbstractAnimal
 	 */
 	public function addTemper(Temper $temper)
 	{
-		$this->temper->add($temper);
+		$this->temper->removeElement($temper);
 
 		return $this;
 	}
@@ -374,7 +374,7 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @return float
+	 * @return DateTime
 	 */
 	public function getOutsideTime()
 	{
@@ -382,11 +382,11 @@ abstract class AbstractAnimal
 	}
 
 	/**
-	 * @param float $outsideTime
+	 * @param DateTime $outsideTime
 	 *
 	 * @return AbstractAnimal
 	 */
-	public function setOutsideTime($outsideTime)
+	public function setOutsideTime(DateTime $outsideTime = null)
 	{
 		$this->outsideTime = $outsideTime;
 

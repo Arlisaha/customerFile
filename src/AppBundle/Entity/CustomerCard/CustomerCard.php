@@ -133,7 +133,7 @@ class CustomerCard
 	 */
 	public function removeConsultation(Consultation $consultation)
 	{
-		$this->consultations->remove($consultation);
+		$this->consultations->removeElement($consultation);
 
 		return $this;
 	}
@@ -160,6 +160,6 @@ class CustomerCard
 
 	public function __toString()
 	{
-		return $this->id;
+		return (string)$this->id;
 	}
 }

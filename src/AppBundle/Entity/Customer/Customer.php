@@ -99,10 +99,24 @@ class Customer
 	 */
 	private $customerCard;
 
+	/**
+	 * @var Cat[]
+	 */
+	private $cats;
+
+	/**
+	 * @var Dog[]
+	 */
+	private $dogs;
+
+	/**
+	 * Customer constructor.
+	 */
 	public function __construct()
 	{
-		$this->owners  = new ArrayCollection();
+		$this->owners = new ArrayCollection();
 		$this->animals = new ArrayCollection();
+		$this->setCatsAndDogs();
 	}
 
 	/**
@@ -164,7 +178,7 @@ class Customer
 	 */
 	public function removeOwner(Owner $owner)
 	{
-		$this->owners->remove($owner);
+		$this->owners->removeElement($owner);
 
 		return $this;
 	}
@@ -190,7 +204,24 @@ class Customer
 	}
 
 	/**
-	 * @return ArrayCollection
+	 * Set array collections for cats and dogs
+	 */
+	private function setCatsAndDogs()
+	{
+		$this->cats = new ArrayCollection();
+		$this->dogs = new ArrayCollection();
+
+		foreach ($this->animals as $animal) {
+			if ($animal instanceof Cat) {
+				$this->cats->add($animal);
+			} elseif ($animal instanceof Dog) {
+				$this->dogs->add($animal);
+			}
+		}
+	}
+
+	/**
+	 * @return AbstractAnimal[]
 	 */
 	public function getAnimals()
 	{
@@ -198,13 +229,14 @@ class Customer
 	}
 
 	/**
-	 * @param ArrayCollection $animals
+	 * @param AbstractAnimal[] $animals
 	 *
 	 * @return Customer
 	 */
-	public function setAnimals($animals)
+	public function setAnimals(ArrayCollection $animals)
 	{
 		$this->animals = $animals;
+		$this->setCatsAndDogs();
 
 		return $this;
 	}
@@ -217,6 +249,7 @@ class Customer
 	public function addAnimal(AbstractAnimal $animal)
 	{
 		$this->animals->add($animal);
+		$this->setCatsAndDogs();
 
 		return $this;
 	}
@@ -228,9 +261,34 @@ class Customer
 	 */
 	public function removeAnimal(AbstractAnimal $animal)
 	{
-		$this->animals->remove($animal);
+		$this->animals->removeElement($animal);
+		$this->setCatsAndDogs();
 
 		return $this;
+	}
+
+	/**
+	 * @return Cat[]
+	 */
+	public function getCats()
+	{
+		return $this->cats;
+	}
+
+	/**
+	 * @param Cat[] $cats
+	 */
+	public function setCats(ArrayCollection $cats)
+	{
+		foreach($this->cats as $cat) {
+			$this->animals->removeElement($cat);
+		}
+
+		foreach ($cats as $cat) {
+			$this->animals->add($cat);
+		}
+
+		$this->cats = $cats;
 	}
 
 	/**
@@ -255,6 +313,30 @@ class Customer
 		$this->removeAnimal($cat);
 
 		return $this;
+	}
+
+	/**
+	 * @return Dog[]
+	 */
+	public function getDogs()
+	{
+		return $this->dogs;
+	}
+
+	/**
+	 * @param Dog[] $dogs
+	 */
+	public function setDogs($dogs)
+	{
+		foreach($this->dogs as $dog) {
+			$this->animals->removeElement($dog);
+		}
+
+		foreach ($dogs as $dog) {
+			$this->animals->add($dog);
+		}
+
+		$this->dogs = $dogs;
 	}
 
 	/**
