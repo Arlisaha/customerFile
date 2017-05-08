@@ -75,7 +75,7 @@ class CustomerType extends AbstractType
 			->add('city', TextType::class, [
 				'required' => true,
 			])
-			->add('zipCode', NumberType::class, [
+			->add('zipCode', TextType::class, [
 				'required' => true,
 			])
 			->add('status', TextType::class, [
