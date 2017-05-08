@@ -2,16 +2,16 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Animal\Cat;
-use AppBundle\Entity\Animal\Dog;
+use AppBundle\Entity\Animal\AbstractAnimal;
 use AppBundle\Entity\Customer\Customer;
 use AppBundle\Form\Animal\AnimalType;
+use AppBundle\Form\Animal\CatType;
+use AppBundle\Form\Animal\DogType;
 use AppBundle\Form\Customer\OwnerType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,13 +33,24 @@ class CustomerController extends Controller
 	 */
 	public function newAction(Request $request)
 	{
+		switch ($request->request->get('form')['specie']) {
+			case 'dog':
+				$type = DogType::class;
+				break;
+			case 'cat':
+				$type = CatType::class;
+				break;
+			default:
+				$type = AnimalType::class;
+		}
+
 		$form = $this->createFormBuilder(new Customer())
 			->add('address', TextareaType::class, [])
 			->add('city', TextType::class, [])
 			->add('zipCode', NumberType::class, [])
 			->add('status', TextType::class, [])
 			->add('mainOwner', OwnerType::class, [])
-			->add('mainAnimal', AnimalType::class, [])
+			->add('mainAnimal', $type, [])
 			->add('specie', ChoiceType::class, [
 				'mapped'                    => false,
 				'choice_translation_domain' => true,
@@ -49,6 +60,12 @@ class CustomerController extends Controller
 				],
 			])
 			->getForm();
+
+		$form->handleRequest($request);
+
+		if($form->isSubmitted() && $form->isValid()) {
+			dump($form); die;
+		}
 
 		return $this->render(':customer:new.html.twig', [
 			'form' => $form->createView(),
