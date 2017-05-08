@@ -60,7 +60,7 @@ class CustomerCardController extends Controller
 	 * @return \Symfony\Component\HttpFoundation\Response
 	 *
 	 * @Route("/get/{id}", requirements={"id" = "\d+"}, name="customer_card_get")
-	 * @ParamConverter("customerCard", class="AppBundle\Entity\CustomerCard\CustomerCard")
+	 * @ParamConverter("customerCard", class="AppBundle:CustomerCard\CustomerCard")
 	 */
 	public function getAction(Request $request, CustomerCard $customerCard)
 	{
@@ -82,7 +82,12 @@ class CustomerCardController extends Controller
 		$form->handleRequest($request);
 
 		if ($form->isSubmitted() && $form->isValid()) {
-
+			$em = $this->get('doctrine.orm.default_entity_manager');
+			
+			$em->persist($customerCard);
+			$em->flush();
+			
+			return $this->redirectToRoute('customer_card_get', ['id' => $customerCard->getId()]);
 		}
 
 		return $this->render(':customer_card:edit.html.twig', [
