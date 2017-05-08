@@ -65,11 +65,12 @@ class CustomerController extends Controller
 
 		$form->handleRequest($request);
 
-		if($form->isSubmitted() && $form->isValid()) {
+		if ($form->isSubmitted() && $form->isValid()) {
+			$em = $this->get('doctrine.orm.default_entity_manager');
+
+			$em->persist($customer);
 			$customerCard = new CustomerCard();
 			$customerCard->setCustomer($customer);
-
-			$em = $this->get('doctrine.orm.default_entity_manager');
 
 			$em->persist($customerCard);
 			$em->flush();
