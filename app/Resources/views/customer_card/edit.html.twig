@@ -40,154 +40,74 @@
                         </td>
                     </tr>
                 </table>
-                <div id="owners" class="inner_form_block left">
+                <span class="inner_block_title">Propri&eacute;taires</span>
+                <div id="owners" class="inner_form_block">
                     <table>
                         <tr>
                             <td class="label">
-                                <button id="add_owner" class="add_button">Ajouter un propri&eacute;taire</button>
+                                <button id="add_owner" class="add_button" data-prototype="{{- form_widget(form.customer.owners.vars.prototype)|e('html') -}}">
+                                    Ajouter un propri&eacute;taire
+                                </button>
                             </td>
                             <td class="label">
                                 <label>Propriétaire principal&nbsp;:</label>
                             </td>
-                            <td class="value_long">
+                            <td class="value_long" colspan="2">
                                 {{ form_widget(form.customer.mainOwner) }}
                             </td>
                         </tr>
                     </table>
-                    <ul class="list">
+                    <ul id="owners_list" class="list">
                         {% for owner in form.customer.owners %}
                             <li>
-                                <table>
-                                    <tr>
-                                        <td class="label">
-                                            <label>Pr&eacute;nom&nbsp;:</label>
-                                        </td>
-                                        <td class="value">
-                                            {{ form_widget(owner.firstName) }}
-                                        </td>
-                                        <td class="label">
-                                            <label>Nom&nbsp;:</label>
-                                        </td>
-                                        <td class="value">
-                                            {{ form_widget(owner.lastName) }}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label">
-                                            <label>E-mail&nbsp;:</label>
-                                        </td>
-                                        <td class="value">
-                                            {{ form_widget(owner.email) }}
-                                        </td>
-                                        <td class="label">
-                                            <label>T&eacute;l&eacute;phone&nbsp;:</label>
-                                        </td>
-                                        <td class="value">
-                                            {{ form_widget(owner.phone) }}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label">
-                                            <label>Style de vie&nbsp;:</label>
-                                        </td>
-                                        <td class="value">
-                                            {{ form_widget(owner.lifeStyle) }}
-                                        </td>
-                                        <td class="label">
-                                            <label>Sexe&nbsp;:</label>
-                                        </td>
-                                        <td class="value">
-                                            {{ form_widget(owner.gender) }}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label">
-                                            <label>Travail&nbsp;:</label>
-                                        </td>
-                                        <td class="value">
-                                            {{ form_widget(owner.job) }}
-                                        </td>
-                                        <td class="label">
-                                            <label>Date de naissance&nbsp;:</label>
-                                        </td>
-                                        <td class="value">
-                                            {{ form_widget(owner.birthDate) }}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label padding_top" colspan="8">
-                                            <label>Commentaires&nbsp;: </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="value" colspan="8">
-                                            {{ form_widget(owner.comment, {
-                                                'attr': {
-                                                    'class': 'froala'
-                                                }
-                                            }) }}
-                                        </td>
-                                    </tr>
-                                </table>
+                                {{ form_widget(owner) }}
                                 {% if loop.index0 > 0 %}<hr />{% endif %}
                             </li>
                         {% endfor %}
                     </ul>
                 </div>
-                <div id="animals" class="inner_form_block right">
-                    <button id="add_cat" class="add_button">Ajouter un chat</button>
-                    <button id="add_dog" class="add_button">Ajouter un chien</button>
-                    {{ form_widget(form.customer.cats) }}
-                    {{ form_widget(form.customer.dogs) }}
-                    {{ form_widget(form.customer.mainAnimal) }}
+                <span class="inner_block_title">Animaux</span>
+                <div id="animals" class="inner_form_block">
+                    <table>
+                        <tr>
+                            <td class="label">
+                                <button id="add_cat" class="add_button" data-prototype="{{- form_widget(form.customer.cats.vars.prototype)|e('html') -}}">
+                                    Ajouter un chat
+                                </button>
+                                <button id="add_dog" class="add_button" data-prototype="{{- form_widget(form.customer.dogs.vars.prototype)|e('html') -}}">
+                                    Ajouter un chien
+                                </button>
+                            </td>
+                            <td class="label">
+                                <label>Animal principal&nbsp;:</label>
+                            </td>
+                            <td class="value_long" colspan="2">
+                                {{ form_widget(form.customer.mainAnimal) }}
+                            </td>
+                        </tr>
+                    </table>
+                    <ul id="animals_list" class="list">
+                        {% for animal in form.customer.cats|merge(form.customer.dogs) %}
+                            <li>
+                                {{ form_widget(animal) }}
+                                {% if not loop.first and not loop.last %}<hr />{% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </div>
             </div>
             <span class="block_title">Consultations</span>
             <div id="consultations" class="form_block">
-                <button id="add_consultation" class="add_button">Ajouter une consultation</button>
-                <ul class="consultations_list" {#data-prototype="{{ form_widget(form.consultations.vars.prototype)|e('html_attr') }}"#}>
-                    <li><table>
-                        <tr>
-                            <td class="label">
-                                <label>Date de la consultation : </label>
-                            </td>
-                            <td class="value">
-                                {{ form_widget(form.consultations.vars.prototype.date) }}
-                            </td>
-                            <td class="label">
-                                <label>Lieu : </label>
-                            </td>
-                            <td class="value">
-                                {{ form_widget(form.consultations.vars.prototype.location) }}
-                            </td>
-                            <td class="label">
-                                <label>Dur&eacute;e : </label>
-                            </td>
-                            <td class="value">
-                                {{ form_widget(form.consultations.vars.prototype.duration) }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="label">
-                                <label>Prix pratiqu&eacute; &agrave; l&#39;heure : </label>
-                            </td>
-                            <td id="price_value" class="value">
-                                {{ form_widget(form.consultations.vars.prototype.price) }}
-                            </td>
-                            <td class="label">
-                                <label>Animaux pr&eacute;sents lors de la s&eacute;ance : </label>
-                            </td>
-                            <td class="value">
-                                {{ form_widget(form.consultations.vars.prototype.animals) }}
-                            </td>
-                            <td class="label">
-                                <label>Propri&eacute;taires pr&eacute;sents lors de la s&eacute;ance : </label>
-                            </td>
-                            <td class="value">
-                                {{ form_widget(form.consultations.vars.prototype.owners) }}
-                            </td>
-                        </tr>
-                    </table></li>
+                <button id="add_consultation" class="add_button" data-prototype="{{ form_widget(form.consultations.vars.prototype)|e('html_attr') }}">
+                    Ajouter une consultation
+                </button>
+                <ul id="consultations_list" class="list">
+                    {% for consultation in form.consultations %}
+                        <li>
+                            {{ form_widget(consultation) }}
+                            {% if not loop.first and not loop.last %}<hr />{% endif %}
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
             <span class="block_title">Commentaires</span>
@@ -205,22 +125,26 @@
 {% block pagejavascripts %}
     <script>
         var ownersData = {
-            id: '#customer_card_customer_owners',
+            id: '#add_owner',
+            append_id: '#owners_list',
             prototype: '__owner__',
             count: '{{ form.customer.owners|length }}'
         };
         var catsData = {
-            id: '#customer_card_customer_cats',
+            id: '#add_cat',
+            append_id: '#animals_list',
             prototype: '__cat__',
             count: '{{ form.customer.cats|length }}'
         };
         var dogsData = {
-            id: '#customer_card_customer_dogs',
+            id: '#add_dog',
+            append_id: '#animals_list',
             prototype: '__dog__',
             count: '{{ form.customer.dogs|length }}'
         };
         var consultationsData = {
-            id: '#customer_card_consultations',
+            id: '#add_consultation',
+            append_id: '#consultations_list',
             prototype: '__consultation__',
             count: '{{ form.consultations|length }}'
         };

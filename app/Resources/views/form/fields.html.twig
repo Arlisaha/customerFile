@@ -5,5 +5,121 @@
 
 {% block tel_widget %}
     {% set type = type|default('tel') %}
-    {{ block('form_widget_simple') }}
+    {{- block('form_widget_simple') }}
 {% endblock tel_widget %}
+
+{%- block owner_widget -%}
+    <table>
+        <tr>
+            <td class="label">
+                <label>Pr&eacute;nom&nbsp;:</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.firstName) -}}
+            </td>
+            <td class="label">
+                <label>Nom&nbsp;:</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.lastName) -}}
+            </td>
+            <td class="label">
+                <label>E-mail&nbsp;:</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.email) -}}
+            </td>
+            <td class="label">
+                <label>T&eacute;l&eacute;phone&nbsp;:</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.phone) -}}
+            </td>
+        </tr>
+        <tr>
+            <td class="label">
+                <label>Style de vie&nbsp;:</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.lifeStyle) -}}
+            </td>
+            <td class="label">
+                <label>Sexe&nbsp;:</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.gender) -}}
+            </td>
+            <td class="label">
+                <label>Travail&nbsp;:</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.job) -}}
+            </td>
+            <td class="label">
+                <label>Date de naissance&nbsp;:</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.birthDate) -}}
+            </td>
+        </tr>
+        <tr>
+            <td class="label padding_top" colspan="8">
+                <label>Commentaires&nbsp;: </label>
+            </td>
+        </tr>
+        <tr>
+            <td class="value" colspan="8">
+                {{- form_widget(form.comment, {
+                    'attr': {
+                        'class': 'froala'
+                    }
+                }) -}}
+            </td>
+        </tr>
+    </table>
+{%- endblock owner_widget -%}
+
+{%- block consultation_widget -%}
+    <table>
+        <tr>
+            <td class="label">
+                <label>Date de la consultation : </label>
+            </td>
+            <td class="value">
+                {{ form_widget(form.date) }}
+            </td>
+            <td class="label">
+                <label>Lieu : </label>
+            </td>
+            <td class="value">
+                {{ form_widget(form.location) }}
+            </td>
+            <td class="label">
+                <label>Dur&eacute;e : </label>
+            </td>
+            <td class="value">
+                {{ form_widget(form.duration) }}
+            </td>
+        </tr>
+        <tr>
+            <td class="label">
+                <label>Prix pratiqu&eacute; &agrave; l&#39;heure : </label>
+            </td>
+            <td id="price_value" class="value">
+                {{ form_widget(form.price) }}
+            </td>
+            <td class="label">
+                <label>Animaux pr&eacute;sents lors de la s&eacute;ance : </label>
+            </td>
+            <td class="value">
+                {{ form_widget(form.animals) }}
+            </td>
+            <td class="label">
+                <label>Propri&eacute;taires pr&eacute;sents lors de la s&eacute;ance : </label>
+            </td>
+            <td class="value">
+                {{ form_widget(form.owners) }}
+            </td>
+        </tr>
+    </table>
+{% endblock %}

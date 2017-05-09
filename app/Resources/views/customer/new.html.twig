@@ -44,78 +44,11 @@
                 </tr>
             </table>
             <span class="inner_block_title">Propri&eacute;taire principal</span>
-            <div id="owners" class="full_inner_form_block">
-                <table>
-                    <tr>
-                        <td class="label">
-                            <label>Pr&eacute;nom&nbsp;:</label>
-                        </td>
-                        <td class="value">
-                            {{ form_widget(form.mainOwner.firstName) }}
-                        </td>
-                        <td class="label">
-                            <label>Nom&nbsp;:</label>
-                        </td>
-                        <td class="value">
-                            {{ form_widget(form.mainOwner.lastName) }}
-                        </td>
-                        <td class="label">
-                            <label>E-mail&nbsp;:</label>
-                        </td>
-                        <td class="value">
-                            {{ form_widget(form.mainOwner.email) }}
-                        </td>
-                        <td class="label">
-                            <label>T&eacute;l&eacute;phone&nbsp;:</label>
-                        </td>
-                        <td class="value">
-                            {{ form_widget(form.mainOwner.phone) }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="label">
-                            <label>Style de vie&nbsp;:</label>
-                        </td>
-                        <td class="value">
-                            {{ form_widget(form.mainOwner.lifeStyle) }}
-                        </td>
-                        <td class="label">
-                            <label>Sexe&nbsp;:</label>
-                        </td>
-                        <td class="value">
-                            {{ form_widget(form.mainOwner.gender) }}
-                        </td>
-                        <td class="label">
-                            <label>Travail&nbsp;:</label>
-                        </td>
-                        <td class="value">
-                            {{ form_widget(form.mainOwner.job) }}
-                        </td>
-                        <td class="label">
-                            <label>Date de naissance&nbsp;:</label>
-                        </td>
-                        <td class="value">
-                            {{ form_widget(form.mainOwner.birthDate) }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="label padding_top" colspan="8">
-                            <label>Commentaires&nbsp;: </label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="value" colspan="8">
-                            {{ form_widget(form.mainOwner.comment, {
-                                'attr': {
-                                    'class': 'froala'
-                                }
-                            }) }}
-                        </td>
-                    </tr>
-                </table>
+            <div id="owners" class="inner_form_block">
+                {{ form_widget(form.mainOwner) }}
             </div>
             <span class="inner_block_title">Animal principal</span>
-            <div id="animals" class="full_inner_form_block">
+            <div id="animals" class="inner_form_block">
                 <table>
                     <tr>
                         <td class="label">
@@ -214,8 +147,8 @@
                         </td>
                     </tr>
                 </table>
+                <div style="display: none">{{ form_rest(form) }}</div>
                 {{ form_widget(form.specie) }}
-                {{ form_widget(form.mainAnimal) }}
             </div>
         </div>
         <span id="submit_btn">
