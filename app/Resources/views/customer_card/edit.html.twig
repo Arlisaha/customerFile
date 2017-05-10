@@ -16,19 +16,31 @@
                             <label class="no_margin_left">Adresse : </label>
                         </td>
                         <td>
-                            {{ form_widget(form.customer.address) }}
+                            {{ form_widget(form.customer.address, {
+                                'attr': {
+                                    'class': 'address_textarea'
+                                }
+                            }) }}
                         </td>
                         <td>
                             <label>Code postal : </label>
                         </td>
                         <td>
-                            {{ form_widget(form.customer.zipCode) }}
+                            {{ form_widget(form.customer.zipCode, {
+                                'attr': {
+                                    'class': 'input'
+                                }
+                            }) }}
                         </td>
                         <td>
                             <label>Ville : </label>
                         </td>
                         <td>
-                            {{ form_widget(form.customer.city) }}
+                            {{ form_widget(form.customer.city, {
+                                'attr': {
+                                    'class': 'input'
+                                }
+                            }) }}
                         </td>
                     </tr>
                     <tr id="status">
@@ -36,7 +48,11 @@
                             <label>Statut : </label>
                         </td>
                         <td>
-                            {{ form_widget(form.customer.status) }}
+                            {{ form_widget(form.customer.status, {
+                                'attr': {
+                                    'class': 'input'
+                                }
+                            }) }}
                         </td>
                     </tr>
                 </table>
@@ -59,9 +75,9 @@
                     </table>
                     <ul id="owners_list" class="list">
                         {% for owner in form.customer.owners %}
-                            <li>
+                            {% if not loop.first %}<hr />{% endif %}
+                            <li id="owner_{{ loop.index0 }}" class="{{ loop.first ? 'visible' : 'collapsed' }}">
                                 {{ form_widget(owner) }}
-                                {% if loop.index0 > 0 %}<hr />{% endif %}
                             </li>
                         {% endfor %}
                     </ul>
@@ -88,9 +104,9 @@
                     </table>
                     <ul id="animals_list" class="list">
                         {% for animal in form.customer.cats|merge(form.customer.dogs) %}
-                            <li>
+                            {% if not loop.first %}<hr />{% endif %}
+                            <li id="animal_{{ loop.index0 }}" class="{{ loop.first ? 'visible' : 'collapsed' }}">
                                 {{ form_widget(animal) }}
-                                {% if not loop.first and not loop.last %}<hr />{% endif %}
                             </li>
                         {% endfor %}
                     </ul>
@@ -103,16 +119,20 @@
                 </button>
                 <ul id="consultations_list" class="list">
                     {% for consultation in form.consultations %}
-                        <li>
+                        {% if not loop.first %}<hr />{% endif %}
+                        <li id="consultation_{{ loop.index0 }}" class="{{ loop.first ? 'visible' : 'collapsed' }}">
                             {{ form_widget(consultation) }}
-                            {% if not loop.first and not loop.last %}<hr />{% endif %}
                         </li>
                     {% endfor %}
                 </ul>
             </div>
             <span class="block_title">Commentaires</span>
             <div id="comments" class="textarea_block">
-                {{ form_widget(form.comments, {'attr': {'class': 'froala'}}) }}
+                {{ form_widget(form.comments, {
+                    'attr': {
+                        'class': 'froala'
+                    }
+                }) }}
             </div>
             <span id="submit_btn">
                 <button id="submit_btn" class="submit_button">Valider</button>
@@ -127,25 +147,25 @@
         var ownersData = {
             id: '#add_owner',
             append_id: '#owners_list',
-            prototype: '__owner__',
+            prototype: 'owner',
             count: '{{ form.customer.owners|length }}'
         };
         var catsData = {
             id: '#add_cat',
             append_id: '#animals_list',
-            prototype: '__cat__',
+            prototype: 'cat',
             count: '{{ form.customer.cats|length }}'
         };
         var dogsData = {
             id: '#add_dog',
             append_id: '#animals_list',
-            prototype: '__dog__',
+            prototype: 'dog',
             count: '{{ form.customer.dogs|length }}'
         };
         var consultationsData = {
             id: '#add_consultation',
             append_id: '#consultations_list',
-            prototype: '__consultation__',
+            prototype: 'consultation',
             count: '{{ form.consultations|length }}'
         };
         var chosenOptions = {
@@ -164,7 +184,6 @@
                 'insertLink', 'uploadFile', 'emoticons', 'specialCharacters'
             ],
             theme: 'grey',
-            zIndex: 2003,
             placeholderText: 'Commentaires...'
         };
         var ids = ['customer_card_customer_address', 'customer_card_customer_zipCode', 'customer_card_customer_city'];
