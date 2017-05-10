@@ -19,19 +19,31 @@
                         <label class="no_margin_left">Adresse&nbsp;: </label>
                     </td>
                     <td>
-                        {{ form_widget(form.address) }}
+                        {{ form_widget(form.address, {
+                            'attr': {
+                                'class': 'address_textarea'
+                            }
+                        }) }}
                     </td>
                     <td>
                         <label>Code postal&nbsp;: </label>
                     </td>
                     <td>
-                        {{ form_widget(form.zipCode) }}
+                        {{ form_widget(form.zipCode, {
+                            'attr': {
+                                'class': 'input'
+                            }
+                        }) }}
                     </td>
                     <td>
                         <label>Ville&nbsp;: </label>
                     </td>
                     <td>
-                        {{ form_widget(form.city) }}
+                        {{ form_widget(form.city, {
+                            'attr': {
+                                'class': 'input'
+                            }
+                        }) }}
                     </td>
                 </tr>
                 <tr id="status">
@@ -39,7 +51,11 @@
                         <label>Statut&nbsp;: </label>
                     </td>
                     <td>
-                        {{ form_widget(form.status) }}
+                        {{ form_widget(form.status, {
+                            'attr': {
+                                'class': 'input'
+                            }
+                        }) }}
                     </td>
                 </tr>
             </table>
@@ -61,7 +77,11 @@
                             <label>Nom&nbsp;:</label>
                         </td>
                         <td class="value">
-                            {{ form_widget(form.mainAnimal.name) }}
+                            {{ form_widget(form.mainAnimal.name, {
+                                'attr': {
+                                    'class': 'input'
+                                }
+                            }) }}
                         </td>
                         <td class="label">
                             <label>Sexe&nbsp;:</label>
@@ -73,7 +93,11 @@
                             <label>Date de naissance&nbsp;:</label>
                         </td>
                         <td class="value">
-                            {{ form_widget(form.mainAnimal.birthDate) }}
+                            {{ form_widget(form.mainAnimal.birthDate, {
+                                'attr': {
+                                    'class': 'input'
+                                }
+                            }) }}
                         </td>
                     </tr>
                     <tr>
@@ -81,13 +105,21 @@
                             <label>Poids&nbsp;:</label>
                         </td>
                         <td class="value">
-                            {{ form_widget(form.mainAnimal.weight) }}
+                            {{ form_widget(form.mainAnimal.weight, {
+                                'attr': {
+                                    'class': 'input'
+                                }
+                            }) }}
                         </td>
                         <td class="label">
                             <label>Taille&nbsp;:</label>
                         </td>
                         <td class="value">
-                            {{ form_widget(form.mainAnimal.size) }}
+                            {{ form_widget(form.mainAnimal.size, {
+                                'attr': {
+                                    'class': 'input'
+                                }
+                            }) }}
                         </td>
                         <td class="label">
                             <label>Castr&eacute;&nbsp;?</label>
@@ -113,7 +145,11 @@
                             <label>Temps pass&eacute; dehors&nbsp;:</label>
                         </td>
                         <td class="value">
-                            {{ form_widget(form.mainAnimal.outsideTime) }}
+                            {{ form_widget(form.mainAnimal.outsideTime, {
+                                'attr': {
+                                    'class': 'input'
+                                }
+                            }) }}
                         </td>
                         <td class="label">
                             <label>Temp&eacute;ramment&nbsp;:</label>
