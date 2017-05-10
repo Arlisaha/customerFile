@@ -16,6 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\Customer\CustomerRepository")
  * @ORM\Table(name="customer")
+ * @ORM\HasLifecycleCallbacks
  */
 class Customer
 {
@@ -227,8 +228,10 @@ class Customer
 
 	/**
 	 * Set array collections for cats and dogs
+	 *
+	 * @ORM\PostLoad()
 	 */
-	private function setCatsAndDogs()
+	public function setCatsAndDogs()
 	{
 		$this->cats = new ArrayCollection();
 		$this->dogs = new ArrayCollection();
