@@ -15,25 +15,41 @@
                 <label>Pr&eacute;nom&nbsp;:</label>
             </td>
             <td class="value">
-                {{- form_widget(form.firstName) -}}
+                {{- form_widget(form.firstName, {
+                    'attr': {
+                        'class': 'input'
+                    }
+                }) -}}
             </td>
             <td class="label">
                 <label>Nom&nbsp;:</label>
             </td>
             <td class="value">
-                {{- form_widget(form.lastName) -}}
+                {{- form_widget(form.lastName, {
+                    'attr': {
+                        'class': 'input'
+                    }
+                }) -}}
             </td>
             <td class="label">
                 <label>E-mail&nbsp;:</label>
             </td>
             <td class="value">
-                {{- form_widget(form.email) -}}
+                {{- form_widget(form.email, {
+                    'attr': {
+                        'class': 'input'
+                    }
+                }) -}}
             </td>
             <td class="label">
                 <label>T&eacute;l&eacute;phone&nbsp;:</label>
             </td>
             <td class="value">
-                {{- form_widget(form.phone) -}}
+                {{- form_widget(form.phone, {
+                    'attr': {
+                        'class': 'input'
+                    }
+                }) -}}
             </td>
         </tr>
         <tr>
@@ -53,13 +69,21 @@
                 <label>Travail&nbsp;:</label>
             </td>
             <td class="value">
-                {{- form_widget(form.job) -}}
+                {{- form_widget(form.job, {
+                    'attr': {
+                        'class': 'input'
+                    }
+                }) -}}
             </td>
             <td class="label">
                 <label>Date de naissance&nbsp;:</label>
             </td>
             <td class="value">
-                {{- form_widget(form.birthDate) -}}
+                {{- form_widget(form.birthDate, {
+                    'attr': {
+                        'class': 'input'
+                    }
+                }) -}}
             </td>
         </tr>
         <tr>
@@ -86,19 +110,31 @@
                 <label>Date de la consultation : </label>
             </td>
             <td class="value">
-                {{ form_widget(form.date) }}
+                {{- form_widget(form.date, {
+                    'attr': {
+                        'class': 'input'
+                    }
+                }) -}}
             </td>
             <td class="label">
                 <label>Lieu : </label>
             </td>
             <td class="value">
-                {{ form_widget(form.location) }}
+                {{- form_widget(form.location, {
+                    'attr': {
+                        'class': 'input'
+                    }
+                }) -}}
             </td>
             <td class="label">
                 <label>Dur&eacute;e : </label>
             </td>
             <td class="value">
-                {{ form_widget(form.duration) }}
+                {{- form_widget(form.duration, {
+                    'attr': {
+                        'class': 'input'
+                    }
+                }) -}}
             </td>
         </tr>
         <tr>
@@ -106,20 +142,284 @@
                 <label>Prix pratiqu&eacute; &agrave; l&#39;heure : </label>
             </td>
             <td id="price_value" class="value">
-                {{ form_widget(form.price) }}
+                {{- form_widget(form.price, {
+                    'attr': {
+                        'class': 'input'
+                    }
+                }) -}}
             </td>
             <td class="label">
                 <label>Animaux pr&eacute;sents lors de la s&eacute;ance : </label>
             </td>
             <td class="value">
-                {{ form_widget(form.animals) }}
+                {{- form_widget(form.animals) -}}
             </td>
             <td class="label">
                 <label>Propri&eacute;taires pr&eacute;sents lors de la s&eacute;ance : </label>
             </td>
             <td class="value">
-                {{ form_widget(form.owners) }}
+                {{- form_widget(form.owners) -}}
             </td>
         </tr>
     </table>
 {% endblock %}
+
+{%- block cat_widget -%}
+    <table>
+        <tr>
+            <td class="label">
+                <label>Nom&nbsp;:</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.name, {
+                    'attr': {
+                        'class': 'input'
+                    }
+                }) -}}
+            </td>
+            <td class="label">
+                <label>Race&nbsp;:</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.breed) -}}
+            </td>
+            <td class="label">
+                <label>Sexe&nbsp;:</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.gender) -}}
+            </td>
+            <td class="label">
+                <label>Date de naissance&nbsp;:</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.birthDate, {
+                    'attr': {
+                        'class': 'input'
+                    }
+                }) -}}
+            </td>
+        </tr>
+        <tr>
+            <td class="label">
+                <label>Poids&nbsp;:</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.weight, {
+                    'attr': {
+                        'class': 'input'
+                    }
+                }) -}}
+            </td>
+            <td class="label">
+                <label>Taille&nbsp;:</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.size, {
+                    'attr': {
+                        'class': 'input'
+                    }
+                }) -}}
+            </td>
+            <td class="label">
+                <label>Castr&eacute;&nbsp;?</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.castrated) -}}
+            </td>
+            <td class="label">
+                <label>Adopt&eacute; d'une association&nbsp;?</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.adoptedFromAssociation) -}}
+            </td>
+        </tr>
+        <tr>
+            <td class="label">
+                <label>Vie dehors&nbsp;?</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.livingOutside) -}}
+            </td>
+            <td class="label">
+                <label>Temps pass&eacute; dehors&nbsp;:</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.outsideTime, {
+                    'attr': {
+                        'class': 'input'
+                    }
+                }) -}}
+            </td>
+            <td class="label">
+                <label>Temp&eacute;ramment&nbsp;:</label>
+            </td>
+            <td colspan="3" class="value">
+                {{- form_widget(form.temper) -}}
+            </td>
+        </tr>
+        <tr>
+            <td class="label padding_top" colspan="4">
+                <label>Problèmes de sant&eacute;e&nbsp;: </label>
+            </td>
+            <td class="label padding_top" colspan="4">
+                <label>Commentaires&nbsp;: </label>
+            </td>
+        </tr>
+        <tr>
+            <td class="value" colspan="4">
+                {{- form_widget(form.healthIssues, {
+                    'attr': {
+                        'class': 'froala'
+                    }
+                }) -}}
+            </td>
+            <td class="value" colspan="4">
+                {{- form_widget(form.comment, {
+                    'attr': {
+                        'class': 'froala'
+                    }
+                }) -}}
+            </td>
+        </tr>
+    </table>
+{%- endblock cat_widget -%}
+
+{%- block dog_widget -%}
+    <table>
+        <tr>
+            <td class="label">
+                <label>Nom&nbsp;:</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.name, {
+                    'attr': {
+                        'class': 'input'
+                    }
+                }) -}}
+            </td>
+            <td class="label">
+                <label>Race&nbsp;:</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.breed) -}}
+            </td>
+            <td class="label">
+                <label>Sexe&nbsp;:</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.gender) -}}
+            </td>
+            <td class="label">
+                <label>Date de naissance&nbsp;:</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.birthDate, {
+                    'attr': {
+                        'class': 'input'
+                    }
+                }) -}}
+            </td>
+        </tr>
+        <tr>
+            <td class="label">
+                <label>Poids&nbsp;:</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.weight, {
+                    'attr': {
+                        'class': 'input'
+                    }
+                }) -}}
+            </td>
+            <td class="label">
+                <label>Taille&nbsp;:</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.size, {
+                    'attr': {
+                        'class': 'input'
+                    }
+                }) -}}
+            </td>
+            <td class="label">
+                <label>Castr&eacute;&nbsp;?</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.castrated) -}}
+            </td>
+            <td class="label">
+                <label>Adopt&eacute; d'une association&nbsp;?</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.adoptedFromAssociation) -}}
+            </td>
+        </tr>
+        <tr>
+            <td class="label">
+                <label>Vie dehors&nbsp;?</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.livingOutside) -}}
+            </td>
+            <td class="label">
+                <label>Temps pass&eacute; dehors&nbsp;:</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.outsideTime, {
+                    'attr': {
+                        'class': 'input'
+                    }
+                }) -}}
+            </td>
+            <td class="label">
+                <label>Temp&eacute;ramment&nbsp;:</label>
+            </td>
+            <td colspan="3" class="value">
+                {{- form_widget(form.temper) -}}
+            </td>
+        </tr>
+        <tr>
+            <td class="label">
+                <label>Dur&eacute;e de sortie quotidienne&nbsp;:</label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.dailyWalkTime, {
+                    'attr': {
+                        'class': 'input'
+                    }
+                }) -}}
+            </td>
+            <td class="label"></td>
+            <td class="value"></td>
+            <td class="label"></td>
+            <td class="value"></td>
+            <td class="label"></td>
+            <td class="value"></td>
+        </tr>
+        <tr>
+            <td class="label padding_top" colspan="4">
+                <label>Problèmes de sant&eacute;e&nbsp;: </label>
+            </td>
+            <td class="label padding_top" colspan="4">
+                <label>Commentaires&nbsp;: </label>
+            </td>
+        </tr>
+        <tr>
+            <td class="value" colspan="4">
+                {{- form_widget(form.healthIssues, {
+                    'attr': {
+                        'class': 'froala'
+                    }
+                }) -}}
+            </td>
+            <td class="value" colspan="4">
+                {{- form_widget(form.comment, {
+                    'attr': {
+                        'class': 'froala'
+                    }
+                }) -}}
+            </td>
+        </tr>
+    </table>
+{%- endblock dog_widget -%}
