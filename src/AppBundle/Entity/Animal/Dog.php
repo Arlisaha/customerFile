@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Dog extends AbstractAnimal
 {
 	/**
-	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Animal\DogBreed")
+	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Animal\DogBreed", fetch="EAGER")
 	 * @ORM\JoinColumn(name="breed_id", referencedColumnName="id", nullable=true)
 	 *
 	 * @var DogBreed

@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Cat extends AbstractAnimal
 {
 	/**
-	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Animal\CatBreed")
+	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Animal\CatBreed", fetch="EAGER")
 	 * @ORM\JoinColumn(name="breed_id", referencedColumnName="id", nullable=true)
 	 *
 	 * @var CatBreed

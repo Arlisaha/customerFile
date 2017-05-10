@@ -92,7 +92,7 @@ class Owner
 	private $email;
 
 	/**
-	 * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Customer\LifeStyle")
+	 * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Customer\LifeStyle", fetch="EAGER")
 	 * @ORM\JoinTable(name="l__owner_life_style",
 	 *     joinColumns={@ORM\JoinColumn(name="owner_id", referencedColumnName="id")},
 	 *     inverseJoinColumns={@ORM\JoinColumn(name="life_style_id", referencedColumnName="id")}
@@ -112,7 +112,12 @@ class Owner
 	private $comment;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Customer\Customer", inversedBy="owners", cascade={"persist"})
+	 * @ORM\ManyToOne(
+	 *     targetEntity="AppBundle\Entity\Customer\Customer",
+	 *     inversedBy="owners",
+	 *     fetch="EAGER",
+	 *     cascade={"persist"}
+	 *	 )
 	 * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
 	 *
 	 * @var Customer

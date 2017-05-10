@@ -29,14 +29,23 @@ class Customer
 	private $id;
 
 	/**
-	 * @ORM\OneToMany(targetEntity="AppBundle\Entity\Customer\Owner", mappedBy="customer", cascade={"persist"})
+	 * @ORM\OneToMany(
+	 *     targetEntity="AppBundle\Entity\Customer\Owner",
+	 *     mappedBy="customer",
+	 *     fetch="EAGER",
+	 *     cascade={"persist"}
+	 *	 )
 	 *
 	 * @var Owner[]
 	 */
 	private $owners;
 
 	/**
-	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\Customer\Owner", cascade={"persist"})
+	 * @ORM\OneToOne(
+	 *     targetEntity="AppBundle\Entity\Customer\Owner",
+	 *     fetch="EAGER",
+	 *     cascade={"persist"}
+	 *	 )
 	 * @ORM\JoinColumn(name="main_owner_id", referencedColumnName="id")
 	 *
 	 * @var Owner
@@ -44,14 +53,23 @@ class Customer
 	private $mainOwner;
 
 	/**
-	 * @ORM\OneToMany(targetEntity="AppBundle\Entity\Animal\AbstractAnimal", mappedBy="customer", cascade={"persist"})
+	 * @ORM\OneToMany(
+	 *     targetEntity="AppBundle\Entity\Animal\AbstractAnimal",
+	 *     mappedBy="customer",
+	 *     fetch="EAGER",
+	 *     cascade={"persist"}
+	 *	 )
 	 *
 	 * @var AbstractAnimal[]
 	 */
 	private $animals;
 
 	/**
-	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\Animal\AbstractAnimal", cascade={"persist"})
+	 * @ORM\OneToOne(
+	 *     targetEntity="AppBundle\Entity\Animal\AbstractAnimal",
+	 *     fetch="EAGER",
+	 *     cascade={"persist"}
+	 *	 )
 	 * @ORM\JoinColumn(name="main_animal_id", referencedColumnName="id")
 	 *
 	 * @var AbstractAnimal
@@ -95,7 +113,11 @@ class Customer
 	private $city;
 
 	/**
-	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\CustomerCard\CustomerCard", inversedBy="customer")
+	 * @ORM\OneToOne(
+	 *     targetEntity="AppBundle\Entity\CustomerCard\CustomerCard",
+	 *     inversedBy="customer",
+	 *     fetch="EAGER"
+	 * )
 	 */
 	private $customerCard;
 

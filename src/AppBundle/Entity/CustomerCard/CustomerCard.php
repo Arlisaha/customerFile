@@ -26,7 +26,12 @@ class CustomerCard
 	private $id;
 
 	/**
-	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\Customer\Customer", inversedBy="customerCard", cascade={"persist"})
+	 * @ORM\OneToOne(
+	 *     targetEntity="AppBundle\Entity\Customer\Customer",
+	 *     inversedBy="customerCard",
+	 *     fetch="EAGER",
+	 *     cascade={"persist"}
+	 *	 )
 	 * @ORM\JoinColumn(name="customer_id", referencedColumnName="id", nullable=false)
 	 *
 	 * @var Customer
@@ -34,7 +39,12 @@ class CustomerCard
 	private $customer;
 
 	/**
-	 * @ORM\OneToMany(targetEntity="AppBundle\Entity\CustomerCard\Consultation", mappedBy="customerCard", cascade={"persist"})
+	 * @ORM\OneToMany(
+	 *     targetEntity="AppBundle\Entity\CustomerCard\Consultation",
+	 *     mappedBy="customerCard",
+	 *     fetch="EAGER",
+	 *     cascade={"persist"}
+	 *	 )
 	 *
 	 * @var Consultation[]
 	 */

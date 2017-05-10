@@ -64,7 +64,7 @@ class Consultation
 	private $location;
 
 	/**
-	 * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Animal\AbstractAnimal")
+	 * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Animal\AbstractAnimal", fetch="EAGER",)
 	 * @ORM\JoinTable(name="l__consultation_animals",
 	 *	 joinColumns={@ORM\JoinColumn(name="consultation_id", referencedColumnName="id")},
 	 *	 inverseJoinColumns={@ORM\JoinColumn(name="animal_id", referencedColumnName="id")}
@@ -75,7 +75,7 @@ class Consultation
 	private $animals;
 
 	/**
-	 * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Customer\Owner")
+	 * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Customer\Owner", fetch="EAGER")
 	 * @ORM\JoinTable(name="l__consultation_owners",
 	 *	 joinColumns={@ORM\JoinColumn(name="consultation_id", referencedColumnName="id")},
 	 *	 inverseJoinColumns={@ORM\JoinColumn(name="owner_id", referencedColumnName="id")}
@@ -86,7 +86,12 @@ class Consultation
 	private $owners;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CustomerCard\CustomerCard", inversedBy="consultations", cascade={"persist"})
+	 * @ORM\ManyToOne(
+	 *     targetEntity="AppBundle\Entity\CustomerCard\CustomerCard",
+	 *     inversedBy="consultations",
+	 *     fetch="EAGER",
+	 *     cascade={"persist"}
+	 *	 )
 	 * @ORM\JoinColumn(name="customer_card_id", referencedColumnName="id", nullable=false)
 	 *
 	 * @var CustomerCard
