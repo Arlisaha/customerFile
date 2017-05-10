@@ -9,7 +9,6 @@ use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -22,6 +21,15 @@ class CustomerType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder
+			->add('cats', CollectionType::class, [
+				'entry_type'     => CatType::class,
+				'allow_add'      => true,
+				'allow_delete'   => true,
+				'prototype'      => true,
+				'prototype_name' => '__cat__',
+				'by_reference'   => false,
+				'required'       => false,
+			])
 			->add('dogs', CollectionType::class, [
 				'entry_type'     => DogType::class,
 				'allow_add'      => true,
@@ -57,7 +65,7 @@ class CustomerType extends AbstractType
 		$builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
 			/** @var Customer $customer */
 			$customer = $event->getData();
-			$form     = $event->getForm();dump($customer->getCats());die;
+			$form     = $event->getForm();
 			
 			$form
 				->add('mainOwner', EntityType::class, [
@@ -85,16 +93,6 @@ class CustomerType extends AbstractType
 						
 						return $qb;
 					},
-				])
-				->add('cats', CollectionType::class, [
-					'entry_type'     => CatType::class,
-					'allow_add'      => true,
-					'allow_delete'   => true,
-					'prototype'      => true,
-					'prototype_name' => '__cat__',
-					'by_reference'   => false,
-					'required'       => false,
-					'data' => $customer->getCats(),
 				]);
 		});
 	}
