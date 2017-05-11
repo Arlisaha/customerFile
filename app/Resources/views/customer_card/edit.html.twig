@@ -76,7 +76,12 @@
                     <ul id="owners_list" class="list">
                         {% for owner in form.customer.owners %}
                             {% if not loop.first %}<hr />{% endif %}
-                            <li id="owner_{{ loop.index0 }}" class="{{ loop.first ? 'visible' : 'collapsed' }}">
+                            <li id="owner_{{ loop.index0 }}">
+                                {% if owner.id.vars.value != form.customer.mainOwner.vars.value %}
+                                    <span class="deletable">-</span>
+                                {% else %}
+                                    <span style="margin-top:15px;display:block;"></span>
+                                {% endif %}
                                 {{ form_widget(owner) }}
                             </li>
                         {% endfor %}
@@ -105,7 +110,12 @@
                     <ul id="animals_list" class="list">
                         {% for animal in form.customer.cats|merge(form.customer.dogs) %}
                             {% if not loop.first %}<hr />{% endif %}
-                            <li id="animal_{{ loop.index0 }}" class="{{ loop.first ? 'visible' : 'collapsed' }}">
+                            <li id="animal_{{ loop.index0 }}">
+                                {% if animal.id.vars.value != form.customer.mainAnimal.vars.value %}
+                                    <span class="deletable">-</span>
+                                {% else %}
+                                    <span style="margin-top:15px;display:block;"></span>
+                                {% endif %}
                                 {{ form_widget(animal) }}
                             </li>
                         {% endfor %}
@@ -120,7 +130,8 @@
                 <ul id="consultations_list" class="list">
                     {% for consultation in form.consultations %}
                         {% if not loop.first %}<hr />{% endif %}
-                        <li id="consultation_{{ loop.index0 }}" class="{{ loop.first ? 'visible' : 'collapsed' }}">
+                        <li id="consultation_{{ loop.index0 }}">
+                            <span class="deletable">-</span>
                             {{ form_widget(consultation) }}
                         </li>
                     {% endfor %}

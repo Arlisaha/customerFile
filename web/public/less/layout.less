@@ -141,13 +141,8 @@ body {
 
 			#consultations {
 				#consultations_list {
-					padding: 0;
-					margin:  0;
 
 					li {
-						list-style-type: none;
-						padding-left:    10px;
-
 						table {
 							tr {
 								width: 100%;
@@ -181,35 +176,45 @@ body {
 				margin-top:      5px;
 				list-style-type: none;
 				padding-left:    25px;
+				margin-bottom:   0px;
 
-				.collapsed:before {
-					content:      "";
-					border-color: transparent rgb(202, 202, 202);
-					border-style: solid;
-					border-width: 0.35em 0 0.35em 0.45em;
-					display:      block;
-					height:       0;
-					width:        0;
-					left:         -1.1em;
-					top:          1.2em;
-					position:     relative;
-					cursor:       pointer;
+				table {
+					position: relative;
+					top:      -16px;
 				}
 
-				.visible:before {
-					content:      "";
-					border-color: transparent #111111;
-					border-style: solid;
-					border-left:  0.35em solid transparent;
-					border-right: 0.35em solid transparent;
-					border-top:   0.45em solid rgb(202, 202, 202);
-					display:      block;
-					height:       0;
-					width:        0;
-					left:         -1.1em;
-					top:          1.2em;
-					position:     relative;
-					cursor:       pointer;
+				.deletable {
+					content:          "-";
+					height:           0;
+					width:            0;
+					left:             -1.3em;
+					top:              0.6em;
+					position:         relative;
+					cursor:           pointer;
+					padding:          0px 6.5px 1px 6px;
+					border-radius:    3px;
+					font-family:      arial, helvetica, sans-serif;
+					text-decoration:  none;
+					font-weight:      bold;
+					color:            #F5F5F5;
+					box-shadow:       #DE2C4A 0px 1px 1px;
+					background-image: linear-gradient(to bottom, #B74343, #AF3030);
+					text-shadow:      0px 1px 0 #E68989;
+					border:           1px solid #A73B3B;
+
+					&:hover {
+						box-shadow:       #E23D3D 0px 1px 1px;
+						background-image: linear-gradient(to bottom, #EC8383, #CE5A5A);
+						text-shadow:      0px 1px 0 #100E0E;
+						border:           1px solid #A54D4D;
+					}
+
+					&:active {
+						box-shadow:       #E23D3D 0px 1px 1px;
+						background-image: linear-gradient(to bottom, #D68989, #B15555);
+						border:           1px solid #AB5252;
+						text-shadow:      1px 1px 1px #2F2627;
+					}
 				}
 			}
 

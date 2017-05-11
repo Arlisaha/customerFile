@@ -10,24 +10,28 @@ function addTypePart(e, data) {
     var typePart = $(data['id']);
     var list = $(data['append_id']);
 
-    var newWidget = typePart.attr('data-prototype');
+    var newWidget = '<span class="deletable">-</span>' + typePart.attr('data-prototype');
     newWidget = newWidget.replace(new RegExp('__' + data['prototype'] + '__', 'g'), data['count']);
 
-    if (data['count'] > 0) { //TODO : add hr only if not the first element of the list (animal)
+    if ($(data['append_id'] + ' li').length > 0) {
         var newHr = $('<hr />');
         newHr.appendTo(list);
     }
 
-    var newLi = $('<li id="' + data['prototype'] + '_' + data['count'] + '" class="visible"></li>').html(newWidget);
-
-    //TODO : collapse others li from the list
+    var newLi = $('<li id="' + data['prototype'] + '_' + data['count'] + '"></li>').html(newWidget);
 
     newLi.appendTo(list);
 
     $('.froala').froalaEditor(froalaOptions);
     $('select').chosen(chosenOptions);
+    $('.deletable').click(removeDeletable);
 
     data['count']++;
+}
+
+function removeDeletable(e) {
+    $(this).parent().prev('hr').remove();
+    $(this).parent().remove();
 }
 
 $(document).ready(function () {
@@ -45,4 +49,5 @@ $(document).ready(function () {
     $('#add_consultation').click(function (e) {
         addTypePart(e, consultationsData)
     });
+    $('.deletable').click(removeDeletable);
 });
