@@ -7,10 +7,10 @@ use AppBundle\Entity\CustomerCard\CustomerCard;
 use AppBundle\Form\Animal\AnimalType;
 use AppBundle\Form\Animal\CatType;
 use AppBundle\Form\Animal\DogType;
+use AppBundle\Form\Animal\SpecieType;
 use AppBundle\Form\Customer\OwnerType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -52,14 +52,7 @@ class CustomerController extends Controller
 			->add('status', TextType::class, [])
 			->add('mainOwner', OwnerType::class, [])
 			->add('mainAnimal', $type, [])
-			->add('specie', ChoiceType::class, [
-				'mapped'                    => false,
-				'choice_translation_domain' => true,
-				'choices'                   => [
-					'entity.customer.specie.cat' => 'cat',
-					'entity.customer.specie.dog' => 'dog',
-				],
-			])
+			->add('specie', SpecieType::class, [])
 			->getForm();
 
 		$form->handleRequest($request);
