@@ -9,6 +9,7 @@
 {% endblock tel_widget %}
 
 {%- block owner_widget -%}
+    {{ form_widget(form.id) }}
     <table>
         <tr>
             <td class="label">
@@ -104,6 +105,7 @@
 {%- endblock owner_widget -%}
 
 {%- block consultation_widget -%}
+    {{ form_widget(form.id) }}
     <table>
         <tr>
             <td class="label">
@@ -165,6 +167,7 @@
 {% endblock %}
 
 {%- block cat_widget -%}
+    {{ form_widget(form.id) }}
     <table>
         <tr>
             <td class="label">
@@ -286,6 +289,7 @@
 {%- endblock cat_widget -%}
 
 {%- block dog_widget -%}
+    {{ form_widget(form.id) }}
     <table>
         <tr>
             <td class="label">

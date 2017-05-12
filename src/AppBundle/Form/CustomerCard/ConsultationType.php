@@ -75,7 +75,8 @@ class ConsultationType extends AbstractType
 								->orderBy('a.name', 'ASC');
 							
 							return $qb;
-						}]);
+						},
+					]);
 			});
 	}
 	
