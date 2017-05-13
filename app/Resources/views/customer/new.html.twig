@@ -128,10 +128,10 @@
                             {{ form_widget(form.mainAnimal.castrated) }}
                         </td>
                         <td class="label">
-                            <label>Adopt&eacute; d'une association&nbsp;?</label>
+                            <label>Origine de l'adoption : </label>
                         </td>
                         <td class="value">
-                            {{ form_widget(form.mainAnimal.adoptedFromAssociation) }}
+                            {{ form_widget(form.mainAnimal.adoptionOrigin) }}
                         </td>
                     </tr>
                     <tr>
@@ -159,6 +159,20 @@
                         </td>
                     </tr>
                     <tr>
+                        <td class="label padding_top" colspan="8">
+                            <label>Probl&egrave;mes&nbsp;: </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="value" colspan="8">
+                            {{ form_widget(form.mainAnimal.issues, {
+                                'attr': {
+                                    'class': 'froala'
+                                }
+                            }) }}
+                        </td>
+                    </tr>
+                    <tr>
                         <td class="label padding_top" colspan="4">
                             <label>Problèmes de sant&eacute;e&nbsp;: </label>
                         </td>
@@ -175,7 +189,7 @@
                             }) }}
                         </td>
                         <td class="value" colspan="4">
-                            {{ form_widget(form.mainAnimal.comment, {
+                            {{ form_widget(form.mainAnimal.comments, {
                                 'attr': {
                                     'class': 'froala'
                                 }
@@ -184,7 +198,6 @@
                     </tr>
                 </table>
                 <div style="display: none">{{ form_rest(form) }}</div>
-                {{ form_widget(form.specie) }}
             </div>
         </div>
         <span id="submit_btn">
@@ -212,7 +225,6 @@
                 'insertLink', 'uploadFile', 'emoticons', 'specialCharacters'
             ],
             theme: 'grey',
-            zIndex: 2003,
             placeholderText: 'Commentaires...'
         };
         var ids = ['form_address', 'form_zipCode', 'form_city'];

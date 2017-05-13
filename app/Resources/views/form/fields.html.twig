@@ -141,7 +141,7 @@
         </tr>
         <tr>
             <td class="label">
-                <label>Prix pratiqu&eacute; &agrave; l&#39;heure : </label>
+                <label>Prix de la s&eacute;ance : </label>
             </td>
             <td id="price_value" class="value">
                 {{- form_widget(form.price, {
@@ -161,6 +161,29 @@
             </td>
             <td class="value">
                 {{- form_widget(form.owners) -}}
+            </td>
+        </tr>
+        <tr>
+            <td class="label">
+                <label>Type : </label>
+            </td>
+            <td class="value">
+                {{- form_widget(form.type) -}}
+            </td>
+            <td colspan="4"></td>
+        </tr>
+        <tr>
+            <td class="label padding_top" colspan="8">
+                <label>Commentaires&nbsp;: </label>
+            </td>
+        </tr>
+        <tr>
+            <td class="value" colspan="8">
+                {{ form_widget(form.purposes, {
+                    'attr': {
+                        'class': 'froala'
+                    }
+                }) }}
             </td>
         </tr>
     </table>
@@ -231,10 +254,10 @@
                 {{- form_widget(form.castrated) -}}
             </td>
             <td class="label">
-                <label>Adopt&eacute; d'une association&nbsp;?</label>
+                <label>Origine de l'adoption : </label>
             </td>
             <td class="value">
-                {{- form_widget(form.adoptedFromAssociation) -}}
+                {{ form_widget(form.adoptionOrigin) }}
             </td>
         </tr>
         <tr>
@@ -262,6 +285,20 @@
             </td>
         </tr>
         <tr>
+            <td class="label padding_top" colspan="8">
+                <label>Probl&egrave;mes&nbsp;: </label>
+            </td>
+        </tr>
+        <tr>
+            <td class="value" colspan="8">
+                {{ form_widget(form.issues, {
+                    'attr': {
+                        'class': 'froala'
+                    }
+                }) }}
+            </td>
+        </tr>
+        <tr>
             <td class="label padding_top" colspan="4">
                 <label>Problèmes de sant&eacute;e&nbsp;: </label>
             </td>
@@ -271,18 +308,18 @@
         </tr>
         <tr>
             <td class="value" colspan="4">
-                {{- form_widget(form.healthIssues, {
+                {{ form_widget(form.healthIssues, {
                     'attr': {
                         'class': 'froala'
                     }
-                }) -}}
+                }) }}
             </td>
             <td class="value" colspan="4">
-                {{- form_widget(form.comment, {
+                {{ form_widget(form.comments, {
                     'attr': {
                         'class': 'froala'
                     }
-                }) -}}
+                }) }}
             </td>
         </tr>
     </table>
@@ -353,10 +390,10 @@
                 {{- form_widget(form.castrated) -}}
             </td>
             <td class="label">
-                <label>Adopt&eacute; d'une association&nbsp;?</label>
+                <label>Origine de l'adoption : </label>
             </td>
             <td class="value">
-                {{- form_widget(form.adoptedFromAssociation) -}}
+                {{ form_widget(form.adoptionOrigin) }}
             </td>
         </tr>
         <tr>
@@ -402,6 +439,20 @@
             <td class="value"></td>
         </tr>
         <tr>
+            <td class="label padding_top" colspan="8">
+                <label>Probl&egrave;mes&nbsp;: </label>
+            </td>
+        </tr>
+        <tr>
+            <td class="value" colspan="8">
+                {{ form_widget(form.issues, {
+                    'attr': {
+                        'class': 'froala'
+                    }
+                }) }}
+            </td>
+        </tr>
+        <tr>
             <td class="label padding_top" colspan="4">
                 <label>Problèmes de sant&eacute;e&nbsp;: </label>
             </td>
@@ -411,18 +462,18 @@
         </tr>
         <tr>
             <td class="value" colspan="4">
-                {{- form_widget(form.healthIssues, {
+                {{ form_widget(form.healthIssues, {
                     'attr': {
                         'class': 'froala'
                     }
-                }) -}}
+                }) }}
             </td>
             <td class="value" colspan="4">
-                {{- form_widget(form.comment, {
+                {{ form_widget(form.comments, {
                     'attr': {
                         'class': 'froala'
                     }
-                }) -}}
+                }) }}
             </td>
         </tr>
     </table>
