@@ -34,7 +34,7 @@ class Customer
 	 *     targetEntity="AppBundle\Entity\Customer\Owner",
 	 *     mappedBy="customer",
 	 *     fetch="EAGER",
-	 *     cascade={"persist"}
+	 *     cascade={"all"}
 	 *	 )
 	 *
 	 * @var Owner[]
@@ -45,7 +45,7 @@ class Customer
 	 * @ORM\OneToOne(
 	 *     targetEntity="AppBundle\Entity\Customer\Owner",
 	 *     fetch="EAGER",
-	 *     cascade={"persist"}
+	 *     cascade={"all"}
 	 *	 )
 	 * @ORM\JoinColumn(name="main_owner_id", referencedColumnName="id")
 	 *
@@ -58,7 +58,8 @@ class Customer
 	 *     targetEntity="AppBundle\Entity\Animal\AbstractAnimal",
 	 *     mappedBy="customer",
 	 *     fetch="EAGER",
-	 *     cascade={"persist"}
+	 *     cascade={"all"},
+	 *     orphanRemoval=true
 	 *	 )
 	 *
 	 * @var AbstractAnimal[]
@@ -69,7 +70,7 @@ class Customer
 	 * @ORM\OneToOne(
 	 *     targetEntity="AppBundle\Entity\Animal\AbstractAnimal",
 	 *     fetch="EAGER",
-	 *     cascade={"persist"}
+	 *     cascade={"all"}
 	 *	 )
 	 * @ORM\JoinColumn(name="main_animal_id", referencedColumnName="id")
 	 *

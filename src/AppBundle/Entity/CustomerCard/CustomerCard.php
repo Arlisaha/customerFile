@@ -30,7 +30,8 @@ class CustomerCard
 	 *     targetEntity="AppBundle\Entity\Customer\Customer",
 	 *     inversedBy="customerCard",
 	 *     fetch="EAGER",
-	 *     cascade={"persist"}
+	 *     cascade={"all"},
+	 *     orphanRemoval=true
 	 *	 )
 	 * @ORM\JoinColumn(name="customer_id", referencedColumnName="id", nullable=false)
 	 *
@@ -43,7 +44,8 @@ class CustomerCard
 	 *     targetEntity="AppBundle\Entity\CustomerCard\Consultation",
 	 *     mappedBy="customerCard",
 	 *     fetch="EAGER",
-	 *     cascade={"persist"}
+	 *     cascade={"all"},
+	 *     orphanRemoval=true
 	 *	 )
 	 *
 	 * @var Consultation[]
