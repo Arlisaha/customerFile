@@ -29,11 +29,11 @@
                 </trans-unit>
                 <trans-unit id="consultation.type.behaviourist" resname="entity.consultation.type.behaviourist">
                     <source>Behaviourist</source>
-                    <target>Comportementaliste</target>
+                    <target>Comportement</target>
                 </trans-unit>
                 <trans-unit id="consultation.type.educator" resname="entity.consultation.type.educator">
                     <source>Educator</source>
-                    <target>Educateur</target>
+                    <target>Education</target>
                 </trans-unit>
             </group>
             <group id="fixtures">
@@ -83,6 +83,28 @@
                     <trans-unit id="homebody" resname="fixtures.life_style.homebody">
                         <source>Homebody</source>
                         <target>Casanier</target>
+                    </trans-unit>
+                </group>
+                <group id="adoption_origin">
+                    <trans-unit id="association" resname="fixtures.adoption_origin.association">
+                        <source>Association</source>
+                        <target>Association</target>
+                    </trans-unit>
+                    <trans-unit id="private" resname="fixtures.adoption_origin.private">
+                        <source>Private</source>
+                        <target>Particulier</target>
+                    </trans-unit>
+                    <trans-unit id="raiser" resname="fixtures.adoption_origin.raiser">
+                        <source>Raiser</source>
+                        <target>Eleveur</target>
+                    </trans-unit>
+                    <trans-unit id="pet_shop" resname="fixtures.adoption_origin.pet_shop">
+                        <source>Pet shop</source>
+                        <target>Animalerie</target>
+                    </trans-unit>
+                    <trans-unit id="other" resname="fixtures.adoption_origin.other">
+                        <source>Other</source>
+                        <target>Autre</target>
                     </trans-unit>
                 </group>
                 <group id="breed">

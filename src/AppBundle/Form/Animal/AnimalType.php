@@ -54,10 +54,13 @@ class AnimalType extends AbstractType
 			->add('healthIssues', TextareaType::class, [
 				'required' => false,
 			])
-			->add('comment', TextareaType::class, [
+			->add('comments', TextareaType::class, [
 				'required' => false,
 			])
-			->add('adoptedFromAssociation', CheckboxType::class, [
+			->add('issues', TextareaType::class, [
+				'required' => false,
+			])
+			->add('adoptionOrigin', AdoptionOriginType::class, [
 				'required' => false,
 			]);
 	}

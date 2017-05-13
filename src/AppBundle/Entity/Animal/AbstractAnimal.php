@@ -123,13 +123,13 @@ abstract class AbstractAnimal
 	private $healthIssues;
 
 	/**
-	 * @ORM\Column(name="comment", type="text", nullable=true)
+	 * @ORM\Column(name="comments", type="text", nullable=true)
 	 *
 	 * @Assert\Type(type="string")
 	 *
 	 * @var string
 	 */
-	private $comment;
+	private $comments;
 
 	/**
 	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Customer\Customer", inversedBy="animals", cascade={"persist"})
@@ -139,14 +139,22 @@ abstract class AbstractAnimal
 	private $customer;
 
 	/**
-	 * @ORM\Column(name="adopted_from_association", type="boolean", nullable=true)
+	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Animal\AdoptionOrigin", fetch="EAGER")
+	 * @ORM\JoinColumn(name="adoption_origin_id", referencedColumnName="id", nullable=true)
 	 *
-	 * @Assert\Type(type="bool")
-	 *
-	 * @var bool
+	 * @var AdoptionOrigin
 	 */
-	private $adoptedFromAssociation;
-
+	private $adoptionOrigin;
+	
+	/**
+	 * @ORM\Column(name="issues", type="text", nullable=true)
+	 *
+	 * @Assert\Type(type="string")
+	 *
+	 * @var string
+	 */
+	private $issues;
+	
 	public static $genders = [
 		'male'   => 'entity.animal.gender.male',
 		'female' => 'entity.animal.gender.female',
@@ -416,19 +424,19 @@ abstract class AbstractAnimal
 	/**
 	 * @return string
 	 */
-	public function getComment()
+	public function getComments()
 	{
-		return $this->comment;
+		return $this->comments;
 	}
 
 	/**
-	 * @param string $comment
+	 * @param string $comments
 	 *
 	 * @return AbstractAnimal
 	 */
-	public function setComment($comment)
+	public function setComments($comments)
 	{
-		$this->comment = $comment;
+		$this->comments = $comments;
 
 		return $this;
 	}
@@ -452,24 +460,44 @@ abstract class AbstractAnimal
 
 		return $this;
 	}
-
+	
 	/**
-	 * @return bool
+	 * @return AdoptionOrigin
 	 */
-	public function isAdoptedFromAssociation()
+	public function getAdoptionOrigin()
 	{
-		return $this->adoptedFromAssociation;
+		return $this->adoptionOrigin;
 	}
-
+	
 	/**
-	 * @param bool $adoptedFromAssociation
+	 * @param AdoptionOrigin $adoptionOrigin
 	 *
 	 * @return AbstractAnimal
 	 */
-	public function setAdoptedFromAssociation($adoptedFromAssociation)
+	public function setAdoptionOrigin(AdoptionOrigin $adoptionOrigin)
 	{
-		$this->adoptedFromAssociation = $adoptedFromAssociation;
-
+		$this->adoptionOrigin = $adoptionOrigin;
+		
+		return $this;
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getIssues()
+	{
+		return $this->issues;
+	}
+	
+	/**
+	 * @param string $issues
+	 *
+	 * @return AbstractAnimal
+	 */
+	public function setIssues($issues)
+	{
+		$this->issues = $issues;
+		
 		return $this;
 	}
 
