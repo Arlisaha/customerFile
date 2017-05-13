@@ -27,6 +27,14 @@
                     <source>Dog</source>
                     <target>Chien</target>
                 </trans-unit>
+                <trans-unit id="consultation.type.behaviourist" resname="entity.consultation.type.behaviourist">
+                    <source>Behaviourist</source>
+                    <target>Comportementaliste</target>
+                </trans-unit>
+                <trans-unit id="consultation.type.educator" resname="entity.consultation.type.educator">
+                    <source>Educator</source>
+                    <target>Educateur</target>
+                </trans-unit>
             </group>
             <group id="fixtures">
                 <group id="temper">
