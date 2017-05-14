@@ -213,6 +213,14 @@ class Owner
 
 		return $this;
 	}
+	
+	/**
+	 * @return int
+	 */
+	public function getAge()
+	{
+		return $this->getBirthDate()->diff(new DateTime('now'))->y;
+	}
 
 	/**
 	 * @return int

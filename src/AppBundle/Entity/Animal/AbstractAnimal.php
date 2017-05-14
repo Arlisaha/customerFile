@@ -227,6 +227,22 @@ abstract class AbstractAnimal
 
 		return $this;
 	}
+	
+	/**
+	 * @return int
+	 */
+	public function getAgeInYears()
+	{
+		return $this->birthDate->diff(new DateTime('now'))->y;
+	}
+	
+	/**
+	 * @return int
+	 */
+	public function getAgeInMonths()
+	{
+		return $this->birthDate->diff(new DateTime('now'))->m;
+	}
 
 	/**
 	 * @return int
