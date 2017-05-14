@@ -54,7 +54,7 @@ class Owner
 	private $birthDate;
 
 	/**
-	 * @ORM\Column(name="gender", type="binary", nullable=true)
+	 * @ORM\Column(name="gender", type="string", length=6, nullable=true)
 	 *
 	 * @Assert\Choice(choices={"male", "female"}, message="Choose a valid gender")
 	 *
