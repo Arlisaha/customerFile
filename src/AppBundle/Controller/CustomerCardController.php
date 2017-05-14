@@ -25,6 +25,8 @@ use Symfony\Component\HttpFoundation\Request;
 class CustomerCardController extends Controller
 {
 	/**
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 *
 	 * @Route("/all", name="customer_card_all")
 	 */
 	public function allAction()
@@ -34,13 +36,15 @@ class CustomerCardController extends Controller
 			->getRepository('AppBundle:CustomerCard\CustomerCard')
 			->findAll();
 		
-		$this->render(':customer_card:all.html.twig', [
+		return $this->render(':customer_card:all.html.twig', [
 			'customer_cards' => $all,
 		]);
 	}
 	
 	/**
 	 * @param Request $request
+	 *
+	 * @return \Symfony\Component\HttpFoundation\Response
 	 *
 	 * @Route("/search", requirements={"owner_name"}, name="customer_card_search")
 	 */
@@ -54,7 +58,7 @@ class CustomerCardController extends Controller
 		
 		//TODO : handle form and search depending on criterias.
 		
-		$this->render(':customer_card:search.html.twig', [
+		return $this->render(':customer_card:search.html.twig', [
 			'form' => $form,
 		]);
 	}
@@ -86,7 +90,7 @@ class CustomerCardController extends Controller
 			$em->flush();
 		}
 		
-		$this->render(':customer_card:get.html.twig', [
+		return $this->render(':customer_card:get.html.twig', [
 			'customer_card' => $customerCard,
 			'form'          => $form,
 		]);
