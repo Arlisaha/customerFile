@@ -167,6 +167,11 @@ abstract class AbstractAnimal
 	{
 		$this->temper = new ArrayCollection();
 	}
+	
+	public function getSpecie()
+	{
+		return strtolower(preg_replace('~(.*)\\\~', '', static::class));
+	}
 
 	/**
 	 * @return int
