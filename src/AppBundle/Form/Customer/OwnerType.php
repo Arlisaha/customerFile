@@ -25,7 +25,7 @@ class OwnerType extends AbstractType
 			->add('gender', GenderType::class, [
 				'required' => true,
 			])
-			->add('comment', TextareaType::class, [
+			->add('comments', TextareaType::class, [
 				'required' => false,
 			])
 			->add('job', TextType::class, [

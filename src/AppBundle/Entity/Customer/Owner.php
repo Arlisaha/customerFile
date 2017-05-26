@@ -103,13 +103,13 @@ class Owner
 	private $lifeStyle;
 
 	/**
-	 * @ORM\Column(name="comment", type="text", nullable=true)
+	 * @ORM\Column(name="comments", type="text", nullable=true)
 	 *
 	 * @Assert\Type(type="string")
 	 *
 	 * @var string
 	 */
-	private $comment;
+	private $comments;
 
 	/**
 	 * @ORM\ManyToOne(
@@ -358,19 +358,19 @@ class Owner
 	/**
 	 * @return string
 	 */
-	public function getComment()
+	public function getComments()
 	{
-		return $this->comment;
+		return $this->comments;
 	}
 
 	/**
-	 * @param string $comment
+	 * @param string $comments
 	 *
 	 * @return Owner
 	 */
-	public function setComment($comment)
+	public function setComments($comments)
 	{
-		$this->comment = $comment;
+		$this->comments = $comments;
 
 		return $this;
 	}
