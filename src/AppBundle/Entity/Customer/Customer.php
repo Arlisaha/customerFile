@@ -79,15 +79,6 @@ class Customer
 	private $mainAnimal;
 
 	/**
-	 * @ORM\Column(name="status", type="string", length=255, nullable=true)
-	 *
-	 * @Assert\Type(type="string")
-	 *
-	 * @var string
-	 */
-	private $status;
-
-	/**
 	 * @ORM\Column(name="address", type="text", nullable=true)
 	 *
 	 * @Assert\Type(type="string")
@@ -405,26 +396,6 @@ class Customer
 	public function setMainAnimal(AbstractAnimal $mainAnimal)
 	{
 		$this->mainAnimal = $mainAnimal;
-
-		return $this;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getStatus()
-	{
-		return $this->status;
-	}
-
-	/**
-	 * @param string $status
-	 *
-	 * @return Customer
-	 */
-	public function setStatus($status)
-	{
-		$this->status = $status;
 
 		return $this;
 	}

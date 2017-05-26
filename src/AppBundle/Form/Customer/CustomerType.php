@@ -57,9 +57,6 @@ class CustomerType extends AbstractType
 			])
 			->add('zipCode', TextType::class, [
 				'required' => true,
-			])
-			->add('status', TextType::class, [
-				'required' => false,
 			]);
 		
 		$builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
