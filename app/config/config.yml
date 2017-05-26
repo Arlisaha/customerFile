@@ -40,6 +40,8 @@ twig:
     strict_variables: '%kernel.debug%'
     form_themes:
         - 'form/fields.html.twig'
+    globals:
+        google_api_key: '%google_api_key%'
 
 # Doctrine Configuration
 doctrine:

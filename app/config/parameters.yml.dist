@@ -17,3 +17,6 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
+
+    # Google API key to use maps
+    google_api_key: AIzaSyBP25G6kEni4T3lhBgbfvx2UOOkIh8SB1o

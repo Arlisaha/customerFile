@@ -204,7 +204,7 @@
             {id: 'customer_card_customer_city', address_components: ['locality', 'administrative_area_level_2'], separator: ' - '}
         ];
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBP25G6kEni4T3lhBgbfvx2UOOkIh8SB1o&libraries=places&project=symbiose-animale-fiche-client" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ google_api_key }}&libraries=places&project=symbiose-animale-fiche-client" async defer></script>
     <script src="{{ asset('public/js/customer_card/form_handler.js') }}"></script>
     <script src="{{ asset('public/js/google_api.js') }}"></script>
 {% endblock %}
