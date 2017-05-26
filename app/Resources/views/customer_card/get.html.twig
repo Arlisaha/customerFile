@@ -1,8 +1,131 @@
 {% extends '::layout.html.twig' %}
 
-{% set page = 'Fiche Client' %}
+{% macro render_owner(owner) %}
+    {% import ':macro:macros.html.twig' as macros %}
+    <div class="owner_first_row">
+        <span class="owner_name">
+            {{ macros.display_human_gender(owner) }}&nbsp;
+            {{ owner.firstName|capitalize }}
+            {{ owner.lastName|upper }}
+        </span>
+        <span class="owner_age">
+            {{ 'template.human_title.age'|trans({'%age%': owner.age}) }}
+        </span>
+    </div>
+    <div class="owner_second_row">
+        <span class="owner_contact">
+            {{ owner.email }}
+            {{ owner.phone }}
+        </span>
+        <span class="owner_others">
+            {{ macros.display_dashed_separated_elements_list(owner.lifeStyle) }}
+            {{ owner.job }}
+        </span>
+        <span class="owner_comments">
+            {{ owner.comments|raw }}
+        </span>
+    </div>
+{% endmacro %}
+
+{% macro render_animal(animal) %}
+    {% import ':macro:macros.html.twig' as macros %}
+    <div class="animal_first_row">
+        <span class="animal_info">
+            {{ animal.name|capitalize }}
+            {{ macros.display_animal_specie(animal) }}
+            {{ animal.breed|trans }}
+            {{ macros.display_animal_gender(animal) }}
+        </span>
+        <span class="animal_metrics">
+            {{ macros.display_animal_age(animal) }}
+            {{ 'template.animal.weight'|trans({'%weight%': animal.weight}) }}
+            {{ 'template.animal.size'|trans({'%size%': animal.size}) }}
+        </span>
+        <span class="animal_others">
+            {{ macros.display_animal_castrated(animal) }}
+            {{ macros.display_animal_adoption_origin(animal) }}
+            {{ macros.display_animal_living_outside(animal) }}
+            {{ macros.display_outside_time(animal) }}
+            {{ macros.display_dashed_separated_elements_list(animal.temper) }}
+            {% if animal.getSpecie == 'dog' %}
+                {{ _self.render_dog_part(animal) }}
+            {% endif %}
+        </span>
+        <span class="issues">
+            {{ animal.issues|raw }}
+        </span>
+        <span class="health_issues">
+            {{ animal.healthIssues|raw }}
+        </span>
+        <span class="comments">
+            {{ animal.comments|raw }}
+        </span>
+    </div>
+{% endmacro %}
+
+{% macro render_consultation(consultation) %}
+
+{% endmacro %}
+
+{% set page = 'Fiche Client N°'~customer_card.id %}
 
 {% block pagetitle %}{{ page|raw }}{% endblock %}
 
 {% block container %}
+    <h1 id="page_title">{{ page|raw }}</h1>
+    <div id="container">
+        <div id="customer">
+            {% set customer = customer_card.customer %}
+            <div id="customer_address" class="left">
+                <span id="address_street">
+                    {{ customer.address }}
+                </span>
+                <span id="address_zipcode_city">
+                    {{ customer.zipCode }}&nbsp;{{ customer.city }}
+                </span>
+            </div>
+            <div id="customer_status" class="right">
+                <span>
+                    {{ customer.status }}
+                </span>
+            </div>
+        </div>
+        <div id="owners">
+            <div id="owners_list">
+                <div id="main_owner" class="left">
+                    {{ _self.render_owner(customer.mainOwner) }}
+                </div>
+                {% for owner in customer_card.customer.owners %}
+                    {% if owner.id != customer.mainOwner.id %}
+                        <div class="{{ loop.index is even ? 'left' : 'right' }}">
+                            {{ _self.render_owner(owner) }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div id="animals">
+            <div id="animals_list">
+                <div id="main_animal" class="left">
+                    {{ _self.render_animal(customer.mainAnimal) }}
+                </div>
+                {% for animal in customer.animals %}
+                    {% if animal.id != customer.mainAnimal.id %}
+                        <div class="{{ loop.index is even ? 'left' : 'right' }}">
+                            {{ _self.render_animal(animal) }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div id="consultations">
+            <div id="consultations_list">
+                {% for consultation in customer_card.consultations %}
+                    <div class="{{ loop.index is even ? 'left' : 'right' }}">
+                        {{ _self.render_consultation(consultation) }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -170,6 +170,64 @@
                     </group>
                 </group>
             </group>
+            <group id="template">
+                <trans-unit id="human_title.mister" resname="template.human_title.mister">
+                    <source>Mr.</source>
+                    <target>M.</target>
+                </trans-unit>
+                <trans-unit id="human_title.age" resname="template.human_title.age">
+                    <source>%age% years</source>
+                    <target>%age% ans</target>
+                </trans-unit>
+                <trans-unit id="human_title.madam" resname="template.human_title.madam">
+                    <source>Mme.</source>
+                    <target>Mme.</target>
+                </trans-unit>
+                <trans-unit id="animal.age.year" resname="template.animal.age.year">
+                    <source>{0}|{1} %count% year|]1,Inf] %count% years</source>
+                    <target>{0}|{1} %count% an|]1,Inf] %count% ans</target>
+                </trans-unit>
+                <trans-unit id="animal.age.month" resname="template.animal.age.month">
+                    <source>{0}|{1} %count% month|]1,Inf] %count% months</source>
+                    <target>{0}|[1,Inf] %count% mois</target>
+                </trans-unit>
+                <trans-unit id="animal.weight" resname="template.animal.weight">
+                    <source>%weight% kg</source>
+                    <target>%weight% kg</target>
+                </trans-unit>
+                <trans-unit id="animal.size" resname="template.animal.size">
+                    <source>%size% cm</source>
+                    <target>%size% cm</target>
+                </trans-unit>
+                <trans-unit id="animal.castrated" resname="template.animal.castrated">
+                    <source>{0}is not castrated|{1}is castrated</source>
+                    <target>{0}n'est pas castré|{1}est castré</target>
+                </trans-unit>
+                <trans-unit id="animal.living_outside" resname="template.animal.living_outside">
+                    <source>{0}does not live outside|{1}lives outside</source>
+                    <target>{0}ne vie pas dehors|{1}vie dehors</target>
+                </trans-unit>
+                <trans-unit id="animal.adoption_origin" resname="template.animal.adoption_origin">
+                    <source>adoption origin : %origin%</source>
+                    <target>origine de l'adoption : %origin%</target>
+                </trans-unit>
+                <trans-unit id="animal.outside_time" resname="template.animal.outside_time">
+                    <source>spend %hours% hours and %minutes% minutes outside</source>
+                    <target>passe %hours% heures et %minutes% minutes dehors</target>
+                </trans-unit>
+                <trans-unit id="animal.no_outside_time" resname="template.animal.no_outside_time">
+                    <source>does not goes out</source>
+                    <target>ne sors pas</target>
+                </trans-unit>
+                <trans-unit id="dog.daily_walk_time" resname="template.dog.daily_walk_time">
+                    <source>have %hours% hours and %minutes% minutes of daily walk time</source>
+                    <target>a %hours% heures et %minutes% minutes de temps de sortie quotidienne</target>
+                </trans-unit>
+                <trans-unit id="dog.no_daily_walk_time" resname="template.dog.no_daily_walk_time">
+                    <source>have no daily walk time</source>
+                    <target>ne fait pas de sorties quotidiennes</target>
+                </trans-unit>
+            </group>
         </body>
     </file>
 </xliff>
