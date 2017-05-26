@@ -161,6 +161,18 @@ class Customer
 	{
 		return $this->owners;
 	}
+	
+	/**
+	 * @return ArrayCollection
+	 */
+	public function getOwnersWithoutMain()
+	{
+		$tmp = $this->owners;
+		
+		$tmp->removeElement($this->mainOwner);
+		
+		return $tmp;
+	}
 
 	/**
 	 * @param ArrayCollection $owners
@@ -243,6 +255,18 @@ class Customer
 	public function getAnimals()
 	{
 		return $this->animals;
+	}
+	
+	/**
+	 * @return AbstractAnimal[]
+	 */
+	public function getAnimalsWithoutMain()
+	{
+		$tmp = $this->animals;
+		
+		$tmp->removeElement($this->mainAnimal);
+		
+		return $tmp;
 	}
 
 	/**
