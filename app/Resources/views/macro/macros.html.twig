@@ -1,0 +1,70 @@
+{% macro display_animal_specie(animal) %}
+    {% spaceless %}
+        {{ ('entity.customer.specie.'~animal.getSpecie)|trans|lower }}
+    {% endspaceless %}
+{% endmacro %}
+
+{% macro display_animal_gender(animal) %}
+    {% spaceless %}
+        {{ ('entity.animal.gender.'~animal.gender)|trans|lower }}
+    {% endspaceless %}
+{% endmacro %}
+
+{% macro display_animal_adoption_origin(animal) %}
+    {% spaceless %}
+        {{ 'template.animal.adoption_origin'|trans({'%origin%': animal.adoptionOrigin|trans|lower})|capitalize }}
+    {% endspaceless %}
+{% endmacro %}
+
+{% macro display_animal_age(animal) %}
+    {% spaceless %}
+        {{ 'template.animal.age.year'|transchoice(animal.ageInYears) }}
+        {{ 'template.animal.age.month'|transchoice(animal.ageInMonths) }}
+    {% endspaceless %}
+{% endmacro %}
+
+{% macro display_animal_castrated(animal) %}
+    {% spaceless %}
+        {{ 'template.animal.castrated'|transchoice(animal.castrated ? 1 : 0)|capitalize }}
+    {% endspaceless %}
+{% endmacro %}
+
+{% macro display_animal_living_outside(animal) %}
+    {% spaceless %}
+        {{ 'template.animal.living_outside'|transchoice(animal.livingOutside ? 1 : 0) }}
+    {% endspaceless %}
+{% endmacro %}
+
+{% macro display_outside_time(animal) %}
+    {% spaceless %}
+        {% if animal.outsideTime is not empty %}
+            {{ 'template.animal.outside_time'|trans({'%hours%': animal.outsideTime|date('H'), '%minutes%': animal.outsideTime|date('i')}) }}
+        {% else %}
+            {{ 'template.animal.no_outside_time'|trans }}
+        {% endif %}
+    {% endspaceless %}
+{% endmacro %}
+
+{% macro display_daily_walk_time(dog) %}
+    {% spaceless %}
+        {% if dog.dailyWalkTime is not empty %}
+            {{ 'template.dog.daily_walk_time'|trans({'%hours%': dog.dailyWalkTime|date('H'), '%minutes%': dog.dailyWalkTime|date('i')}) }}
+        {% else %}
+            {{ 'template.dog.no_daily_walk_time'|trans }}
+        {% endif %}
+    {% endspaceless %}
+{% endmacro %}
+
+{% macro display_human_gender(owner) %}
+    {% spaceless %}
+        {{ owner.gender == 'male' ? 'template.human_title.mister'|trans : 'template.human_title.madam'|trans }}
+    {% endspaceless %}
+{% endmacro %}
+
+{% macro display_dashed_separated_elements_list(list) %}
+    {% spaceless %}
+        {% for elt in list %}
+            {{ elt|trans }}{% if not loop.last %}&nbsp;-{% endif %}
+        {% endfor %}
+    {% endspaceless %}
+{% endmacro %}

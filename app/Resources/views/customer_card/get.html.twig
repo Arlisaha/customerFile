@@ -1,65 +1,74 @@
 {% extends '::layout.html.twig' %}
 
+{% set box_colors = ['red', 'pink', 'magenta', 'lightpurple', 'purple', 'darkblue', 'blue', 'lightblue', 'indigo', 'turquoise', 'green', 'greenleaf', 'yellowgreen', 'yellow', 'orange', 'lava', 'silver'] %}
+{% set markers_colors = ['black', 'brown', 'green', 'purple', 'yellow', 'blue', 'gray', 'orange', 'red', 'white'] %}
+
 {% macro render_owner(owner) %}
     {% import ':macro:macros.html.twig' as macros %}
-    <div class="owner_first_row">
-        <span class="owner_name">
-            {{ macros.display_human_gender(owner) }}&nbsp;
-            {{ owner.firstName|capitalize }}
-            {{ owner.lastName|upper }}
-        </span>
-        <span class="owner_age">
-            {{ 'template.human_title.age'|trans({'%age%': owner.age}) }}
-        </span>
+    <div class="owner_name">
+        {{ macros.display_human_gender(owner) }}
+        {{ owner.firstName|capitalize }}
+        {{ owner.lastName|upper }}
     </div>
-    <div class="owner_second_row">
-        <span class="owner_contact">
-            {{ owner.email }}
-            {{ owner.phone }}
-        </span>
-        <span class="owner_others">
-            {{ macros.display_dashed_separated_elements_list(owner.lifeStyle) }}
-            {{ owner.job }}
-        </span>
-        <span class="owner_comments">
-            {{ owner.comments|raw }}
-        </span>
+    <div class="owner_age">
+        {{ 'template.human_title.age'|trans({'%age%': owner.age}) }}
+    </div>
+    <div class="owner_email">
+        {{ owner.email }}
+    </div>
+    <div class="owner_phone">
+        {{ owner.phone }}
+    </div>
+    <div class="owner_job">
+        {{ owner.job|capitalize }}
+    </div>
+    <div class="owner_life_style_list">
+        {{ macros.display_dashed_separated_elements_list(owner.lifeStyle) }}
+    </div>
+    <div class="owner_comments">
+        {{ owner.comments|raw }}
     </div>
 {% endmacro %}
 
 {% macro render_animal(animal) %}
     {% import ':macro:macros.html.twig' as macros %}
     <div class="animal_first_row">
-        <span class="animal_info">
-            {{ animal.name|capitalize }}
+        <div class="animal_info">
+            {{ animal.name|capitalize }},
             {{ macros.display_animal_specie(animal) }}
             {{ animal.breed|trans }}
             {{ macros.display_animal_gender(animal) }}
-        </span>
-        <span class="animal_metrics">
+        </div>
+        <div class="animal_age">
             {{ macros.display_animal_age(animal) }}
-            {{ 'template.animal.weight'|trans({'%weight%': animal.weight}) }}
+        </div>
+        <div class="animal metrics">
+            {{ 'template.animal.weight'|trans({'%weight%': animal.weight}) }}&nbsp;-
             {{ 'template.animal.size'|trans({'%size%': animal.size}) }}
-        </span>
-        <span class="animal_others">
-            {{ macros.display_animal_castrated(animal) }}
+        </div>
+        <div class="animal_adoption_origin">
             {{ macros.display_animal_adoption_origin(animal) }}
-            {{ macros.display_animal_living_outside(animal) }}
+        </div>
+        <div class="animal_others">
+            {{ macros.display_animal_castrated(animal) }},
+            {{ macros.display_animal_living_outside(animal) }},
             {{ macros.display_outside_time(animal) }}
-            {{ macros.display_dashed_separated_elements_list(animal.temper) }}
             {% if animal.getSpecie == 'dog' %}
-                {{ _self.render_dog_part(animal) }}
+                , {{ macros.display_daily_walk_time(animal) }}
             {% endif %}
-        </span>
-        <span class="issues">
+        </div>
+        <div class="animal_temper_list">
+            {{ macros.display_dashed_separated_elements_list(animal.temper) }}
+        </div>
+        <div class="issues">
             {{ animal.issues|raw }}
-        </span>
-        <span class="health_issues">
+        </div>
+        <div class="health_issues">
             {{ animal.healthIssues|raw }}
-        </span>
-        <span class="comments">
+        </div>
+        <div class="comments">
             {{ animal.comments|raw }}
-        </span>
+        </div>
     </div>
 {% endmacro %}
 
@@ -76,55 +85,69 @@
     <div id="container">
         <div id="customer">
             {% set customer = customer_card.customer %}
-            <div id="customer_address" class="left">
-                <span id="address_street">
-                    {{ customer.address }}
-                </span>
-                <span id="address_zipcode_city">
-                    {{ customer.zipCode }}&nbsp;{{ customer.city }}
-                </span>
-            </div>
-            <div id="customer_status" class="right">
-                <span>
-                    {{ customer.status }}
-                </span>
-            </div>
-        </div>
-        <div id="owners">
-            <div id="owners_list">
-                <div id="main_owner" class="left">
-                    {{ _self.render_owner(customer.mainOwner) }}
+            <div id="customer_main" class="wrapper_2col customer_part">
+                <div id="customer_main_elements">
+                    <div id="address_street">
+                        {{ customer.address }}
+                    </div>
+                    <div id="address_zipcode_city">
+                        {{ customer.zipCode }}&nbsp;{{ customer.city }}
+                    </div>
                 </div>
-                {% for owner in customer_card.customer.owners %}
-                    {% if owner.id != customer.mainOwner.id %}
-                        <div class="{{ loop.index is even ? 'left' : 'right' }}">
-                            {{ _self.render_owner(owner) }}
-                        </div>
-                    {% endif %}
-                {% endfor %}
-            </div>
-        </div>
-        <div id="animals">
-            <div id="animals_list">
-                <div id="main_animal" class="left">
-                    {{ _self.render_animal(customer.mainAnimal) }}
+                <div id="customer_address_map">
+                    <a href="https://maps.google.com/?q={{ customer.address }},{{ customer.zipCode }},{{ customer.city }}" target="_blank">
+                        <img id="static_map" src="https://maps.googleapis.com/maps/api/staticmap?zoom=16&size=640x200&markers=color:{{ random(markers_colors) }}%7C{{ customer.address }},{{ customer.zipCode }},{{ customer.city }}&key={{ google_api_key }}" />
+                    </a>
                 </div>
-                {% for animal in customer.animals %}
-                    {% if animal.id != customer.mainAnimal.id %}
-                        <div class="{{ loop.index is even ? 'left' : 'right' }}">
+            </div>
+            <div id="owners" class="customer_part">
+                <div class="list">
+                    <div id="main_owner" class="list_elt {{ random(box_colors) }}">
+                        {{ _self.render_owner(customer.mainOwner) }}
+                    </div>
+                    {% for owner in customer.ownersWithoutMain %}
+                        {% if loop.index is not divisible by (2) %}<div class="wrapper_2col">{% endif %}
+                            <div class="half_size list_elt {{ random(box_colors) }}">
+                                {{ _self.render_owner(owner) }}
+                            </div>
+                        {% if loop.index is divisible by (2) or loop.last %}</div>{% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div id="animals" class="customer_part">
+                <div class="list">
+                    <div id="main_animal" class="list_elt {{ random(box_colors) }}">
+                        {{ _self.render_animal(customer.mainAnimal) }}
+                    </div>
+                    {% for animal in customer.animalsWithoutMain %}
+                        {% if loop.index is not divisible by (2) %}<div class="wrapper_2col">{% endif %}
+                        <div class="half_size list_elt {{ random(box_colors) }}">
                             {{ _self.render_animal(animal) }}
                         </div>
-                    {% endif %}
-                {% endfor %}
+                        {% if loop.index is divisible by (2) or loop.last %}</div>{% endif %}
+                    {% endfor %}
+                </div>
             </div>
-        </div>
-        <div id="consultations">
-            <div id="consultations_list">
-                {% for consultation in customer_card.consultations %}
-                    <div class="{{ loop.index is even ? 'left' : 'right' }}">
-                        {{ _self.render_consultation(consultation) }}
-                    </div>
-                {% endfor %}
+            <div id="consultations">
+                <div class="list">
+                    {% for consultation in customer_card.consultations %}
+                        {% if loop.index is not divisible by (3) %}<div class="wrapper_2col">{% endif %}
+                        <div class="half_size list_elt {{ random(box_colors) }}">
+                            {{ _self.render_consultation(consultation) }}
+                        </div>
+                        {% if loop.last and loop.index is divisible by (3) %}
+                            </div><div class="wrapper_2col">
+                        {% endif %}
+                        {% if loop.last %}
+                            <div id="add_consultation" class="half_size list_elt {{ random(box_colors) }}_hover">
+                                <div id="inner_add_consultation">
+                                    +
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if loop.index is divisible by (3) or loop.last %}</div>{% endif %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
