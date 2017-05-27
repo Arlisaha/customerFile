@@ -227,6 +227,10 @@
                     <source>have no daily walk time</source>
                     <target>ne fait pas de sorties quotidiennes</target>
                 </trans-unit>
+                <trans-unit id="consultation.type_and_duration" resname="template.consultation.type_and_duration">
+                    <source>%type% seance of %hour% hour and %minutes% minutes</source>
+                    <target>séance de %type% de %hour% heures et %minutes% minutes</target>
+                </trans-unit>
             </group>
         </body>
     </file>

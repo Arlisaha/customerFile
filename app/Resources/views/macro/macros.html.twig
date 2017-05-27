@@ -61,6 +61,12 @@
     {% endspaceless %}
 {% endmacro %}
 
+{% macro display_consultation_type_and_duration(consultation) %}
+    {% spaceless %}
+        {{ 'template.consultation.type_and_duration'|trans({'%type%': ('entity.consultation.type.'~consultation.type)|trans|lower, '%hour%': consultation.duration|date('H'), '%minutes%': consultation.duration|date('i')})|capitalize }}
+    {% endspaceless %}
+{% endmacro %}
+
 {% macro display_dashed_separated_elements_list(list) %}
     {% spaceless %}
         {% for elt in list %}
