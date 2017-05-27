@@ -92,7 +92,7 @@ class CustomerCardController extends Controller
 		
 		return $this->render(':customer_card:get.html.twig', [
 			'customer_card' => $customerCard,
-			'form'          => $form,
+			'form'          => $form->createView(),
 		]);
 	}
 	
