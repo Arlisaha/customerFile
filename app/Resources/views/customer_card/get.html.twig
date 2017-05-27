@@ -94,6 +94,19 @@
 {% block pagetitle %}{{ page|raw }}{% endblock %}
 
 {% block container %}
+    <div id="consultation_form_wrapper" style="display: none">
+        <div id="consultation_form">
+            <div id="container_form">
+                {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <span id="submit_btn">
+                        <button id="submit_btn" class="submit_button">Valider</button>
+                    </span>
+                    <div style="display: none">{{ form_rest(form) }}</div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
     <h1 id="page_title">{{ page|raw }}</h1>
     <div id="container">
         <div id="customer">
@@ -180,4 +193,29 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block pagejavascripts %}
+    <script>
+        var chosenOptions = {
+            no_results_text: "Pas de r&eacute:sultats !",
+            disable_search_threshold: 10,
+            width: '115px'
+        };
+        var froalaOptions = {
+            toolbarButtons: [
+                'fullscreen', '|',
+                'undo', 'redo' , '|',
+                'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|',
+                'fontFamily', 'fontSize', 'color', '|',
+                'paragraphStyle', 'paragraphFormat', 'align', '|',
+                'outdent', 'indent', '|',
+                'formatOL', 'formatUL', 'insertTable', 'quote', 'insertHorizontalLine', '|',
+                'insertLink', 'uploadFile', 'emoticons', 'specialCharacters'
+            ],
+            theme: 'grey',
+            placeholderText: 'Commentaires...'
+        };
+    </script>
+    <script src="{{ asset('public/js/customer_card/consultation_form_handler.js') }}"></script>
 {% endblock %}
