@@ -77,7 +77,7 @@
     {% import ':macro:macros.html.twig' as macros %}
     <div class="first_block">
         <div class="consultation_date">
-            {{ consultation.date|date('Y/m/d') }}
+            {{ consultation.date|date('d/m/Y') }}
         </div>
         <div class="consultation_animals">
             {{ macros.display_dashed_separated_elements_list(consultation.animals) }}
@@ -177,27 +177,25 @@
                     {% endfor %}
                 </div>
             </div>
-        </div>
-        <div id="consultations">
-            <div class="list">
-                {% for consultation in customer_card.consultations %}
-                    {% if loop.first %}<div class="wrapper_2col">{% endif %}
-                    {% if loop.index is divisible by (3) %}</div><div class="wrapper_2col">{% endif %}
-                    <div class="third_size list_elt {{ random(box_colors) }}">
-                        {{ _self.render_consultation(consultation) }}
-                    </div>
-                    {% if loop.last and loop.index is divisible by (3) %}
-                        </div><div class="wrapper_2col">
-                    {% endif %}
-                    {% if loop.last %}
-                        <div id="add_consultation" class="third_size list_elt {{ random(box_colors) }}_hover">
-                            <div id="inner_add_consultation">
-                                <span id="plus_sign">+</span>
+            <div id="consultations">
+                <div class="list">
+                    {% for consultation in customer_card.consultations %}
+                        {% if loop.first %}<div class="wrapper_2col">{% endif %}
+                        <div class="third_size list_elt {{ random(box_colors) }}">
+                            {{ _self.render_consultation(consultation) }}
+                        </div>
+                        {% if loop.index is divisible by (3) %}</div><div class="wrapper_2col">{% endif %}
+                        {% if loop.last %}
+                            {% if loop.index is divisible by (3) %}<div class="wrapper_2col">{% endif %}
+                                <div id="add_consultation" class="third_size list_elt">
+                                    <div id="inner_add_consultation">
+                                        <span id="plus_sign">+</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        </div>
-                    {% endif %}
-                {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>

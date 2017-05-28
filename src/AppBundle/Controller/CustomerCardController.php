@@ -88,6 +88,8 @@ class CustomerCardController extends Controller
 			$em->persist($consultation);
 			
 			$em->flush();
+			
+			$this->redirectToRoute('customer_card_get', ['id' => $customerCard->getId()]);
 		}
 		
 		return $this->render(':customer_card:get.html.twig', [
