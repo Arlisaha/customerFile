@@ -105,12 +105,28 @@ class CustomerCard
 
 		return $this;
 	}
-
+	
 	/**
-	 * @return ArrayCollection
+	 * @param bool $sort
+	 *
+	 * @return Consultation[]|ArrayCollection
 	 */
-	public function getConsultations()
+	public function getConsultations($sort = true)
 	{
+		if ($sort) {
+			$consultations = $this->consultations->toArray();
+			
+			uasort($consultations, function ($a, $b) {
+				if ($a === $b) {
+					return 0;
+				}
+				
+				return $a < $b ? -1 : 1;
+			});
+			
+			return new ArrayCollection($consultations);
+		}
+		
 		return $this->consultations;
 	}
 
