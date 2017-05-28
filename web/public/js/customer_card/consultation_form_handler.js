@@ -4,13 +4,26 @@
  count: '{{ form.customer.owners|length }}'
  };*/
 
+function hideConsultationForm() {
+    $('#consultation_form_wrapper').css('display', 'none');
+}
+
+function showConsultationForm() {
+    $('#consultation_form_wrapper').css('display', 'block');
+}
+
 $(document).ready(function () {
     $('.froala').froalaEditor(froalaOptions);
     $('select').chosen(chosenOptions);
     $('#add_consultation').click(function() {
-        $('#consultation_form_wrapper').css('display', 'block');
+        showConsultationForm();
     });
-    $('#consultation_form_wrapper').click(function () {
-        $('#consultation_form_wrapper').css('display', 'none');
-    })
+    $('#cancel_btn').click(function () {
+        hideConsultationForm();
+    });
+    $(document).keyup(function(e) {
+        if (e.keyCode == 27) {
+            hideConsultationForm();
+        }
+    });
 });
