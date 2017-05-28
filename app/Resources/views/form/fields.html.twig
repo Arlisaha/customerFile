@@ -233,7 +233,9 @@
             <td class="value">
                 {{- form_widget(form.weight, {
                     'attr': {
-                        'class': 'input'
+                        'class': 'input',
+                        'min': '0.5',
+                        'step': '0.1'
                     }
                 }) -}}
             </td>
@@ -243,7 +245,9 @@
             <td class="value">
                 {{- form_widget(form.size, {
                     'attr': {
-                        'class': 'input'
+                        'class': 'input',
+                        'min': '10',
+                        'step': '1'
                     }
                 }) -}}
             </td>
