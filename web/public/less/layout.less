@@ -142,7 +142,6 @@ body {
 
 			#consultations {
 				#consultations_list {
-
 					li {
 						table {
 							tr {
@@ -225,9 +224,14 @@ body {
 
 			#submit_btn {
 				display:    inline-block;
-				margin-top: 5px;
+				margin-top: 7px;
 				float:      right;
-				clear:      both;
+			}
+
+			#cancel_btn {
+				display:    inline-block;
+				margin-top: 7px;
+				float:      left;
 			}
 
 			.address_textarea {
@@ -343,22 +347,53 @@ body {
 		}
 
 		#consultation_form_wrapper {
+			z-index: 9999;
 			width:      100%;
 			height:     112%;
-			position:   absolute;
-			top:        0px;
-			left:       0px;
+			position:   fixed;
+			top:        0;
+			left:       0;
 			background: rgba(19, 19, 19, 0.7);
 
 			#consultation_form {
 				width:          85%;
 				margin:         auto;
-				margin-top:     15%;
+				margin-top:     12%;
 				background:     rgba(60, 60, 60, 0.87);
 				padding:        1px;
 				border-radius:  6px;
 				box-shadow:     0 0 17px #3C3C3C;
 				padding-bottom: 4%;
+
+				table {
+					tr {
+						width: 100%;
+
+						td {
+							input {
+								width: 80%;
+							}
+
+							select[multiple='multiple'], select {
+								width: 100%;
+							}
+						}
+
+						.label {
+							width: 10%;
+						}
+
+						.value {
+							width: 10%;
+						}
+
+						#price_value {
+							input[type='text'] {
+								width: 73%;
+							}
+						}
+					}
+				}
 			}
 		}
 
@@ -368,6 +403,7 @@ body {
 			.wrapper_2col {
 				display:         flex;
 				justify-content: space-between;
+				height:          100%;
 
 				.half_size {
 					width: 50%;
@@ -404,91 +440,211 @@ body {
 				.list_elt {
 					margin:  10px;
 					padding: 5px;
+					height:  280px;
+
+					.first_block {
+						height: 40%;
+					}
+
+					.raw_textarea {
+						overflow:   scroll;
+						hyphens:    auto;
+						height:     55%;
+						overflow-y: auto;
+						overflow-x: hidden;
+						padding:    4px;
+
+						p:first-child {
+							margin-top: 0;
+						}
+
+						&::-webkit-scrollbar {
+							width: 0.2em;
+						}
+
+						&::-webkit-scrollbar-track {
+							-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+						}
+
+						&::-webkit-scrollbar-thumb {
+							background-color: rgba(0, 0, 0, 0.44);
+							outline:          1px solid rgba(0, 0, 0, 0.44);
+						}
+					}
 				}
 
 				.main_color {
 					background: #B1B1B1;
 					box-shadow: 0 0 5px #B1B1B1;
+
+					.raw_textarea {
+						background: #969696;
+						box-shadow: 0 0 5px #969696;
+
+						&::-webkit-scrollbar-track {
+							-webkit-box-shadow: inset 0 0 6px #737373;
+						}
+					}
 				}
 
-				.red {
+				.deep_red {
 					background: #845454;
 					box-shadow: 0 0 5px #845454;
+
+					.raw_textarea {
+						background: #694040;
+						box-shadow: 0 0 5px #694040;
+					}
 				}
 
 				.pink {
 					background: #845465;
 					box-shadow: 0 0 5px #845465;
+
+					.raw_textarea {
+						background: #6F4755;
+						box-shadow: 0 0 5px #6F4755;
+					}
 				}
 
 				.magenta {
 					background: #845476;
 					box-shadow: 0 0 5px #845476;
+
+					.raw_textarea {
+						background: #6B445F;
+						box-shadow: 0 0 5px #6B445F;
+					}
 				}
 
 				.lightpurple {
 					background: #845482;
 					box-shadow: 0 0 5px #845482;
+
+					.raw_textarea {
+						background: #754A73;
+						box-shadow: 0 0 5px #754A73;
+					}
 				}
 
 				.purple {
 					background: #775484;
 					box-shadow: 0 0 5px #775484;
+
+					.raw_textarea {
+						background: #684973;
+						box-shadow: 0 0 5px #684973;
+					}
 				}
 
 				.darkblue {
 					background: #615484;
 					box-shadow: 0 0 5px #615484;
+
+					.raw_textarea {
+						background: #4B4167;
+						box-shadow: 0 0 5px #4B4167;
+					}
 				}
 
 				.blue {
 					background: #545B84;
 					box-shadow: 0 0 5px #545B84;
+
+					.raw_textarea {
+						background: #484E71;
+						box-shadow: 0 0 5px #484E71;
+					}
 				}
 
 				.lightblue {
 					background: #546D84;
 					box-shadow: 0 0 5px #546D84;
+
+					.raw_textarea {
+						background: #475D71;
+						box-shadow: 0 0 5px #475D71;
+					}
 				}
 
 				.indigo {
 					background: #547C84;
 					box-shadow: 0 0 5px #547A84;
+
+					.raw_textarea {
+						background: #4B7077;
+						box-shadow: 0 0 5px #4B7077;
+					}
 				}
 
 				.turquoise {
 					background: #54847A;
 					box-shadow: 0 0 5px #54847A;
+
+					.raw_textarea {
+						background: #4B776E;
+						box-shadow: 0 0 5px #4B776E;
+					}
 				}
 
 				.green {
 					background: #548462;
 					box-shadow: 0 0 5px #548462;
+
+					.raw_textarea {
+						background: #487355;
+						box-shadow: 0 0 5px #487355;
+					}
 				}
 
 				.greenleaf {
 					background: #658454;
 					box-shadow: 0 0 5px #668454;
+
+					.raw_textarea {
+						background: #557145;
+						box-shadow: 0 0 5px #557145;
+					}
 				}
 
 				.yellowgreen {
 					background: #758454;
 					box-shadow: 0 0 5px #758454;
+
+					.raw_textarea {
+						background: #6A774B;
+						box-shadow: 0 0 5px #6A774B;
+					}
 				}
 
 				.yellow {
 					background: #848454;
 					box-shadow: 0 0 5px #828454;
+
+					.raw_textarea {
+						background: #79794D;
+						box-shadow: 0 0 5px #79794D;
+					}
 				}
 
 				.orange {
 					background: #847254;
 					box-shadow: 0 0 5px #847454;
+
+					.raw_textarea {
+						background: #716248;
+						box-shadow: 0 0 5px #716248;
+					}
 				}
 
 				.lava {
 					background: #846054;
 					box-shadow: 0 0 5px #846054;
+
+					.raw_textarea {
+						background: #6D4F45;
+						box-shadow: 0 0 5px #6D4F45;
+					}
 				}
 			}
 
@@ -515,7 +671,7 @@ body {
 							height: 25%;
 						}
 
-						#customer_comments {
+						.raw_textarea {
 							overflow:   scroll;
 							hyphens:    auto;
 							height:     70%;
@@ -526,6 +682,10 @@ body {
 							box-shadow: 0 0 20px #565656;
 							padding:    4px;
 							background: #565656;
+
+							p:first-child {
+								margin-top: 0;
+							}
 
 							&::-webkit-scrollbar {
 								width: 0.2em;
@@ -566,7 +726,7 @@ body {
 						border:        2px dashed rgba(242, 219, 219, 0.45);
 						border-radius: 3px;
 						width:         99%;
-						height:        97%;
+						height:        98%;
 						text-shadow:   none;
 
 						&:hover {
@@ -575,9 +735,8 @@ body {
 						}
 
 						#plus_sign {
-							vertical-align: middle;
-							position:       relative;
-							top:            -5px;
+							position: relative;
+							top:      85px;
 						}
 					}
 				}

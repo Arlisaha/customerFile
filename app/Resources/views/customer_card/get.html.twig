@@ -2,90 +2,101 @@
 
 {% macro render_owner(owner) %}
     {% import ':macro:macros.html.twig' as macros %}
-    <div class="owner_name">
-        {{ macros.display_human_gender(owner) }}
-        {{ owner.firstName|capitalize }}
-        {{ owner.lastName|upper }}
+    <div class="first_block">
+        <div class="owner_name">
+            {{ macros.display_human_gender(owner) }}
+            {{ owner.firstName|capitalize }}
+            {{ owner.lastName|upper }}
+        </div>
+        <div class="owner_age">
+            {{ 'template.human_title.age'|trans({'%age%': owner.age}) }}
+        </div>
+        <div class="owner_email">
+            {{ owner.email }}
+        </div>
+        <div class="owner_phone">
+            {{ owner.phone }}
+        </div>
+        <div class="owner_job">
+            {{ owner.job|capitalize }}
+        </div>
+        <div class="owner_life_style_list">
+            {{ macros.display_dashed_separated_elements_list(owner.lifeStyle) }}
+        </div>
     </div>
-    <div class="owner_age">
-        {{ 'template.human_title.age'|trans({'%age%': owner.age}) }}
-    </div>
-    <div class="owner_email">
-        {{ owner.email }}
-    </div>
-    <div class="owner_phone">
-        {{ owner.phone }}
-    </div>
-    <div class="owner_job">
-        {{ owner.job|capitalize }}
-    </div>
-    <div class="owner_life_style_list">
-        {{ macros.display_dashed_separated_elements_list(owner.lifeStyle) }}
-    </div>
-    <div class="owner_comments">
+    <div class="owner_comments raw_textarea">
         {{ owner.comments|raw }}
     </div>
 {% endmacro %}
 
 {% macro render_animal(animal) %}
     {% import ':macro:macros.html.twig' as macros %}
-    <div class="animal_info">
-        {{ animal.name|capitalize }},
-        {{ macros.display_animal_specie(animal) }}
-        {{ animal.breed|trans }}
-        {{ macros.display_animal_gender(animal) }}
+    <div class="first_block">
+        <div class="animal_info">
+            {{ animal.name|capitalize }},
+            {{ macros.display_animal_specie(animal) }}
+            {{ animal.breed|trans }}
+            {{ macros.display_animal_gender(animal) }}
+        </div>
+        <div class="animal_age">
+            {{ macros.display_animal_age(animal) }}
+        </div>
+        <div class="animal metrics">
+            {{ 'template.animal.weight'|trans({'%weight%': animal.weight}) }}&nbsp;-
+            {{ 'template.animal.size'|trans({'%size%': animal.size}) }}
+        </div>
+        <div class="animal_adoption_origin">
+            {{ macros.display_animal_adoption_origin(animal) }}
+        </div>
+        <div class="animal_others">
+            {{ macros.display_animal_castrated(animal) }},
+            {{ macros.display_animal_living_outside(animal) }},
+            {{ macros.display_outside_time(animal) }}
+            {% if animal.getSpecie == 'dog' %}
+                , {{ macros.display_daily_walk_time(animal) }}
+            {% endif %}
+        </div>
+        <div class="animal_temper_list">
+            {{ macros.display_dashed_separated_elements_list(animal.temper) }}
+        </div>
     </div>
-    <div class="animal_age">
-        {{ macros.display_animal_age(animal) }}
-    </div>
-    <div class="animal metrics">
-        {{ 'template.animal.weight'|trans({'%weight%': animal.weight}) }}&nbsp;-
-        {{ 'template.animal.size'|trans({'%size%': animal.size}) }}
-    </div>
-    <div class="animal_adoption_origin">
-        {{ macros.display_animal_adoption_origin(animal) }}
-    </div>
-    <div class="animal_others">
-        {{ macros.display_animal_castrated(animal) }},
-        {{ macros.display_animal_living_outside(animal) }},
-        {{ macros.display_outside_time(animal) }}
-        {% if animal.getSpecie == 'dog' %}
-            , {{ macros.display_daily_walk_time(animal) }}
-        {% endif %}
-    </div>
-    <div class="animal_temper_list">
-        {{ macros.display_dashed_separated_elements_list(animal.temper) }}
-    </div>
-    <div class="issues">
-        {{ animal.issues|raw }}
-    </div>
-    <div class="health_issues">
-        {{ animal.healthIssues|raw }}
-    </div>
-    <div class="comments">
-        {{ animal.comments|raw }}
+    <div class="wrapper_2col">
+        <div class="issues raw_textarea third_size">
+            {{ animal.issues|raw }}
+        </div>
+        <div class="health_issues raw_textarea third_size">
+            {{ animal.healthIssues|raw }}
+        </div>
+        <div class="comments raw_textarea third_size">
+            {{ animal.comments|raw }}
+        </div>
     </div>
 {% endmacro %}
 
 {% macro render_consultation(consultation) %}
     {% import ':macro:macros.html.twig' as macros %}
-    <div class="consultation_date">
-        {{ consultation.date|date('Y/m/d') }}
+    <div class="first_block">
+        <div class="consultation_date">
+            {{ consultation.date|date('Y/m/d') }}
+        </div>
+        <div class="consultation_animals">
+            {{ macros.display_dashed_separated_elements_list(consultation.animals) }}
+        </div>
+        <div class="consultation_location">
+            {{ macros.display_consultation_type_and_duration(consultation) }}
+        </div>
+        <div class="consultation_location">
+            {{ consultation.location }}
+        </div>
+        <div class="consultation_price">
+            {{ consultation.price }}€
+        </div>
+        <div class="consultation_owners">
+            {{ macros.display_dashed_separated_elements_list(consultation.owners) }}
+        </div>
     </div>
-    <div class="consultation_animals">
-        {{ macros.display_dashed_separated_elements_list(consultation.animals) }}
-    </div>
-    <div class="consultation_location">
-        {{ macros.display_consultation_type_and_duration(consultation) }}
-    </div>
-    <div class="consultation_location">
-        {{ consultation.location }}
-    </div>
-    <div class="consultation_price">
-        {{ consultation.price }}€
-    </div>
-    <div class="consultation_owners">
-        {{ macros.display_dashed_separated_elements_list(consultation.owners) }}
+    <div class="consultations_purposes raw_textarea">
+        {{ consultation.purposes|raw }}
     </div>
 {% endmacro %}
 
@@ -99,8 +110,11 @@
             <div id="container_form">
                 {{ form_start(form) }}
                     {{ form_widget(form) }}
+                    <span id="cancel_btn">
+                        <button class="submit_button">Annuler</button>
+                    </span>
                     <span id="submit_btn">
-                        <button id="submit_btn" class="submit_button">Valider</button>
+                        <button class="submit_button">Valider</button>
                     </span>
                     <div style="display: none">{{ form_rest(form) }}</div>
                 {{ form_end(form) }}
@@ -121,7 +135,7 @@
                             {{ customer.zipCode }}&nbsp;{{ customer.city }}
                         </div>
                     </div>
-                    <div id="customer_comments">
+                    <div id="customer_comments" class="raw_textarea">
                         <div>{{ customer_card.comments|raw }}</div>
                     </div>
                 </div>
@@ -153,19 +167,13 @@
             </div>
             <div id="animals" class="customer_part">
                 <div class="list">
-                    <div class="wrapper_2col">
-                        <div id="main_animal" class="list_elt third_size main_color">
-                            {{ _self.render_animal(customer.mainAnimal) }}
-                        </div>
-                        {% for animal in customer.animalsWithoutMain %}
-                        {% if not loop.first and loop.index is divisible by (3) %}
+                    <div id="main_animal" class="list_elt main_color">
+                        {{ _self.render_animal(customer.mainAnimal) }}
                     </div>
-                    <div class="wrapper_2col">
-                        {% endif %}
-                        <div class="third_size list_elt {{ random(box_colors) }}">
+                    {% for animal in customer.animalsWithoutMain %}
+                        <div class="list_elt {{ random(box_colors) }}">
                             {{ _self.render_animal(animal) }}
                         </div>
-                        {% if loop.last %}</div>{% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -198,9 +206,9 @@
 {% block pagejavascripts %}
     <script>
         var chosenOptions = {
-            no_results_text: "Pas de r&eacute:sultats !",
+            no_results_text: 'Pas de r&eacute:sultats !',
             disable_search_threshold: 10,
-            width: '115px'
+            width: '85%'
         };
         var froalaOptions = {
             toolbarButtons: [
