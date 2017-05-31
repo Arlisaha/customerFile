@@ -1,9 +1,3 @@
-/*var ownersData = {
- id: '#customer_card_customer_owners',
- prototype: '__owner__',
- count: '{{ form.customer.owners|length }}'
- };*/
-
 function addTypePart(e, data) {
     e.preventDefault();
 
