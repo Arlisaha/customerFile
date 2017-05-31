@@ -3,22 +3,22 @@ function hideConsultationForm() {
 }
 
 function showConsultationForm() {
-    $('dialog').show();
+    document.querySelector('dialog').showModal();
 }
 
 $(document).ready(function () {
+	var show = document.querySelector('dialog');
+
     $('.froala').froalaEditor(froalaOptions);
     $('select').chosen(chosenOptions);
     $('#add_consultation').click(function() {
         showConsultationForm();
     });
-    $('#cancel_btn').click(function (e) {
+	show.click(function() {
+		dialog.showModal();
+	});
+	$('#cancel_btn').click(function (e) {
         e.preventDefault();
-        hideConsultationForm();
-    });
-    $(document).keyup(function(e) {
-        if (e.keyCode == 27) {
-            hideConsultationForm();
-        }
+        document.querySelector('dialog').close();
     });
 });

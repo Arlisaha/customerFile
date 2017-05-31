@@ -106,19 +106,19 @@
 
 {% block container %}
     <dialog id="consultation_form_wrapper">
-        <div id="consultation_form">
-            <div id="container_form">
-                {{ form_start(form) }}
-                    {{ form_widget(form) }}
-                    <span id="cancel_btn">
+        <div id="container_form">
+            {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <div class="wrapper_2col">
+                    <div id="cancel_btn">
                         <button class="submit_button">Annuler</button>
-                    </span>
-                    <span id="submit_btn">
+                    </div>
+                    <div id="submit_btn">
                         <button class="submit_button">Valider</button>
-                    </span>
-                    <div style="display: none">{{ form_rest(form) }}</div>
-                {{ form_end(form) }}
-            </div>
+                    </div>
+                </div>
+                <div style="display: none">{{ form_rest(form) }}</div>
+            {{ form_end(form) }}
         </div>
     </dialog>
     <h1 id="page_title">{{ page|raw }}</h1>
