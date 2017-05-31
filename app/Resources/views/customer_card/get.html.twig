@@ -105,7 +105,7 @@
 {% block pagetitle %}{{ page|raw }}{% endblock %}
 
 {% block container %}
-    <div id="consultation_form_wrapper" style="display: none">
+    <dialog id="consultation_form_wrapper">
         <div id="consultation_form">
             <div id="container_form">
                 {{ form_start(form) }}
@@ -120,7 +120,7 @@
                 {{ form_end(form) }}
             </div>
         </div>
-    </div>
+    </dialog>
     <h1 id="page_title">{{ page|raw }}</h1>
     <div id="container">
         <div id="customer">

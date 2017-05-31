@@ -1,15 +1,9 @@
-/*var ownersData = {
- id: '#customer_card_customer_owners',
- prototype: '__owner__',
- count: '{{ form.customer.owners|length }}'
- };*/
-
 function hideConsultationForm() {
-    $('#consultation_form_wrapper').css('display', 'none');
+    $('dialog').hide();
 }
 
 function showConsultationForm() {
-    $('#consultation_form_wrapper').css('display', 'block');
+    $('dialog').show();
 }
 
 $(document).ready(function () {
@@ -18,7 +12,8 @@ $(document).ready(function () {
     $('#add_consultation').click(function() {
         showConsultationForm();
     });
-    $('#cancel_btn').click(function () {
+    $('#cancel_btn').click(function (e) {
+        e.preventDefault();
         hideConsultationForm();
     });
     $(document).keyup(function(e) {
