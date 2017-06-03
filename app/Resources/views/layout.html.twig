@@ -12,7 +12,7 @@
         'public/js/froala_editor_2.6.0/css/themes/royal.min.css'
         'public/css/font-awesome-4.7.0/css/font-awesome.min.css'
         'public/js/components/chosen/css/chosen.min.css'
-        'public/less/*'
+        'public/less/layout.less'
     filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
@@ -39,5 +39,6 @@
     %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     {% block pagejavascripts %}{% endblock %}
 {% endblock %}

@@ -1,0 +1,318 @@
+#container_form {
+	margin: 2% 2% 0 2%;
+
+	.block_title {
+		display:        inline-block;
+		letter-spacing: 2px;
+		font-family:    "Lucida Console", Monaco, monospace;
+		padding-bottom: 2px;
+		padding-left:   2px;
+	}
+
+	.form_block {
+		border:        2px dashed #EFD2D7;
+		border-radius: 6px;
+		padding:       10px;
+		margin-bottom: 15px;
+		display:       flow-root;
+
+		.inner_block_title {
+			display:        inline-block;
+			letter-spacing: 2px;
+			font-family:    "Lucida Console", Monaco, monospace;
+			width:          48%;
+			padding:        10px 5px 5px 5px;
+		}
+
+		.inner_form_block {
+			border:        inherit;
+			border-radius: inherit;
+			padding:       5px;
+			width:         98.9%;
+			margin:        auto;
+			display:       block;
+
+			select {
+				width: 40%;
+			}
+
+			table {
+				width: 100%;
+
+				.label {
+					width: 5%;
+				}
+
+				.value {
+					width: 9%;
+
+					select, input[type="text"],
+					input[type="email"], input[type="date"],
+					input[type="time"], input[type="number"],
+					input[type="tel"] {
+						width: 69.5%;
+					}
+				}
+
+				.value_long {
+					width: 3%;
+
+					select, input[type="text"],
+					input[type="email"], input[type="date"],
+					input[type="time"], input[type="number"],
+					input[type="tel"] {
+						width: 150%;
+					}
+				}
+			}
+		}
+
+		.left {
+			float:       left;
+			margin-left: 2px;
+		}
+
+		.right {
+			float:        right;
+			margin-right: 2px;
+		}
+	}
+
+	.textarea_block {
+		padding:       1px 6px 6px 6px;
+		margin-bottom: 5px;
+	}
+
+	#customer {
+		#address {
+			width:          95%;
+			padding-bottom: 1%;
+
+			.align_top {
+				vertical-align: top;
+				margin-top:     12px;
+				display:        inline-block;
+			}
+
+			.address_elts {
+				display:        inline-block;
+				margin-left:    15px;
+				vertical-align: top;
+				margin-top:     10px;
+
+				.address_sub_elts {
+					display:      inline-block;
+					margin-right: 20px;
+				}
+			}
+		}
+
+		#owners {
+		}
+	}
+
+	#consultations {
+		#consultations_list {
+			li {
+				table {
+					tr {
+						width: 100%;
+
+						td {
+							input {
+								width: 80%;
+							}
+
+							select[multiple='multiple'], select {
+								width: 100%;
+							}
+						}
+
+						.label {
+							width: 10%;
+						}
+
+						.value {
+							width: 10%;
+						}
+
+						#price_value {
+							input[type='text'] {
+								width: 73%;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.list {
+		margin-top:      5px;
+		list-style-type: none;
+		padding-left:    25px;
+		margin-bottom:   0px;
+
+		table {
+			position: relative;
+			top:      -16px;
+		}
+
+		.deletable {
+			content:          "-";
+			height:           0;
+			width:            0;
+			left:             -1.3em;
+			top:              0.6em;
+			position:         relative;
+			cursor:           pointer;
+			padding:          0px 6.5px 1px 6px;
+			border-radius:    3px;
+			font-family:      arial, helvetica, sans-serif;
+			text-decoration:  none;
+			font-weight:      bold;
+			color:            #F5F5F5;
+			box-shadow:       #DE2C4A 0px 1px 1px;
+			background-image: linear-gradient(to bottom, #B74343, #AF3030);
+			text-shadow:      0px 1px 0 #E68989;
+			border:           1px solid #A73B3B;
+
+			&:hover {
+				box-shadow:       #E23D3D 0px 1px 1px;
+				background-image: linear-gradient(to bottom, #EC8383, #CE5A5A);
+				text-shadow:      0px 1px 0 #100E0E;
+				border:           1px solid #A54D4D;
+			}
+
+			&:active {
+				box-shadow:       #E23D3D 0px 1px 1px;
+				background-image: linear-gradient(to bottom, #D68989, #B15555);
+				border:           1px solid #AB5252;
+				text-shadow:      1px 1px 1px #2F2627;
+			}
+		}
+	}
+
+	#submit_btn {
+		display:    inline-block;
+		margin-top: 7px;
+		float:      right;
+	}
+
+	#cancel_btn {
+		display:    inline-block;
+		margin-top: 7px;
+		float:      left;
+	}
+
+	.address_textarea {
+		outline:       none;
+		resize:        none;
+		border:        none;
+		overflow:      auto;
+		border-radius: 4px;
+		background:    #F2F2F2;
+		padding:       5px;
+		box-shadow:    inset 2px 2px 1px rgba(0, 0, 0, 0.35);
+		width:         65%;
+		height:        35px;
+	}
+
+	.input {
+		outline:       none;
+		border-radius: 5px;
+		background:    #F2F2F2;
+		padding:       4px;
+		box-shadow:    inset 2px 2px 1px rgba(0, 0, 0, 0.35);
+		border-width:  0;
+		width:         65.5%;
+	}
+
+	input[type="date"] {
+
+		&::-webkit-clear-button,
+		&::-webkit-inner-spin-button {
+			display: none;
+		}
+	}
+
+	.add_button {
+		border:                1px solid #6E6E6E;
+		-webkit-border-radius: 3px;
+		-moz-border-radius:    3px;
+		border-radius:         3px;
+		font-family:           lucida sans unicode, lucida grande, sans-serif;
+		padding:               4px 6px 6px 6px;
+		text-decoration:       none;
+		display:               inline-block;
+		text-shadow:           -1px -1px 0 #545454;
+		font-weight:           bold;
+		color:                 #FFFFFF;
+		background-color:      #8A8A8A;
+		text-transform:        lowercase;
+		font-variant:          small-caps;
+		font-size:             medium;
+		margin-bottom:         6px;
+		cursor:                pointer;
+		background-image:      -webkit-gradient(linear, left top, left bottom, from(#8A8A8A), to(#787878));
+		background-image:      -webkit-linear-gradient(top, #8A8A8A, #787878);
+		background-image:      -moz-linear-gradient(top, #8A8A8A, #787878);
+		background-image:      -ms-linear-gradient(top, #8A8A8A, #787878);
+		background-image:      -o-linear-gradient(top, #8A8A8A, #787878);
+		background-image:      linear-gradient(to bottom, #8A8A8A, #787878);
+		filter:                progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#8A8A8A, endColorstr=#787878);
+
+		&:hover {
+			border:           1px solid #575757;
+			background-color: #B8B8B8;
+			background-image: -webkit-gradient(linear, left top, left bottom, from(#B8B8B8), to(#8A8A8A));
+			background-image: -webkit-linear-gradient(top, #B8B8B8, #8A8A8A);
+			background-image: -moz-linear-gradient(top, #B8B8B8, #8A8A8A);
+			background-image: -ms-linear-gradient(top, #B8B8B8, #8A8A8A);
+			background-image: -o-linear-gradient(top, #B8B8B8, #8A8A8A);
+			background-image: linear-gradient(to bottom, #B8B8B8, #8A8A8A);
+			filter:           progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#B8B8B8, endColorstr=#8A8A8A);
+		}
+	}
+
+	.submit_button {
+		border:                1px solid #CCCCCC;
+		-webkit-box-shadow:    #FEFFFF 0px 1px 1px;
+		-moz-box-shadow:       #FEFFFF 0px 1px 1px;
+		box-shadow:            #FEFFFF 0px 1px 1px;
+		-webkit-border-radius: 3px;
+		-moz-border-radius:    3px;
+		border-radius:         3px;
+		font-family:           arial, helvetica, sans-serif;
+		text-decoration:       none;
+		display:               inline-block;
+		text-shadow:           0px 1px 0 rgba(255, 255, 255, 1);
+		font-weight:           bold;
+		color:                 #4A4A4A;
+		background-color:      #F7F5F6;
+		cursor:                pointer;
+		text-transform:        lowercase;
+		font-variant:          small-caps;
+		font-size:             larger;
+		padding:               2px 10px 3px 10px;
+		background-image:      -webkit-gradient(linear, left top, left bottom, from(#F7F5F6), to(#DDDDDD));
+		background-image:      -webkit-linear-gradient(top, #F7F5F6, #DDDDDD);
+		background-image:      -moz-linear-gradient(top, #F7F5F6, #DDDDDD);
+		background-image:      -ms-linear-gradient(top, #F7F5F6, #DDDDDD);
+		background-image:      -o-linear-gradient(top, #F7F5F6, #DDDDDD);
+		background-image:      linear-gradient(to bottom, #F7F5F6, #DDDDDD);
+		filter:                progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#F7F5F6, endColorstr=#DDDDDD);
+
+		&:hover {
+			border:           1px solid #ADADAD;
+			background-color: #E0E0E0;
+			background-image: -webkit-gradient(linear, left top, left bottom, from(#E0E0E0), to(#BDBBBC));
+			background-image: -webkit-linear-gradient(top, #E0E0E0, #BDBBBC);
+			background-image: -moz-linear-gradient(top, #E0E0E0, #BDBBBC);
+			background-image: -ms-linear-gradient(top, #E0E0E0, #BDBBBC);
+			background-image: -o-linear-gradient(top, #E0E0E0, #BDBBBC);
+			background-image: linear-gradient(to bottom, #E0E0E0, #BDBBBC);
+			filter:           progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#E0E0E0, endColorstr=#BDBBBC);
+		}
+	}
+}

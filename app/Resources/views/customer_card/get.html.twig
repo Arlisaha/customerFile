@@ -1,5 +1,15 @@
 {% extends '::layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets
+        'public/less/get_customer_card.less'
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    {% block pagestylesheets %}{% endblock %}
+{% endblock %}
+
 {% macro render_owner(owner) %}
     {% import ':macro:macros.html.twig' as macros %}
     <div class="first_block">
@@ -100,7 +110,7 @@
     </div>
 {% endmacro %}
 
-{% set page = 'Fiche Client N°'~customer_card.id %}
+{% set page = 'Consulter la fiche client' %}
 
 {% block pagetitle %}{{ page|raw }}{% endblock %}
 
@@ -109,7 +119,7 @@
         <div id="container_form">
             {{ form_start(form) }}
                 {{ form_widget(form) }}
-                <div class="wrapper_2col">
+                <div id="buttons" class="wrapper_2col">
                     <div id="cancel_btn">
                         <button class="submit_button">Annuler</button>
                     </div>
@@ -121,7 +131,7 @@
             {{ form_end(form) }}
         </div>
     </dialog>
-    <h1 id="page_title">{{ page|raw }}</h1>
+    <h1 id="page_title">{{ 'Fiche Client N°'~customer_card.id }}</h1>
     <div id="container">
         <div id="customer">
             {% set customer = customer_card.customer %}
