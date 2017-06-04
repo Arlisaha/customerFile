@@ -2,6 +2,7 @@
 @html_font_family: 'Ubuntu', Tahoma, sans-serif;
 @html_text_color: #FFFFFF;
 
+@header_position: relative;
 @header_background_color: #bf0e0e;
 @header_border_bottom: 1px solid #7b0000;
 @header_hamburger_transition_delay: .25s;
@@ -22,6 +23,7 @@
 @header_hamburger_bottom_radius: .5em;
 @header_nav_link_background_hover: #c77070;
 
+@footer_position: inherit;
 @footer_background_color: @header_background_color;
 @footer_border_top: @header_border_bottom;
 
@@ -49,7 +51,7 @@ html {
 			margin-bottom: 10px;
 			background:    @header_background_color;
 			border-bottom: @header_border_bottom;
-			position:      sticky;
+			position:      @header_position;
 			top:           0;
 			display:       flex;
 			justify-content: space-between;
@@ -104,6 +106,7 @@ html {
 					#hamburger {
 						background: @header_hamburger_bottom_color_hover;
 						transition: @header_hamburger_transition_delay;
+						z-index: 2;
 
 						&:before {
 							top: .5em;
@@ -151,6 +154,7 @@ html {
 						padding: 7px 8px 10px 8px;
 						text-decoration: none;
 						color: inherit;
+						cursor: pointer;
 
 						&:hover {
 							background: @header_nav_link_background_hover;
@@ -169,6 +173,7 @@ html {
 			height:     35px;
 		    width:      100%;
 		    margin-top: 10px;
+		    position: @footer_position;
 		    background: @footer_background_color;
 		    border-top: @footer_border_top;
 
