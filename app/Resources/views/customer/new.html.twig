@@ -1,10 +1,15 @@
 {% extends '::layout.html.twig' %}
 
-{% set page = 'Nouveau Client' %}
-
 {% block pagestylesheets %}
+    {% stylesheets
+        'public/less/new_customer_edit_customer_card.less'
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
 {% endblock %}
+
+{% set page = 'Nouveau Client' %}
 
 {% block pagetitle %}{{ page|raw }}{% endblock %}
 

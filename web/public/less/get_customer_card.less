@@ -84,40 +84,46 @@ dialog {
 				}
 			}
 		}
-
-		#buttons {
-			margin-top: 5px;
-
-			button {
-				    border: 1px solid #6e6e6e;
-				    border-radius: 3px;
-				    font-family: lucida sans unicode, lucida grande, sans-serif;
-				    padding: 4px 6px 6px 6px;
-				    text-decoration: none;
-				    display: inline-block;
-				    font-weight: bold;
-				    color: #505050;
-				    background-color: #f7f7f7;
-				    text-transform: lowercase;
-				    font-variant: small-caps;
-				    font-size: medium;
-				    margin-bottom: 6px;
-				    cursor: pointer;
-				    background-image: linear-gradient(to bottom,#f7f7f7,#afafaf);
-					filter:           progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#f7f7f7, endColorstr=#afafaf);
-
-			&:hover {
-				    border: 1px solid #353535;
-				    background-color: #ffffff;
-				    background-image: linear-gradient(to bottom,#ffffff,#dadada);
-					filter:           progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#ffffff, endColorstr=#dadada);
-		}
-			}
-		}
 	}
 
 	#cancel_btn, #submit_btn {
 		float: none;
+	}
+}
+
+
+
+#buttons {
+	margin-top: 5px;
+
+	.button_right {
+		margin-left: 88%;
+	}
+
+	button {
+	    border: 1px solid #6e6e6e;
+	    border-radius: 3px;
+	    font-family: lucida sans unicode, lucida grande, sans-serif;
+	    padding: 4px 6px 6px 6px;
+	    text-decoration: none;
+	    display: inline-block;
+	    font-weight: bold;
+	    color: #505050;
+	    background-color: #f7f7f7;
+	    text-transform: lowercase;
+	    font-variant: small-caps;
+	    font-size: medium;
+	    margin-bottom: 6px;
+	    cursor: pointer;
+	    background-image: linear-gradient(to bottom,#f7f7f7,#afafaf);
+		filter:           progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#f7f7f7, endColorstr=#afafaf);
+
+		&:hover {
+			    border: 1px solid #353535;
+			    background-color: #ffffff;
+			    background-image: linear-gradient(to bottom,#ffffff,#dadada);
+				filter:           progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#ffffff, endColorstr=#dadada);
+		}
 	}
 }
 

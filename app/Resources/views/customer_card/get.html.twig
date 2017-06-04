@@ -1,13 +1,11 @@
 {% extends '::layout.html.twig' %}
 
-{% block stylesheets %}
-    {{ parent() }}
+{% block pagestylesheets %}
     {% stylesheets
         'public/less/get_customer_card.less'
     filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
-    {% block pagestylesheets %}{% endblock %}
 {% endblock %}
 
 {% macro render_owner(owner) %}
@@ -208,6 +206,11 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div id="buttons">
+        <a href="{{ path('customer_card_edit', {id: customer_card.id}) }}">
+            <button class="button_right">&Eacute;diter la fiche client</button>
+        </a>
     </div>
 {% endblock %}
 

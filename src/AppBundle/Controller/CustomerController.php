@@ -49,7 +49,6 @@ class CustomerController extends Controller
 			->add('address', TextareaType::class, [])
 			->add('city', TextType::class, [])
 			->add('zipCode', NumberType::class, [])
-			->add('status', TextType::class, [])
 			->add('mainOwner', OwnerType::class, [])
 			->add('mainAnimal', $type, [])
 			->add('specie', SpecieType::class, [])

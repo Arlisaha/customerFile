@@ -1,5 +1,13 @@
 {% extends '::layout.html.twig' %}
 
+{% block pagestylesheets %}
+    {% stylesheets
+        'public/less/new_customer_edit_customer_card.less'
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
 {% set page = '&Eacute;diter La Fiche Client' %}
 
 {% block pagetitle %}{{ page|raw }}{% endblock %}
