@@ -9,12 +9,12 @@
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
 {% endblock %}
 
-{% set page = 'Nouveau Client' %}
+{% set page_title = 'Nouveau Client' %}
 
-{% block pagetitle %}{{ page|raw }}{% endblock %}
+{% block pagetitle %}{{ page_title|raw }}{% endblock %}
 
 {% block container %}
-    <h1 id="page_title">{{ page|raw }}</h1>
+    <h1 id="page_title">{{ page_title|raw }}</h1>
     <div id="container_form">
         {{ form_start(form) }}
         <div id="customer" class="form_block">

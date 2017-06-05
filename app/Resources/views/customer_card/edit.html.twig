@@ -8,12 +8,12 @@
     {% endstylesheets %}
 {% endblock %}
 
-{% set page = '&Eacute;diter La Fiche Client' %}
+{% set page_title = '&Eacute;diter La Fiche Client' %}
 
-{% block pagetitle %}{{ page|raw }}{% endblock %}
+{% block pagetitle %}{{ page_title|raw }}{% endblock %}
 
 {% block container %}
-    <h1 id="page_title">{{ page|raw }}</h1>
+    <h1 id="page_title">{{ page_title|raw }}</h1>
     <div id="container_form">
         {{ form_start(form) }}
             <span class="block_title">Client</span>

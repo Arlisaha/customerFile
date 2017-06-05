@@ -23,7 +23,7 @@
 @header_hamburger_bottom_radius: .5em;
 @header_nav_link_background_hover: #c77070;
 
-@footer_position: inherit;
+@footer_position: absolute;
 @footer_background_color: @header_background_color;
 @footer_border_top: @header_border_bottom;
 
@@ -40,6 +40,8 @@ html {
 
 	body {
 		margin: 0;
+		position: relative;
+		min-height: 100%;
 
 		.no_margin_bottom {
 			margin-bottom: 0;
@@ -174,6 +176,7 @@ html {
 		    width:      100%;
 		    margin-top: 10px;
 		    position: @footer_position;
+		    bottom: 0;
 		    background: @footer_background_color;
 		    border-top: @footer_border_top;
 
@@ -200,6 +203,141 @@ html {
 				margin-left:   3px;
 			}
 
+			.main_color {
+				background: #404040;
+
+				.raw_textarea {
+					background: #969696;
+				}
+			}
+
+			.deep_red {
+				background: #4c2626;
+
+				.raw_textarea {
+					background: #694040;
+				}
+			}
+
+			.pink {
+				background: #502f3b;
+
+				.raw_textarea {
+					background: #6F4755;
+				}
+			}
+
+			.magenta {
+				background: #46263d;
+
+				.raw_textarea {
+					background: #6B445F;
+				}
+			}
+
+			.lightpurple {
+				background: #462745;
+
+				.raw_textarea {
+					background: #754A73;
+				}
+			}
+
+			.purple {
+				background: #452b4e;
+
+				.raw_textarea {
+					background: #684973;
+				}
+			}
+
+			.darkblue {
+				background: #342d4a;
+
+				.raw_textarea {
+					background: #4B4167;
+				}
+			}
+
+			.blue {
+				background: #262a42;
+
+				.raw_textarea {
+					background: #484E71;
+				}
+			}
+
+			.lightblue {
+				background: #2e3e4c;
+
+				.raw_textarea {
+					background: #475D71;
+				}
+			}
+
+			.indigo {
+				background: #223b40;
+
+				.raw_textarea {
+					background: #4B7077;
+				}
+			}
+
+			.turquoise {
+				background: #22463f;
+
+				.raw_textarea {
+					background: #4B776E;
+				}
+			}
+
+			.green {
+				background: #2a4a33;
+
+				.raw_textarea {
+					background: #487355;
+				}
+			}
+
+			.greenleaf {
+				background: #37482e;
+
+				.raw_textarea {
+					background: #557145;
+				}
+			}
+
+			.yellowgreen {
+				background: #434c30;
+
+				.raw_textarea {
+					background: #6A774B;
+				}
+			}
+
+			.yellow {
+				background: #4e4e32;
+
+				.raw_textarea {
+					background: #79794D;
+				}
+			}
+
+			.orange {
+				background: #4e412b;
+
+				.raw_textarea {
+					background: #716248;
+				}
+			}
+
+			.lava {
+				background: #4c3128;
+
+				.raw_textarea {
+					background: #6D4F45;
+				}
+			}
 
 			.wrapper_2col {
 				display:         flex;
@@ -217,6 +355,7 @@ html {
 					width:     100%;
 				}
 			}
+
 			.padding_top {
 				padding-top: 7px;
 			}

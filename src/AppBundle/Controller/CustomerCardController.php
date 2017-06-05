@@ -32,15 +32,23 @@ class CustomerCardController extends Controller
 	public function allAction($page)
 	{
 		$pageElementNumber = $this->getParameter('page_element_number');
+		$firstResult = ($page-1)*$pageElementNumber;
 
 		$all = $this
 			->get('doctrine.orm.default_entity_manager')
 			->getRepository('AppBundle:CustomerCard\CustomerCard')
-			->findAllLimit(($page-1)*$pageElementNumber, $page*$pageElementNumber);
+			->findAllLimit($firstResult, $pageElementNumber);
+
+        if (($all->count() <= $firstResult) && $page !== 1) {
+            throw new NotFoundHttpException(sprintf('Requested page does not exists. Max page : %s', $all->count()));
+        }
 		
 		return $this->render(':customer_card:all.html.twig', [
 			'customer_cards' => $all,
-			'page'           => $page,
+			'paginator'      => [
+	            'page'     => $page,
+	            'nb_pages' => ceil(count($all)/$pageElementNumber),
+			],
 		]);
 	}
 	
@@ -49,20 +57,37 @@ class CustomerCardController extends Controller
 	 *
 	 * @return \Symfony\Component\HttpFoundation\Response
 	 *
-	 * @Route("/search", requirements={"owner_name"}, name="customer_card_search")
+	 * @Route("/search/page/{page}", requirements={"page" = "\d+"}, defaults={"page" = 1}, name="customer_card_search")
 	 */
-	public function searchAction(Request $request)
+	public function searchAction(Request $request, $page)
 	{
-		$form = $this->createFormBuilder(null)
+		$results           = null;
+		$pageElementNumber = $this->getParameter('page_element_number');
+		$firstResult       = ($page-1)*$pageElementNumber;
+		$form              = $this->createFormBuilder(null)
 			->add('owner_lastname', TextType::class, [])
 			->add('owner_firstname', TextType::class, [])
 			->add('animal_name', TextType::class, [])
-			->add('specie', SpecieType::class, []);
+			->add('specie', SpecieType::class, [])
+			->getForm();
 		
-		//TODO : handle form and search depending on criterias.
+		$form->handleRequest($request);
+		
+		if ($form->isSubmitted() && $form->isValid()) {
+			$data    = $form->getData();
+			$results = $this
+				->get('doctrine.orm.default_entity_manager')
+				->getRepository('AppBundle:CustomerCard\CustomerCard')
+				->findByOwnerAndAnimal($data['owner_lastname'], $data['owner_firstname'], $data['animal_name'], $data['specie']);
+		}
 		
 		return $this->render(':customer_card:search.html.twig', [
-			'form' => $form,
+			'form'           => $form->createView(),
+			'customer_cards' => $results,
+			'paginator'      => [
+	            'page'     => $page,
+	            'nb_pages' => ceil(count($results)/$pageElementNumber),
+			],
 		]);
 	}
 	

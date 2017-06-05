@@ -1,8 +1,37 @@
 {% extends '::layout.html.twig' %}
 
-{% set page = 'Toutes les Fiches Clients' %}
+{% import ':macro:macros.html.twig' as macros %}
 
-{% block pagetitle %}{{ page|raw }}{% endblock %}
+{% block pagestylesheets %}
+    {% stylesheets
+        'public/less/customer_card_list.less'
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% set page_title = 'Toutes les Fiches Clients' %}
+
+{% block pagetitle %}{{ page_title|raw }}{% endblock %}
 
 {% block container %}
+    <h1 id="page_title">{{ page_title }}</h1>
+    <div id="container">
+    	<div id="list">
+			{% for customer_card in customer_cards %}
+				{{ macros.display_short_customer_card(customer_card) }}
+			{% endfor %}
+		</div>
+	</div>
+	{% if paginator.nb_pages > 1 %}
+		<div id="paginator">
+			{% for i in 1..paginator.nb_pages %}
+				{% if paginator.page == i %}
+					<span id="current_page">{{ i }}</span>
+				{% else %}
+					<a href="{{ path('customer_card_all', {page: i}) }}">{{ i }}</a>
+				{% endif %}
+			{% endfor %}
+		</div>
+	{% endif %}
 {% endblock %}

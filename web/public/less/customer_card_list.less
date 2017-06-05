@@ -1,0 +1,51 @@
+@container_background: #8a8a8a;
+
+#container {
+	width: 95%;
+    margin: 1% auto 0 auto;
+
+    #list {
+	    background: @container_background;
+	    padding: 0 10px 10px 10px;
+	    display: table;
+	    width: 100%;
+
+		.customer_card_elt {
+			padding: 5px;
+			margin-top: 10px;
+
+			table {
+				width: 100%;
+
+				tr {
+					width: 100%;
+
+					td {
+					}
+
+					.first {
+						width: 40%;
+					}
+
+					.last {
+						width: 10%;
+
+						a {
+							color: inherit;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#paginator {
+	width: 95%;
+    margin: 7px auto;
+    text-align: right;
+
+    a {
+    	color: inherit;
+    }
+}

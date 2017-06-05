@@ -12,9 +12,7 @@
     {% import ':macro:macros.html.twig' as macros %}
     <div class="first_block">
         <div class="owner_name">
-            {{ macros.display_human_gender(owner) }}
-            {{ owner.firstName|capitalize }}
-            {{ owner.lastName|upper }}
+            {{ macros.display_human_fullname_and_title(owner) }}
         </div>
         <div class="owner_age">
             {{ 'template.human_title.age'|trans({'%age%': owner.age}) }}
@@ -108,9 +106,9 @@
     </div>
 {% endmacro %}
 
-{% set page = 'Consulter la fiche client' %}
+{% set page_title = 'Consulter la fiche client' %}
 
-{% block pagetitle %}{{ page|raw }}{% endblock %}
+{% block pagetitle %}{{ page_title|raw }}{% endblock %}
 
 {% block container %}
     <dialog id="consultation_form_wrapper">

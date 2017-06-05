@@ -231,6 +231,18 @@
                     <source>%type% seance of %hour% hour and %minutes% minutes</source>
                     <target>séance de %type% de %hour% heures et %minutes% minutes</target>
                 </trans-unit>
+                <trans-unit id="customer_card.consultation.last" resname="template.customer_card.consultation.last">
+                    <source><![CDATA[Last consultation date : %date%]]></source>
+                    <target><![CDATA[Derni&egrave;re date de consultation : %date%]]></target>
+                </trans-unit>
+                <trans-unit id="customer_card.see" resname="template.customer_card.see">
+                    <source>See</source>
+                    <target>Consulter</target>
+                </trans-unit>
+                <trans-unit id="customer_card.edit" resname="template.customer_card.edit">
+                    <source>Edit</source>
+                    <target>Modifier</target>
+                </trans-unit>
             </group>
         </body>
     </file>

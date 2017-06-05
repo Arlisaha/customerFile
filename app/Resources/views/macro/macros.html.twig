@@ -61,6 +61,14 @@
     {% endspaceless %}
 {% endmacro %}
 
+{% macro display_human_fullname_and_title(owner) %}
+    {% spaceless %}
+        {{ _self.display_human_gender(owner) }}
+        {{ owner.firstName|capitalize }}
+        {{ owner.lastName|upper }}
+    {% endspaceless %}
+{% endmacro %}
+
 {% macro display_consultation_type_and_duration(consultation) %}
     {% spaceless %}
         {{ 'template.consultation.type_and_duration'|trans({'%type%': ('entity.consultation.type.'~consultation.type)|trans|lower, '%hour%': consultation.duration|date('H'), '%minutes%': consultation.duration|date('i')})|capitalize }}
@@ -73,4 +81,39 @@
             {{ elt|trans }}{% if not loop.last %}&nbsp;-{% endif %}
         {% endfor %}
     {% endspaceless %}
+{% endmacro %}
+
+{% macro display_short_customer_card(customer_card) %}
+    <div class="customer_card_elt {{ random(box_colors) }}">
+        <table>
+            <tr>
+                <td id="animals" class="first">
+                    {{ _self.display_dashed_separated_elements_list(customer_card.customer.animals) }}
+                </td>
+                <td rowspan="2">
+                    {% set last_consultation = customer_card.consultations|last %}
+                    {{ 'template.customer_card.consultation.last'|trans({'%date%': last_consultation|date('d/m/Y')})|raw }}
+                </td>
+                <td class="last">
+                    <a href="{{ path('customer_card_get', {id: customer_card.id}) }}">
+                        {{ 'template.customer_card.see'|trans }}
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td id="owners" class="first">
+                    {% set owners = [] %}
+                    {% for owner in customer_card.customer.owners %}
+                        {% set owners = owners|merge([_self.display_human_fullname_and_title(owner)]) %}
+                    {% endfor %}
+                    {{ _self.display_dashed_separated_elements_list(owners) }}
+                </td>
+                <td class="last">
+                    <a href="{{ path('customer_card_edit', {id: customer_card.id}) }}">
+                        {{ 'template.customer_card.edit'|trans }}
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
 {% endmacro %}
