@@ -27,17 +27,20 @@ class CustomerCardController extends Controller
 	/**
 	 * @return \Symfony\Component\HttpFoundation\Response
 	 *
-	 * @Route("/all", name="customer_card_all")
+	 * @Route("/all/page/{page}", requirements={"page" = "\d+"}, defaults={"page" = 1}, name="customer_card_all")
 	 */
-	public function allAction()
+	public function allAction($page)
 	{
+		$pageElementNumber = $this->getParameter('page_element_number');
+
 		$all = $this
 			->get('doctrine.orm.default_entity_manager')
 			->getRepository('AppBundle:CustomerCard\CustomerCard')
-			->findAll();
+			->findAllLimit(($page-1)*$pageElementNumber, $page*$pageElementNumber);
 		
 		return $this->render(':customer_card:all.html.twig', [
 			'customer_cards' => $all,
+			'page'           => $page,
 		]);
 	}
 	
