@@ -20,8 +20,8 @@
 @header_hamburger_bottom_height: .25em;
 @header_hamburger_bottom_radius: .5em;
 @header_nav_background: #000000;
-@header_nav_box_shadow: inset -9px 0px 20px 9px rgba(35, 35, 35, 0.64);
-@header_nav_border_right: 1px solid rgba(35, 35, 35, 0.42);
+@header_nav_box_shadow: 20px 0px 20px 9px rgba(35,35,35,0.64);
+@header_nav_border_right: none;
 @header_nav_link_background_hover: @header_background_color;
 
 @footer_background_color: @header_background_color;
@@ -166,11 +166,11 @@ html {
 			    transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
 			    padding-top: 55px;
 			    background: @header_nav_background;
-			    box-shadow: @header_nav_box_shadow;
 			    border-right: @header_nav_border_right;
 			    overflow-y: auto;
 
 				&.active {
+			    	box-shadow: @header_nav_box_shadow;
 			    	transform: translateX(0px);
 				}
 
