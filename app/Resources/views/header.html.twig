@@ -1,12 +1,11 @@
 <div id="menu">
-	<div id="hamburger"></div>
-	<nav>
-		<a href="{{ path('homepage') }}">Accueil</a>
-		<a href="{{ path('customer_card_all') }}">Toutes les fiches client</a>
-		<a href="{{ path('customer_card_search') }}">Chercher une fiche client</a>
-		<a href="{{ path('customer_new') }}">Créer un nouveau client</a>
-	</nav>
+	<div id="hamburger_wrapper">
+		<div id="hamburger"></div>
+	</div>
 </div>
-<div id="page_title">
-	{{ page_title|raw }}
-</div>
+<nav>
+	<a href="{{ path('homepage') }}">Accueil</a>
+	<a href="{{ path('customer_card_all') }}">Toutes les fiches client</a>
+	<a href="{{ path('customer_card_search') }}">Chercher une fiche client</a>
+	<a href="{{ path('customer_new') }}">Créer un nouveau client</a>
+</nav>
