@@ -24,8 +24,9 @@
 @header_nav_border_right: none;
 @header_nav_link_background_hover: @header_background_color;
 
-@footer_background_color: @header_background_color;
+@footer_background_color: transparent;
 @footer_border_top: none;
+@footer_color: rgba(255, 255, 255, 0.35);
 
 @main_text_color: @html_text_color;
 @main_h1_text_color: @html_text_color;
@@ -190,13 +191,15 @@ html {
 		}
 
 		footer {
-			height:     35px;
-		    width:      100%;
-		    margin-top: 10px;
+		    height: 35px;
+		    width: 50%;
+		    margin: 10px auto 0 auto;
 		    position: absolute;
-		    bottom: 0;
+		    bottom: 1px;
+		    left: 40%;
 		    background: @footer_background_color;
 		    border-top: @footer_border_top;
+		    color: @footer_color;
 
 		    #copy {
 		    	margin: 9px 5px;
